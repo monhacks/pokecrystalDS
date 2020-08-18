@@ -72,7 +72,7 @@ ShakeHeadbuttTree:
 	ld hl, vTiles1
 	lb bc, BANK(Font), 12
 	call Get1bpp
-	call ReplaceKrisSprite
+	call UpdatePlayerSprite
 	ret
 
 HeadbuttTreeGFX:
@@ -154,16 +154,7 @@ CutGrassGFX:
 INCBIN "gfx/overworld/cut_grass.2bpp"
 
 OWCutJumptable:
-	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
-	ld hl, .dw
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jumptable .dw, wJumptableIndex
 
 .dw
 	dw Cut_SpawnAnimateTree
@@ -204,7 +195,7 @@ Cut_SpawnAnimateLeaves:
 	ret
 
 Cut_StartWaiting:
-	ld a, $1
+	ld a, 1
 	ldh [hBGMapMode], a
 ; Cut_WaitAnimSFX
 	ld hl, wJumptableIndex
@@ -445,8 +436,8 @@ FlyFunction_FrameTimer:
 	sla a
 	add 8 * 8 ; gives a number in [$40, $50, $60, $70]
 	ld d, a
-	ld e, $0
-	ld a, SPRITE_ANIM_INDEX_FLY_LEAF ; fly land
+	ld e, 0
+	ld a, SPRITE_ANIM_INDEX_FLY_LEAF
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc

@@ -371,12 +371,12 @@ This makes the Berserk Gene use the regular confusion duration (2-5 turns).
 First, edit [wram.asm](https://github.com/pret/pokecrystal/blob/master/wram.asm):
 
 ```diff
- wTurnEnded:: db ; c6b4
+ wTurnEnded:: db
 
 -	ds 1
-+wIsConfusionDamage:: db ; c6b5
++wIsConfusionDamage:: db
 
- wPlayerStats:: ; c6b6
+ wPlayerStats::
 ```
 
 Then edit four routines in [engine/battle/effect_commands.asm](https://github.com/pret/pokecrystal/blob/master/engine/battle/effect_commands.asm):
@@ -521,7 +521,7 @@ Then create two new routines, `InvalidateSave` and `InvalidateBackupSave`:
 ```diff
  ValidateSave:
  	ld a, BANK(sCheckValue1) ; aka BANK(sCheckValue2)
- 	call GetSRAMBank
+ 	call OpenSRAM
  	ld a, SAVE_CHECK_VALUE_1
  	ld [sCheckValue1], a
  	ld a, SAVE_CHECK_VALUE_2
@@ -530,7 +530,7 @@ Then create two new routines, `InvalidateSave` and `InvalidateBackupSave`:
 
 +InvalidateSave:
 +	ld a, BANK(sCheckValue1) ; aka BANK(sCheckValue2)
-+	call GetSRAMBank
++	call OpenSRAM
 +	xor a
 +	ld [sCheckValue1], a
 +	ld [sCheckValue2], a
@@ -540,7 +540,7 @@ Then create two new routines, `InvalidateSave` and `InvalidateBackupSave`:
 ```diff
  ValidateBackupSave:
  	ld a, BANK(sBackupCheckValue1) ; aka BANK(sBackupCheckValue2)
- 	call GetSRAMBank
+ 	call OpenSRAM
  	ld a, SAVE_CHECK_VALUE_1
  	ld [sBackupCheckValue1], a
  	ld a, SAVE_CHECK_VALUE_2
@@ -549,7 +549,7 @@ Then create two new routines, `InvalidateSave` and `InvalidateBackupSave`:
 
 +InvalidateBackupSave:
 +	ld a, BANK(sBackupCheckValue1) ; aka BANK(sBackupCheckValue2)
-+	call GetSRAMBank
++	call OpenSRAM
 +	xor a
 +	ld [sBackupCheckValue1], a
 +	ld [sBackupCheckValue2], a
@@ -1281,9 +1281,9 @@ CopyPokemonName_Buffer1_Buffer3:
 
 ```diff
  HappinessData_DaisysGrooming:
--	db $ff, 2, HAPPINESS_GROOMING ; 99.6% chance
-+	db $80, 2, HAPPINESS_GROOMING ; 50% chance
-+	db $ff, 2, HAPPINESS_GROOMING ; 50% chance
+-	db 100 percent,     2, HAPPINESS_GROOMING ; 99.6% chance
++	db 50 percent + 1,  2, HAPPINESS_GROOMING ; 50% chance
++	db 100 percent,     2, HAPPINESS_GROOMING ; 50% chance
 ```
 
 
@@ -1766,7 +1766,7 @@ First, edit `UsedSurfScript` in [engine/events/overworld.asm](https://github.com
  	readmem wBuffer2
  	writevar VAR_MOVEMENT
 
- 	special ReplaceKrisSprite
+ 	special UpdatePlayerSprite
  	special PlayMapMusic
 -; step into the water (slow_step DIR, step_end)
  	special SurfStartStep
@@ -1924,7 +1924,7 @@ This bug can affect Mew or Pokémon other than Ditto that used Transform via Mir
      jr nz, .room_in_party
  
      ld a, BANK(sBoxCount)
-     call GetSRAMBank
+     call OpenSRAM
      ld a, [sBoxCount]
      cp MONS_PER_BOX
      call CloseSRAM

@@ -1092,7 +1092,7 @@ Function1006dc:
 MobileBattleResetTimer:
 	ld a, BANK(sMobileBattleTimer)
 	ld hl, sMobileBattleTimer
-	call GetSRAMBank
+	call OpenSRAM
 	xor a
 	ld [hli], a
 	ld [hli], a
@@ -1103,7 +1103,7 @@ MobileBattleResetTimer:
 MobileBattleFixTimer:
 	ld a, BANK(sMobileBattleTimer)
 	ld hl, sMobileBattleTimer
-	call GetSRAMBank
+	call OpenSRAM
 	xor a ; MOBILE_BATTLE_ALLOWED_SECONDS
 	ld [hli], a
 	ld a, MOBILE_BATTLE_ALLOWED_MINUTES
@@ -1125,7 +1125,7 @@ Function100720:
 	ld [wcd74], a
 	ld a, BANK(sMobileBattleTimer)
 	ld hl, sMobileBattleTimer
-	call GetSRAMBank
+	call OpenSRAM
 	ld a, [hli]
 	ld [wcd6c], a
 	ld a, [hli]
@@ -1248,7 +1248,7 @@ Function1007f6:
 	ld de, wcd71
 	call Function1006dc
 	ld a, $04
-	call GetSRAMBank
+	call OpenSRAM
 	ld hl, $a802
 	call Function100826
 	call CloseSRAM
@@ -1338,7 +1338,7 @@ MobileBattleGetRemainingTime:
 ; Returns minutes in c and seconds in b
 	ld a, BANK(sMobileBattleTimer)
 	ld hl, sMobileBattleTimer
-	call GetSRAMBank
+	call OpenSRAM
 	ld a, [hli]
 	ld [wStringBuffer2], a
 	ld a, [hli]
@@ -1529,7 +1529,7 @@ Function1009f3:
 
 _LinkBattleSendReceiveAction:
 	call .StageForSend
-	ld [wd431], a
+	ld [wLinkBattleSentAction], a
 	farcall PlaceWaitingText
 	ld a, [wLinkMode]
 	cp LINK_MOBILE
@@ -1573,7 +1573,7 @@ _LinkBattleSendReceiveAction:
 	ret
 
 .LinkBattle_SendReceiveAction:
-	ld a, [wd431]
+	ld a, [wLinkBattleSentAction]
 	ld [wPlayerLinkAction], a
 	ld a, $ff
 	ld [wOtherPlayerLinkAction], a
@@ -1642,7 +1642,7 @@ _LinkBattleSendReceiveAction:
 Function100acf:
 	ld de, Unknown_100b0a
 	ld hl, wccb5
-	ld a, [wd431]
+	ld a, [wLinkBattleSentAction]
 	ld [hli], a
 	ld c, $01
 .asm_100adb
@@ -2374,7 +2374,7 @@ Function100f8d:
 	ret
 
 .sram
-	call GetSRAMBank
+	call OpenSRAM
 	call CopyBytes
 	call CloseSRAM
 	ret
@@ -2428,7 +2428,7 @@ endr
 	inc hl
 	ld [hl], d
 	ld a, $07
-	call GetSRAMBank
+	call OpenSRAM
 	ld hl, wc608
 	ld de, $a001
 	ld bc, wc7bd - wc608
@@ -2654,7 +2654,7 @@ LoadSelectedPartiesForColosseum:
 
 Function1011f1:
 	ld a, BANK(s4_a60c)
-	call GetSRAMBank
+	call OpenSRAM
 	ld a, [s4_a60c]
 	ld [wdc41], a
 	call CloseSRAM
@@ -2925,7 +2925,7 @@ Function1013dd:
 	call CGBOnly_CopyTilemapAtOnce
 	ret
 
-Unreferenced_Function1013e1:
+Function1013e1: ; unreferenced
 	push de
 	inc de
 	ld b, a
@@ -2960,7 +2960,7 @@ Function1013f5:
 	jr nz, .asm_1013f9
 	ret
 
-Unreferenced_Function101400:
+Function101400: ; unreferenced
 	ld a, [de]
 	inc de
 	cp [hl]
@@ -3135,7 +3135,7 @@ Function101507:
 	ld [wMobileCommsJumptableIndex], a
 	ret
 
-Unreferenced_Function10151d:
+Function10151d: ; unreferenced
 	ld a, $34
 	call Function3e32
 	ld a, [wMobileCommsJumptableIndex]
@@ -3312,7 +3312,7 @@ Function101663:
 	call MobileCopyTransferData2
 	ret
 
-Unreferenced_Function101674:
+Function101674: ; unreferenced
 	ld a, BANK(w5_dc00)
 	ld hl, w5_dc00
 	call MobileCopyTransferData
@@ -4146,7 +4146,7 @@ Function101cbc:
 	ld [wcd2b], a
 	ret
 
-Unreferenced_Function101cc2:
+Function101cc2: ; unreferenced
 	ld a, $02
 	ld [wcd2b], a
 	ret
@@ -4407,14 +4407,14 @@ Function101e64:
 	ld [wcd2b], a
 	ret
 
-Unreferenced_Function101e82:
+Function101e82: ; unreferenced
 	call Function101ecc
 	ld a, [wMobileCommsJumptableIndex]
 	inc a
 	ld [wMobileCommsJumptableIndex], a
 	ret
 
-Unreferenced_Function101e8d:
+Function101e8d: ; unreferenced
 	call Function101ed3
 	ld a, [wMobileCommsJumptableIndex]
 	inc a
@@ -4659,7 +4659,7 @@ Function1020bf:
 	ld d, h
 	ld e, l
 	ld a, $04
-	call GetSRAMBank
+	call OpenSRAM
 	call Function10208e
 	call Function102068
 	call CloseSRAM
@@ -4695,7 +4695,7 @@ Function1020ea:
 
 Function102112:
 	ld a, $04
-	call GetSRAMBank
+	call OpenSRAM
 	ld hl, $a041
 	ld c, 40
 .outer_loop
@@ -6123,7 +6123,7 @@ Function102b4e:
 	ld [w2DMenuNumRows], a
 	ret
 
-Unreferenced_Function102b68:
+Function102b68: ; unreferenced
 	xor a
 	ld hl, wWindowStackPointer
 	ld bc, $10
@@ -6254,7 +6254,7 @@ Function102c3b:
 Function102c48:
 	farcall Function10165a
 	ld a, 0
-	call GetSRAMBank
+	call OpenSRAM
 	ld hl, $a600
 	ld de, wc608
 	ld bc, $2f
@@ -6364,7 +6364,7 @@ Function102d34:
 	ret
 
 Function102d3e:
-	call GetSRAMBank
+	call OpenSRAM
 	call CopyBytes
 	call CloseSRAM
 	ret
@@ -6487,12 +6487,12 @@ Function102e07:
 	db "Waiting...!@"
 
 Function102e3e:
-	ld de, .CANCEL
+	ld de, .CancelString
 	hlcoord 10, 17
 	call PlaceString
 	ret
 
-.CANCEL:
+.CancelString:
 	db "CANCEL@"
 
 Function102e4f:
@@ -6909,7 +6909,7 @@ Function103309:
 	xor a
 	call ByteFill
 	ld a, BANK(s4_a60c)
-	call GetSRAMBank
+	call OpenSRAM
 	ld a, [wdc41]
 	ld [s4_a60c], a
 	ld [wBuffer1], a
@@ -6961,7 +6961,7 @@ Function103362:
 	bit 6, [hl]
 	jr z, .asm_103398
 	ld a, BANK(s4_a60c)
-	call GetSRAMBank
+	call OpenSRAM
 	ld a, [wBuffer1]
 	ld [s4_a60c], a
 	ld [wdc41], a

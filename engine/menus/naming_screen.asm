@@ -193,7 +193,7 @@ NamingScreen:
 .LoadSprite:
 	push de
 	ld hl, vTiles0 tile $00
-	ld c, $4
+	ld c, 4
 	push bc
 	call Request2bpp
 	pop bc
@@ -246,10 +246,11 @@ NamingScreen:
 	ret
 
 NamingScreen_IsTargetBox:
+; Return z if [wNamingScreenType] == NAME_BOX.
 	push bc
 	push af
 	ld a, [wNamingScreenType]
-	sub $3
+	sub NAME_BOX - 1
 	ld b, a
 	pop af
 	dec b
@@ -363,16 +364,7 @@ NamingScreenJoypadLoop:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, $0
-	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jumptable .Jumptable, wJumptableIndex
 
 .Jumptable:
 	dw .InitCursor
@@ -698,7 +690,7 @@ NamingScreen_AdvanceCursor_CheckEndOfString:
 	scf
 	ret
 
-; unused
+AddDakutenToCharacter: ; unreferenced
 	ld a, [wNamingScreenCurNameLength]
 	and a
 	ret z
@@ -711,7 +703,7 @@ NamingScreen_AdvanceCursor_CheckEndOfString:
 
 .loop
 	ld a, [hli]
-	cp $ff
+	cp -1
 	jr z, NamingScreen_AdvanceCursor_CheckEndOfString
 	cp c
 	jr z, .done
@@ -975,7 +967,7 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	ld [wNamingScreenMaxNameLength], a
 	ret
 
-.UnusedString11f7a:
+.PleaseWriteAMailString: ; unreferenced
 	db "メールを　かいてね@"
 
 .InitCharset:
@@ -1050,16 +1042,7 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	ret
 
 .DoJumptable:
-	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
-	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jumptable .Jumptable, wJumptableIndex
 
 .Jumptable:
 	dw .init_blinking_cursor

@@ -105,11 +105,11 @@ PlacePartyNicknames:
 .end
 	dec hl
 	dec hl
-	ld de, .CANCEL
+	ld de, .CancelString
 	call PlaceString
 	ret
 
-.CANCEL:
+.CancelString:
 	db "CANCEL@"
 
 PlacePartyHPBar:
@@ -138,7 +138,7 @@ PlacePartyHPBar:
 	ld b, $0
 	add hl, bc
 	call SetHPPal
-	ld b, SCGB_PARTY_MENU_HP_PALS
+	ld b, SCGB_PARTY_MENU_HP_BARS
 	call GetSGBLayout
 .skip
 	ld hl, wSGBPals
