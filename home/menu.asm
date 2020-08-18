@@ -116,8 +116,8 @@ RestoreTileBackup::
 	ret
 
 PopWindow::
-	ld b, wMenuHeaderEnd - wMenuHeader
-	ld de, wMenuHeader
+	ld b, $10
+	ld de, wMenuFlags
 .loop
 	ld a, [hld]
 	ld [de], a
@@ -148,8 +148,8 @@ CopyMenuData::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wMenuData
-	ld bc, wMenuDataEnd - wMenuData
+	ld de, wMenuDataFlags
+	ld bc, wMenuDataEnd - wMenuDataFlags
 	call CopyBytes
 	pop af
 	pop bc
@@ -282,9 +282,8 @@ MenuBoxCoord2Attr::
 	ld c, a
 	ld a, [wMenuBorderTopCoord]
 	ld b, a
-	; fallthrough
 
-Coord2Attr:: ; unreferenced
+Coord2Attr::
 ; Return the address of wAttrmap(c, b) in hl.
 	xor a
 	ld h, a
@@ -418,7 +417,7 @@ YesNoBox::
 PlaceYesNoBox::
 	jr _YesNoBox
 
-PlaceGenericTwoOptionBox:: ; unreferenced
+UnreferencedPlaceGenericTwoOptionBox::
 	call LoadMenuHeader
 	jr InterpretTwoOptionMenu
 
@@ -720,7 +719,7 @@ PlaceNthMenuStrings::
 	call PlaceString
 	ret
 
-GetNthMenuStrings:: ; unreferenced
+Unreferenced_Function1f9e::
 	call GetMenuDataPointerTableEntry
 	inc hl
 	inc hl
@@ -836,7 +835,7 @@ InterpretBattleMenu::
 	ld a, [wMenuCursorBuffer]
 	ret
 
-InterpretMobileMenu:: ; unreferenced
+InterpretMobileMenu::
 	ldh a, [hROMBank]
 	ld [wMenuData_2DMenuItemStringsBank], a
 	farcall _InterpretMobileMenu

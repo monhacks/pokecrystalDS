@@ -16,7 +16,6 @@ UpdateCGBPals::
 	ldh a, [hCGBPalUpdate]
 	and a
 	ret z
-	; fallthrough
 
 ForceUpdateCGBPals::
 	ldh a, [rSVBK]
@@ -82,7 +81,6 @@ DmgToCgbBGPals::
 	push hl
 	push de
 	push bc
-
 	ldh a, [rSVBK]
 	push af
 
@@ -104,7 +102,6 @@ DmgToCgbBGPals::
 
 	pop af
 	ldh [rSVBK], a
-
 	pop bc
 	pop de
 	pop hl
@@ -130,7 +127,6 @@ DmgToCgbObjPals::
 	push hl
 	push de
 	push bc
-
 	ldh a, [rSVBK]
 	push af
 
@@ -152,7 +148,6 @@ DmgToCgbObjPals::
 
 	pop af
 	ldh [rSVBK], a
-
 	pop bc
 	pop de
 	pop hl
@@ -302,7 +297,7 @@ ClearVBank1::
 	ldh [rVBK], a
 	ret
 
-GSReloadPalettes:: ; dummied out
+ret_d90::
 	ret
 
 ReloadSpritesNoPalettes::

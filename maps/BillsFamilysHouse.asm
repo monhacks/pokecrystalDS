@@ -1,12 +1,12 @@
-	object_const_def
+	object_const_def ; object_event constants
 	const BILLSFAMILYSHOUSE_BILL
 	const BILLSFAMILYSHOUSE_POKEFAN_F
 	const BILLSFAMILYSHOUSE_TWIN
 
 BillsFamilysHouse_MapScripts:
-	def_scene_scripts
+	db 0 ; scene scripts
 
-	def_callbacks
+	db 0 ; callbacks
 
 BillScript:
 	faceplayer
@@ -98,13 +98,13 @@ BillsSisterScript:
 	sjump .Refused
 
 BillsHouseBookshelf1:
-	jumpstd PictureBookshelfScript
+	jumpstd picturebookshelf
 
 BillsHouseBookshelf2:
-	jumpstd MagazineBookshelfScript
+	jumpstd magazinebookshelf
 
 BillsHouseRadio:
-	jumpstd Radio2Script
+	jumpstd radio2
 
 BillTakeThisEeveeText:
 	text "BILL: Hi, <PLAYER>!"
@@ -243,18 +243,18 @@ BillsSisterStorageSystemText:
 BillsFamilysHouse_MapEvents:
 	db 0, 0 ; filler
 
-	def_warp_events
+	db 2 ; warp events
 	warp_event  2,  7, GOLDENROD_CITY, 4
 	warp_event  3,  7, GOLDENROD_CITY, 4
 
-	def_coord_events
+	db 0 ; coord events
 
-	def_bg_events
+	db 3 ; bg events
 	bg_event  0,  1, BGEVENT_READ, BillsHouseBookshelf2
 	bg_event  1,  1, BGEVENT_READ, BillsHouseBookshelf1
 	bg_event  7,  1, BGEVENT_READ, BillsHouseRadio
 
-	def_object_events
+	db 3 ; object events
 	object_event  2,  3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillScript, EVENT_MET_BILL
 	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillsMomScript, -1
 	object_event  5,  4, SPRITE_TWIN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, BillsSisterScript, -1

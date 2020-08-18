@@ -1,4 +1,4 @@
-	object_const_def
+	object_const_def ; object_event constants
 	const BATTLETOWER1F_RECEPTIONIST
 	const BATTLETOWER1F_YOUNGSTER
 	const BATTLETOWER1F_COOLTRAINER_F
@@ -6,11 +6,11 @@
 	const BATTLETOWER1F_GRANNY
 
 BattleTower1F_MapScripts:
-	def_scene_scripts
+	db 2 ; scene scripts
 	scene_script .Scene0 ; SCENE_DEFAULT
 	scene_script .Scene1 ; SCENE_FINISHED
 
-	def_callbacks
+	db 0 ; callbacks
 
 .Scene0:
 	setval BATTLETOWERACTION_CHECKSAVEFILEISYOURS
@@ -154,7 +154,7 @@ Script_BattleTowerHopeToServeYouAgain:
 	closetext
 	end
 
-Script_MobileError2: ; unreferenced
+UnreferencedScript_0x9e4b6:
 	special BattleTowerMobileError
 	closetext
 	end
@@ -164,7 +164,7 @@ Script_WaitButton:
 	closetext
 	end
 
-Script_ChooseChallenge2: ; unreferenced
+UnreferencedScript_0x9e4be:
 	writetext Text_SaveBeforeEnteringBattleRoom
 	yesorno
 	iffalse Script_Menu_ChallengeExplanationCancel
@@ -183,7 +183,7 @@ Script_ChooseChallenge2: ; unreferenced
 	closetext
 	end
 
-Script_StartChallenge: ; unreferenced
+UnreferencedScript_0x9e4ea:
 	setval BATTLETOWERACTION_LEVEL_CHECK
 	special BattleTowerAction
 	ifnotequal $0, Script_AMonLevelExceeds
@@ -196,11 +196,11 @@ Script_StartChallenge: ; unreferenced
 	special BattleTowerAction
 	ifequal $0, .zero
 	writetext Text_CantBeRegistered_PreviousRecordDeleted
-	sjump .continue
+	sjump continue
 
 .zero
 	writetext Text_CantBeRegistered
-.continue
+continue:
 	yesorno
 	iffalse Script_Menu_ChallengeExplanationCancel
 	writetext Text_SaveBeforeReentry
@@ -218,7 +218,7 @@ Script_StartChallenge: ; unreferenced
 	waitbutton
 	sjump Script_ResumeBattleTowerChallenge
 
-Script_ReachedBattleLimit: ; unreferenced
+UnreferencedScript_0x9e53b:
 	writetext Text_FiveDayBattleLimit_Mobile
 	waitbutton
 	sjump Script_BattleTowerHopeToServeYouAgain
@@ -794,17 +794,17 @@ Text_BattleTowerBugCatcher:
 BattleTower1F_MapEvents:
 	db 0, 0 ; filler
 
-	def_warp_events
+	db 3 ; warp events
 	warp_event  7,  9, BATTLE_TOWER_OUTSIDE, 3
 	warp_event  8,  9, BATTLE_TOWER_OUTSIDE, 4
 	warp_event  7,  0, BATTLE_TOWER_ELEVATOR, 1
 
-	def_coord_events
+	db 0 ; coord events
 
-	def_bg_events
+	db 1 ; bg events
 	bg_event  6,  6, BGEVENT_READ, BattleTower1FRulesSign
 
-	def_object_events
+	db 5 ; object events
 	object_event  7,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTower1FReceptionistScript, -1
 	object_event 14,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BattleTower1FYoungsterScript, -1
 	object_event  4,  9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BattleTower1FCooltrainerFScript, -1

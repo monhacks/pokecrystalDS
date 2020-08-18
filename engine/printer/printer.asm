@@ -71,7 +71,7 @@ PrintDexEntry:
 	ld hl, hVBlank
 	ld a, [hl]
 	push af
-	ld [hl], 4
+	ld [hl], $4
 
 	ld a, 8 ; 16 rows
 	ld [wPrinterQueueLength], a
@@ -448,7 +448,7 @@ CheckCancelPrint:
 
 .pressed_b
 	ld a, [wca80]
-	cp $0c
+	cp $c
 	jr nz, .cancel
 .loop
 	ld a, [wPrinterOpcode]
@@ -506,7 +506,7 @@ Printer_RestartMapMusic:
 
 CheckPrinterStatus:
 ; Check for printer errors
-; If [wPrinterHandshake] == -1, we're disconnected
+; If [ca88] == -1, we're disconnected
 	ld a, [wPrinterHandshake]
 	cp -1
 	jr nz, .printer_connected
@@ -514,6 +514,7 @@ CheckPrinterStatus:
 	cp -1
 	jr z, .error_2
 .printer_connected
+; ca89 contains printer status flags
 	ld a, [wPrinterStatusFlags]
 	and %11100000
 	ret z ; no error
@@ -575,7 +576,7 @@ PlacePrinterStatusString:
 	ld [wPrinterStatus], a
 	ret
 
-Function847bd: ; unreferenced
+Unreferenced_Function847bd:
 	ld a, [wPrinterStatus]
 	and a
 	ret z
@@ -715,7 +716,7 @@ PrintPCBox_Page4:
 
 Printer_PrintBoxListSegment:
 	ld a, [wBankOfBoxToPrint]
-	call OpenSRAM
+	call GetSRAMBank
 .loop
 	ld a, c
 	and a
@@ -903,7 +904,7 @@ Printer_PlaceBottomBorders:
 
 Printer_PlaceEmptyBoxSlotString:
 	hlcoord 2, 0
-	ld c, 6
+	ld c, $6
 .loop
 	push bc
 	push hl

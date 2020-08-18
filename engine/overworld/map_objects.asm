@@ -402,7 +402,7 @@ UpdatePlayerStep:
 	set PLAYERSTEP_CONTINUE_F, [hl]
 	ret
 
-Function4759: ; unreferenced
+Unreferenced_Function4759:
 	push bc
 	ld e, a
 	ld d, 0
@@ -1846,7 +1846,7 @@ Function5015:
 	ld e, [hl]
 	inc [hl]
 	ld d, 0
-	ld hl, wMovementObject
+	ld hl, wc2e2
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -2781,12 +2781,12 @@ InitSprites:
 
 .DeterminePriorities:
 	xor a
-	ld hl, wObjectPriorities
+	ld hl, wMovementPointer
 	ld bc, NUM_OBJECT_STRUCTS
 	call ByteFill
 	ld d, 0
 	ld bc, wObjectStructs
-	ld hl, wObjectPriorities
+	ld hl, wMovementPointer
 .loop
 	push hl
 	call DoesObjectHaveASprite
@@ -2833,7 +2833,7 @@ InitSprites:
 	ret
 
 .InitSpritesByPriority:
-	ld hl, wObjectPriorities
+	ld hl, wMovementPointer
 .next_sprite
 	ld a, [hli]
 	ld d, a

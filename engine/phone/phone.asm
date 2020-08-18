@@ -353,7 +353,7 @@ Function90199:
 	ld hl, PHONE_CONTACT_SCRIPT1_BANK
 	add hl, de
 	ld b, [hl]
-	ld hl, PHONE_CONTACT_SCRIPT1_ADDR
+	ld hl, PHONE_CONTACT_SCRIPT1_ADDR_LO
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -380,11 +380,11 @@ Function90199:
 
 LoadPhoneScriptBank:
 	memcall wPhoneScriptBank
-	endcallback
+	return
 
 LoadOutOfAreaScript:
 	scall PhoneOutOfAreaScript
-	endcallback
+	return
 
 LoadCallerScript:
 	nop

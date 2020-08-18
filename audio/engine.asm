@@ -19,7 +19,7 @@ _InitSound::
 	ld [hli], a ; rNR50 ; volume/vin
 	ld [hli], a ; rNR51 ; sfx channels
 	ld a, $80 ; all channels on
-	ld [hli], a ; rNR52 ; music channels
+	ld [hli], a ; ff26 ; music channels
 
 	ld hl, rNR10 ; sound channel registers
 	ld e, NUM_MUSIC_CHANS
@@ -247,21 +247,21 @@ UpdateChannels:
 	ldh [rNR10], a
 .noPitchSweep
 	bit NOTE_REST, [hl] ; rest
-	jr nz, .ch1_rest
+	jr nz, .ch1rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .ch1_noise_sampling
+	jr nz, .asm_e81a2
 	bit NOTE_FREQ_OVERRIDE, [hl]
-	jr nz, .ch1_frequency_override
+	jr nz, .frequency_override
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
-	jr nz, .ch1_vibrato_override
-	jr .ch1_check_duty_override
+	jr nz, .asm_e8184
+	jr .check_duty_override
 
-.ch1_frequency_override
+.frequency_override
 	ld a, [wCurTrackFrequency]
 	ldh [rNR13], a
 	ld a, [wCurTrackFrequency + 1]
 	ldh [rNR14], a
-.ch1_check_duty_override
+.check_duty_override
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
@@ -272,7 +272,7 @@ UpdateChannels:
 	ldh [rNR11], a
 	ret
 
-.ch1_vibrato_override
+.asm_e8184
 	ld a, [wCurTrackDuty]
 	ld d, a
 	ldh a, [rNR11]
@@ -283,7 +283,7 @@ UpdateChannels:
 	ldh [rNR13], a
 	ret
 
-.ch1_rest
+.ch1rest
 	ldh a, [rNR52]
 	and %10001110 ; ch1 off
 	ldh [rNR52], a
@@ -291,7 +291,7 @@ UpdateChannels:
 	call ClearChannel
 	ret
 
-.ch1_noise_sampling
+.asm_e81a2
 	ld hl, wCurTrackDuty
 	ld a, $3f ; sound length
 	or [hl]
@@ -310,11 +310,11 @@ UpdateChannels:
 	ld hl, CHANNEL_NOTE_FLAGS
 	add hl, bc
 	bit NOTE_REST, [hl] ; rest
-	jr nz, .ch2_rest
+	jr nz, .ch2rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .ch2_noise_sampling
+	jr nz, .asm_e8204
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
-	jr nz, .ch2_vibrato_override
+	jr nz, .asm_e81e6
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
@@ -325,14 +325,14 @@ UpdateChannels:
 	ldh [rNR21], a
 	ret
 
-.ch2_frequency_override ; unreferenced
+.asm_e81db ; unused
 	ld a, [wCurTrackFrequency]
 	ldh [rNR23], a
 	ld a, [wCurTrackFrequency + 1]
 	ldh [rNR24], a
 	ret
 
-.ch2_vibrato_override
+.asm_e81e6
 	ld a, [wCurTrackDuty]
 	ld d, a
 	ldh a, [rNR21]
@@ -343,7 +343,7 @@ UpdateChannels:
 	ldh [rNR23], a
 	ret
 
-.ch2_rest
+.ch2rest
 	ldh a, [rNR52]
 	and %10001101 ; ch2 off
 	ldh [rNR52], a
@@ -351,7 +351,7 @@ UpdateChannels:
 	call ClearChannel
 	ret
 
-.ch2_noise_sampling
+.asm_e8204
 	ld hl, wCurTrackDuty
 	ld a, $3f ; sound length
 	or [hl]
@@ -369,27 +369,27 @@ UpdateChannels:
 .Channel7:
 	ld hl, CHANNEL_NOTE_FLAGS
 	add hl, bc
-	bit NOTE_REST, [hl]
-	jr nz, .ch3_rest
+	bit NOTE_REST, [hl] ; rest
+	jr nz, .ch3rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .ch3_noise_sampling
+	jr nz, .asm_e824d
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
-	jr nz, .ch3_vibrato_override
+	jr nz, .asm_e823a
 	ret
 
-.ch3_frequency_override ; unreferenced
+.asm_e822f ; unused
 	ld a, [wCurTrackFrequency]
 	ldh [rNR33], a
 	ld a, [wCurTrackFrequency + 1]
 	ldh [rNR34], a
 	ret
 
-.ch3_vibrato_override
+.asm_e823a
 	ld a, [wCurTrackFrequency]
 	ldh [rNR33], a
 	ret
 
-.ch3_rest
+.ch3rest
 	ldh a, [rNR52]
 	and %10001011 ; ch3 off
 	ldh [rNR52], a
@@ -397,12 +397,12 @@ UpdateChannels:
 	call ClearChannel
 	ret
 
-.ch3_noise_sampling
+.asm_e824d
 	ld a, $3f ; sound length
 	ldh [rNR31], a
 	xor a
 	ldh [rNR30], a
-	call .load_wave_pattern
+	call .asm_e8268
 	ld a, $80
 	ldh [rNR30], a
 	ld a, [wCurTrackFrequency]
@@ -412,7 +412,7 @@ UpdateChannels:
 	ldh [rNR34], a
 	ret
 
-.load_wave_pattern
+.asm_e8268
 	push hl
 	ld a, [wCurTrackVolumeEnvelope]
 	and $f ; only 0-9 are valid
@@ -470,18 +470,18 @@ endr
 .Channel8:
 	ld hl, CHANNEL_NOTE_FLAGS
 	add hl, bc
-	bit NOTE_REST, [hl]
-	jr nz, .ch4_rest
+	bit NOTE_REST, [hl] ; rest
+	jr nz, .ch4rest
 	bit NOTE_NOISE_SAMPLING, [hl]
-	jr nz, .ch4_noise_sampling
+	jr nz, .asm_e82d4
 	ret
 
-.ch4_frequency_override ; unreferenced
+.asm_e82c1 ; unused
 	ld a, [wCurTrackFrequency]
 	ldh [rNR43], a
 	ret
 
-.ch4_rest
+.ch4rest
 	ldh a, [rNR52]
 	and %10000111 ; ch4 off
 	ldh [rNR52], a
@@ -489,7 +489,7 @@ endr
 	call ClearChannel
 	ret
 
-.ch4_noise_sampling
+.asm_e82d4
 	ld a, $3f ; sound length
 	ldh [rNR41], a
 	ld a, [wCurTrackVolumeEnvelope]
@@ -1165,7 +1165,7 @@ ParseMusic:
 	ld a, [wCurMusicByte]
 	swap a
 	and $f
-	jr z, .rest ; pitch 0 -> rest
+	jr z, .rest ; pitch 0-> rest
 	; update pitch
 	ld hl, CHANNEL_PITCH
 	add hl, bc
@@ -1364,7 +1364,7 @@ ParseMusicCommand:
 	jp hl
 
 MusicCommands:
-; entries correspond to audio constants (see macros/scripts/audio.asm)
+; entries correspond to macros/scripts/audio.asm enumeration
 	dw Music_Octave8 ; octave 8
 	dw Music_Octave7 ; octave 7
 	dw Music_Octave6 ; octave 6

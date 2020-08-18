@@ -2,7 +2,7 @@ ClearSpriteAnims:
 	ld hl, wSpriteAnimDict
 	ld bc, wSpriteAnimsEnd - wSpriteAnimDict
 .loop
-	ld [hl], 0
+	ld [hl], $0
 	inc hl
 	dec bc
 	ld a, c
@@ -209,7 +209,7 @@ DeinitializeSprite:
 ; Clear the index field of the struct in bc.
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
-	ld [hl], 0
+	ld [hl], $0
 	ret
 
 DeinitializeAllSprites:
@@ -323,7 +323,7 @@ AddOrSubtractY:
 	bit OAM_Y_FLIP, [hl]
 	jr z, .ok
 	; -8 - a
-	add 8
+	add $8
 	xor $ff
 	inc a
 
@@ -338,7 +338,7 @@ AddOrSubtractX:
 	bit OAM_X_FLIP, [hl]
 	jr z, .ok
 	; -8 - a
-	add 8
+	add $8
 	xor $ff
 	inc a
 
@@ -512,7 +512,7 @@ GetFrameOAMPointer:
 	add hl, de
 	ret
 
-BrokenGetStdGraphics: ; unreferenced
+Unreferenced_BrokenGetStdGraphics:
 	push hl
 	ld l, a
 	ld h, 0

@@ -230,7 +230,7 @@ SlotsLoop:
 	call PrintNum
 	ret
 
-Function92811: ; unreferenced
+Unreferenced_Function92811:
 ; debug function?
 	ld a, [wSlotBias]
 	add 0
@@ -248,7 +248,7 @@ Function92811: ; unreferenced
 	ld [hl], a
 	ret
 
-Function9282c: ; unreferenced
+Unreferenced_Function9282c:
 ; animate OAM tiles?
 	ld hl, wcf66
 	ld a, [hl]
@@ -845,7 +845,7 @@ Slots_UpdateReelPositionAndOAM:
 	jr nz, .loop
 	ret
 
-Function92bbe: ; unreferenced
+Unreferenced_Function92bbe:
 	push hl
 	srl a
 	srl a

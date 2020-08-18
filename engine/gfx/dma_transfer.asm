@@ -108,11 +108,11 @@ Mobile_ReloadMapPart:
 
 	ret
 
-Function1040d4: ; unreferenced
-	ld hl, .Function
+; unused
+	ld hl, .unreferenced_1040da
 	jp CallInSafeGFXMode
 
-.Function
+.unreferenced_1040da
 	ld a, $1
 	ldh [rVBK], a
 	ld a, BANK(w3_d800)
@@ -131,11 +131,11 @@ Function1040d4: ; unreferenced
 	call WaitDMATransfer
 	ret
 
-Function1040fb: ; unreferenced
-	ld hl, .Function
+; unused
+	ld hl, .unreferenced_104101
 	jp CallInSafeGFXMode
 
-.Function
+.unreferenced_104101
 	ld a, $1
 	ldh [rVBK], a
 	ld a, BANK(w3_d800)

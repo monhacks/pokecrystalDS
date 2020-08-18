@@ -26,7 +26,7 @@ box_struct: MACRO
 \1CaughtGender::
 \1CaughtLocation:: db
 \1Level::          db
-\1BoxEnd::
+\1End::
 ENDM
 
 party_struct: MACRO
@@ -41,7 +41,7 @@ party_struct: MACRO
 \1Speed::          dw
 \1SpclAtk::        dw
 \1SpclDef::        dw
-\1StructEnd::
+\1StatsEnd::
 ENDM
 
 red_box_struct: MACRO
@@ -80,6 +80,7 @@ battle_struct: MACRO
 \1Species::   db
 \1Item::      db
 \1Moves::     ds NUM_MOVES
+\1MovesEnd::
 \1DVs::       dw
 \1PP::        ds NUM_MOVES
 \1Happiness:: db
@@ -93,6 +94,7 @@ battle_struct: MACRO
 \1Speed::     dw
 \1SpclAtk::   dw
 \1SpclDef::   dw
+\1StatsEnd::
 \1Type::
 \1Type1::     db
 \1Type2::     db
@@ -124,6 +126,7 @@ map_connection_struct: MACRO
 ENDM
 
 channel_struct: MACRO
+; Addreses are wChannel1 (c101).
 \1MusicID::           dw
 \1MusicBank::         db
 \1Flags1::            db ; 0:on/off 1:subroutine 2:looping 3:sfx 4:noise 5:rest
@@ -239,14 +242,14 @@ link_battle_record: MACRO
 ENDM
 
 trademon: MACRO
-\1Species::     db
-\1SpeciesName:: ds MON_NAME_LENGTH
-\1Nickname::    ds MON_NAME_LENGTH
-\1SenderName::  ds NAME_LENGTH
-\1OTName::      ds NAME_LENGTH
-\1DVs::         dw
-\1ID::          dw
-\1CaughtData::  db
+\1Species::     db ; wc6d0 | wc702
+\1SpeciesName:: ds MON_NAME_LENGTH ; wc6d1 | wc703
+\1Nickname::    ds MON_NAME_LENGTH ; wc6dc | wc70e
+\1SenderName::  ds NAME_LENGTH ; wc6e7 | wc719
+\1OTName::      ds NAME_LENGTH ; wc6f2 | wc724
+\1DVs::         dw ; wc6fd | wc72f
+\1ID::          dw ; wc6ff | wc731
+\1CaughtData::  db ; wc701 | wc733
 \1End::
 ENDM
 

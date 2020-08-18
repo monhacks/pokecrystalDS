@@ -76,7 +76,7 @@ Unused_CheckShininess:
 	and a
 	ret
 
-SGB_ApplyCreditsPals: ; unreferenced
+Unreferenced_Function8aa4:
 	push de
 	push bc
 	ld hl, PalPacket_9ce6
@@ -106,7 +106,7 @@ InitPartyMenuPalettes:
 	call WipeAttrmap
 	ret
 
-; SGB layout for SCGB_PARTY_MENU_HP_BARS
+; SGB layout for SCGB_PARTY_MENU_HP_PALS
 SGB_ApplyPartyMenuHPPals:
 	ld hl, wHPPals
 	ld a, [wSGBPals]
@@ -133,7 +133,7 @@ SGB_ApplyPartyMenuHPPals:
 	ld [hl], e
 	ret
 
-Function8b07: ; unreferenced
+Unreferenced_Function8b07:
 	call CheckCGB
 	ret z
 ; CGB only
@@ -166,7 +166,7 @@ Function8b07: ; unreferenced
 	RGB 08, 16, 28
 	RGB 00, 00, 00
 
-Function8b3f: ; unreferenced
+Unreferenced_Function8b3f:
 	call CheckCGB
 	ret nz
 	ldh a, [hSGB]
@@ -175,7 +175,7 @@ Function8b3f: ; unreferenced
 	ld hl, BlkPacket_9a86
 	jp PushSGBPals
 
-Function8b4d: ; unreferenced
+Unreferenced_Function8b4d:
 	call CheckCGB
 	jr nz, .cgb
 	ldh a, [hSGB]
@@ -190,7 +190,7 @@ Function8b4d: ; unreferenced
 	call GetPredefPal
 	jp LoadHLPaletteIntoDE
 
-Function8b67: ; unreferenced
+Unreferenced_Function8b67:
 	call CheckCGB
 	jr nz, .cgb
 	ldh a, [hSGB]
@@ -205,7 +205,7 @@ Function8b67: ; unreferenced
 	call GetPredefPal
 	jp LoadHLPaletteIntoDE
 
-GSIntro_LoadMonPalette: ; unreferenced
+Unreferenced_Function8b81:
 	call CheckCGB
 	jr nz, .cgb
 	ldh a, [hSGB]
@@ -273,7 +273,7 @@ LoadNthMiddleBGPal:
 	call LoadPalette_White_Col1_Col2_Black
 	ret
 
-Function8bec: ; unreferenced
+Unreferenced_Function8bec:
 	ldh a, [hCGB]
 	and a
 	jr nz, .cgb
@@ -445,6 +445,23 @@ LoadMailPalettes:
 INCLUDE "gfx/mail/mail.pal"
 
 INCLUDE "engine/gfx/cgb_layouts.asm"
+
+Unreferenced_Function95f0:
+	ld hl, .Palette
+	ld de, wBGPals1
+	ld bc, 1 palettes
+	ld a, BANK(wBGPals1)
+	call FarCopyWRAM
+	call ApplyPals
+	call WipeAttrmap
+	call ApplyAttrmap
+	ret
+
+.Palette:
+	RGB 31, 31, 31
+	RGB 09, 31, 31
+	RGB 10, 12, 31
+	RGB 00, 03, 19
 
 CopyFourPalettes:
 	ld de, wBGPals1
@@ -630,7 +647,7 @@ ApplyAttrmap:
 	ldh [rVBK], a
 	ret
 
-; CGB layout for SCGB_PARTY_MENU_HP_BARS
+; CGB layout for SCGB_PARTY_MENU_HP_PALS
 CGB_ApplyPartyMenuHPPals:
 	ld hl, wHPPals
 	ld a, [wSGBPals]
@@ -719,7 +736,7 @@ GetMonPalettePointer:
 	call _GetMonPalettePointer
 	ret
 
-Function9779: ; unreferenced
+Unreferenced_Function9779:
 	ret
 	call CheckCGB
 	ret z
@@ -742,7 +759,7 @@ Function9779: ; unreferenced
 BattleObjectPals:
 INCLUDE "gfx/battle_anims/battle_anims.pal"
 
-Function97cc: ; unreferenced
+Unreferenced_Function97cc:
 	call CheckCGB
 	ret z
 	ld a, $90
@@ -952,7 +969,7 @@ _InitSGBBorderPals:
 	dw DataSndPacket7
 	dw DataSndPacket8
 
-Function9911: ; unreferenced
+Unreferenced_Function9911:
 	di
 	xor a
 	ldh [rJOYP], a
@@ -975,7 +992,7 @@ PushSGBBorder:
 	ret
 
 .LoadSGBBorderPointers:
-	ld hl, SGBBorderGFX
+	ld hl, SGBBorder
 	ld de, SGBBorderMap
 	ret
 
@@ -1181,7 +1198,7 @@ SGBBorderPalettes:
 ; assumed to come after SGBBorderMap
 INCLUDE "gfx/sgb/sgb_border.pal"
 
-SGBBorderGFX:
+SGBBorder:
 INCBIN "gfx/sgb/sgb_border.2bpp"
 
 HPBarPals:
@@ -1220,6 +1237,7 @@ LoadMapPals:
 	add hl, de
 	ld e, l
 	ld d, h
+	; Switch to palettes WRAM bank
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wBGPals1)
@@ -1315,9 +1333,6 @@ INCLUDE "gfx/diploma/diploma.pal"
 
 PartyMenuOBPals:
 INCLUDE "gfx/stats/party_menu_ob.pal"
-
-UnusedBattleObjectPals:
-INCLUDE "gfx/battle_anims/unused_battle_anims.pal"
 
 UnusedGSTitleBGPals:
 INCLUDE "gfx/title/unused_gs_bg.pal"

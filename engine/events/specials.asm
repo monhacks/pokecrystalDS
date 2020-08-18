@@ -13,7 +13,7 @@ Special::
 	rst FarCall
 	ret
 
-INCLUDE "data/events/special_pointers.asm"
+INCLUDE "data/special_pointers.asm"
 
 DummySpecial_c224:
 	ret
@@ -128,7 +128,7 @@ PlayersHousePC:
 
 CheckMysteryGift:
 	ld a, BANK(sMysteryGiftItem)
-	call OpenSRAM
+	call GetSRAMBank
 	ld a, [sMysteryGiftItem]
 	and a
 	jr z, .no
@@ -141,7 +141,7 @@ CheckMysteryGift:
 
 GetMysteryGiftItem:
 	ld a, BANK(sMysteryGiftItem)
-	call OpenSRAM
+	call GetSRAMBank
 	ld a, [sMysteryGiftItem]
 	ld [wCurItem], a
 	ld a, 1
@@ -420,7 +420,7 @@ PrintDiploma:
 
 TrainerHouse:
 	ld a, BANK(sMysteryGiftTrainerHouseFlag)
-	call OpenSRAM
+	call GetSRAMBank
 	ld a, [sMysteryGiftTrainerHouseFlag]
 	ld [wScriptVar], a
 	jp CloseSRAM

@@ -1,42 +1,19 @@
-# compiled objects
+# generated
+*.tx
 *.o
-
-# compiled graphics
-*.1bpp
-*.2bpp
-*.lz
-*.gbcpal
-*.dimensions
-*.animated.tilemap
-*.sgb.tilemap
-gfx/pokemon/*/bitmask.asm
-gfx/pokemon/*/frames.asm
-!gfx/pokemon/unown/bitmask.asm
-!gfx/pokemon/unown/frames.asm
-
-# compiled roms
-*.gbc
-*.gb
-
-# rgbds extras
-*.map
-*.sym
-
-# tool binaries
-*.exe
 
 # precompiled python
 *.pyc
 *$py.class
 
-# compare.sh
-baserom.txt
-pokecrystal.txt
+# no binaries
+*.exe
 
-# used_space.py
-used_space.png
+# roms
+*.gbc
+*.gb
 
-# save game files
+# for any of the poor souls with save game files in their working directory
 *.sgm
 *.sav
 *.rtc
@@ -44,13 +21,32 @@ used_space.png
 *.sa*
 *.sg1
 
-# vim configuration
-# http://www.vim.org/scripts/script.php?script_id=441
+# rgbds extras
+*.map
+*.sym
+
+# compare.sh
+baserom.txt
+pokecrystal.txt
+
+# for vim configuration
+# url: http://www.vim.org/scripts/script.php?script_id=441
 .lvimrc
-
-# swap files for vim and gedit
+# swap files for vim
 .*.swp
+# swap files for gedit
 *~
-
-# macos files
+# osx files
 .DS_STORE
+
+*.dimensions
+*.gbcpal
+*.2bpp
+*.1bpp
+*.lz
+*.animated.tilemap
+*.sgb.tilemap
+gfx/pokemon/*/bitmask.asm
+gfx/pokemon/*/frames.asm
+!gfx/pokemon/unown/bitmask.asm
+!gfx/pokemon/unown/frames.asm

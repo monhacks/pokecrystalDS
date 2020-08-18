@@ -110,7 +110,7 @@ CoinString:
 ShowMoney_TerminatorString:
 	db "@"
 
-StartMenu_PrintSafariGameStatus: ; unreferenced
+Unreferenced_StartMenu_PrintSafariGameStatus:
 	ld hl, wOptions
 	ld a, [hl]
 	push af

@@ -185,10 +185,6 @@ EggStatsJoypad:
 .check
 	bit A_BUTTON_F, a
 	jr nz, .quit
-if DEF(_DEBUG)
-	cp START
-	jr z, .hatch
-endc
 	and D_DOWN | D_UP | A_BUTTON | B_BUTTON
 	jp StatsScreen_JoypadAction
 
@@ -196,39 +192,6 @@ endc
 	ld h, 7
 	call StatsScreen_SetJumptableIndex
 	ret
-
-if DEF(_DEBUG)
-.hatch
-	ld a, [wMonType]
-	or a
-	jr nz, .skip
-	push bc
-	push de
-	push hl
-	ld a, [wCurPartyMon]
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1Happiness
-	call AddNTimes
-	ld [hl], 1
-	ld a, 1
-	ld [wTempMonHappiness], a
-	ld a, 127
-	ld [wStepCount], a
-	ld de, .HatchSoonString
-	hlcoord 8, 17
-	call PlaceString
-	ld hl, wcf64
-	set 5, [hl]
-	pop hl
-	pop de
-	pop bc
-.skip
-	xor a
-	jp StatsScreen_JoypadAction
-
-.HatchSoonString:
-	db "▶HATCH SOON!@"
-endc
 
 StatsScreen_LoadPage:
 	call StatsScreen_LoadGFX
@@ -261,7 +224,7 @@ StatsScreenWaitCry:
 StatsScreen_CopyToTempMon:
 	ld a, [wMonType]
 	cp TEMPMON
-	jr nz, .not_tempmon
+	jr nz, .breedmon
 	ld a, [wBufferMonSpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
@@ -271,7 +234,7 @@ StatsScreen_CopyToTempMon:
 	call CopyBytes
 	jr .done
 
-.not_tempmon
+.breedmon
 	farcall CopyMonToTempMon
 	ld a, [wCurPartySpecies]
 	cp EGG
@@ -288,7 +251,7 @@ StatsScreen_GetJoypad:
 	call GetJoypad
 	ld a, [wMonType]
 	cp TEMPMON
-	jr nz, .not_tempmon
+	jr nz, .notbreedmon
 	push hl
 	push de
 	push bc
@@ -300,11 +263,11 @@ StatsScreen_GetJoypad:
 	and D_DOWN | D_UP
 	jr nz, .set_carry
 	ld a, [wMenuJoypad]
-	jr .clear_carry
+	jr .clear_flags
 
-.not_tempmon
+.notbreedmon
 	ldh a, [hJoyPressed]
-.clear_carry
+.clear_flags
 	and a
 	ret
 
@@ -483,7 +446,7 @@ StatsScreen_InitUpperHalf:
 	dw sBoxMonNicknames
 	dw wBufferMonNick
 
-Function4df7f: ; unreferenced
+Unreferenced_Function4df7f:
 	hlcoord 7, 0
 	ld bc, SCREEN_WIDTH
 	ld d, SCREEN_HEIGHT
@@ -569,11 +532,11 @@ StatsScreen_LoadGFX:
 
 .Jumptable:
 ; entries correspond to *_PAGE constants
-	dw LoadPinkPage
-	dw LoadGreenPage
-	dw LoadBluePage
+	dw .PinkPage
+	dw .GreenPage
+	dw .BluePage
 
-LoadPinkPage:
+.PinkPage:
 	hlcoord 0, 9
 	ld b, $0
 	predef DrawPlayerHP
@@ -715,7 +678,7 @@ LoadPinkPage:
 .PkrsStr:
 	db "#RUS@"
 
-LoadGreenPage:
+.GreenPage:
 	ld de, .Item
 	hlcoord 0, 8
 	call PlaceString
@@ -760,17 +723,17 @@ LoadGreenPage:
 .Move:
 	db "MOVES@"
 
-LoadBluePage:
+.BluePage:
 	call .PlaceOTInfo
 	hlcoord 10, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
 	ld a, $31 ; vertical divider
-.vertical_divider
+.BluePageVerticalDivider:
 	ld [hl], a
 	add hl, de
 	dec b
-	jr nz, .vertical_divider
+	jr nz, .BluePageVerticalDivider
 	hlcoord 11, 8
 	ld bc, 6
 	predef PrintTempMonStats
@@ -927,7 +890,7 @@ StatsScreen_GetAnimationParam:
 	ld b, h
 	ld c, l
 	ld a, BANK(sBoxMons)
-	call OpenSRAM
+	call GetSRAMBank
 	call .CheckEggFaintedFrzSlp
 	push af
 	call CloseSRAM
@@ -981,7 +944,7 @@ StatsScreen_LoadTextboxSpaceGFX:
 	pop hl
 	ret
 
-StatsScreenSpaceGFX: ; unreferenced
+Unreferenced_StatsScreenSpaceGFX:
 INCBIN "gfx/font/space.2bpp"
 
 EggStatsScreen:
@@ -1007,17 +970,6 @@ EggStatsScreen:
 	ld de, FiveQMarkString
 	hlcoord 11, 5
 	call PlaceString
-if DEF(_DEBUG)
-	ld de, .PushStartString
-	hlcoord 8, 17
-	call PlaceString
-	jr .placed_push_start
-
-.PushStartString:
-	db "▶PUSH START.@"
-
-.placed_push_start
-endc
 	ld a, [wTempMonHappiness] ; egg status
 	ld de, EggSoonString
 	cp $6
@@ -1143,7 +1095,7 @@ CopyNickname:
 	cp BOXMON
 	jr nz, .partymon
 	ld a, BANK(sBoxMonNicknames)
-	call OpenSRAM
+	call GetSRAMBank
 	push de
 	call CopyBytes
 	pop de

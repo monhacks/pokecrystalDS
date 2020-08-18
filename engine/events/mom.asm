@@ -18,9 +18,19 @@ BankOfMom:
 	ret
 
 .RunJumptable:
-	jumptable .dw, wJumptableIndex
+	ld a, [wJumptableIndex]
+	ld e, a
+	ld d, 0
+	ld hl, .dw
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp hl
 
 .dw
+
 	dw .CheckIfBankInitialized
 	dw .InitializeBank
 	dw .IsThisAboutYourMoney
@@ -88,7 +98,7 @@ BankOfMom:
 	ld hl, MomBankWhatDoYouWantToDoText
 	call PrintText
 	call LoadStandardMenuHeader
-	ld hl, BankOfMom_MenuHeader
+	ld hl, MenuHeader_0x166b5
 	call CopyMenuHeader
 	call VerticalMenu
 	call CloseWindow
@@ -649,13 +659,13 @@ Mom_DepositString:
 Mom_HeldString:
 	db "HELD@"
 
-BankOfMom_MenuHeader:
+MenuHeader_0x166b5:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 0, 0, 10, 10
-	dw .MenuData
+	dw MenuData_0x166bd
 	db 1 ; default option
 
-.MenuData:
+MenuData_0x166bd:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
 	db "GET@"

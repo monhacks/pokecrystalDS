@@ -10,8 +10,10 @@ INCBIN "gfx/mobile/kris_silhouette.2bpp"
 MobileCard2GFX::
 INCBIN "gfx/mobile/card_2.2bpp"
 
-CardLargeSpriteAndFolderGFX::
+CardLargeSpriteGFX::
 INCBIN "gfx/mobile/card_large_sprite.2bpp"
+
+CardFolderGFX::
 INCBIN "gfx/mobile/card_folder.2bpp"
 
 CardSpriteGFX::
@@ -23,7 +25,7 @@ Function17a68f::
 	ld hl, $d088
 	bit 5, [hl]
 	jr z, .asm_17a6a6
-	ld de, wStringBuffer1
+	ld de, wStringBuffer1 ; $d073
 	push de
 	call Function17a721
 	pop de
@@ -37,7 +39,7 @@ Function17a68f::
 Function17a6a8:
 	push de
 	push bc
-	ld hl, wStringBuffer2
+	ld hl, wStringBuffer2 ; $d086
 	ld bc, $a
 	xor a
 	call ByteFill
@@ -529,7 +531,7 @@ String_17a9b2:
 	db   "@"
 
 Function17a9cb:
-	ld de, wVirtualOAM
+	ld de, wVirtualOAM ; $c400
 	ld hl, $d088
 	bit 6, [hl]
 	jr nz, .bit_6_set
@@ -771,7 +773,7 @@ Function17abcf:
 	ldh [rSVBK], a
 
 	ld hl, Palette_17ac55
-	ld de, wBGPals1
+	ld de, wBGPals1 ; $d000
 	ld bc, 6 palettes
 	call CopyBytes
 

@@ -1,4 +1,4 @@
-CorrectPartyErrors: ; unreferenced
+Unreferenced_CorrectPartyErrors:
 	ld hl, wPartyCount
 	ld a, [hl]
 	and a

@@ -65,7 +65,7 @@ MobileReceive::
 
 	ret
 
-MobileTimer::
+Timer::
 	push af
 	push bc
 	push de
@@ -89,11 +89,11 @@ MobileTimer::
 
 	ld a, [$c822]
 	bit 1, a
-	jr nz, .skip_timer
+	jr nz, .skip_Timer
 
 	ldh a, [rSC]
 	and 1 << rSC_ON
-	jr nz, .skip_timer
+	jr nz, .skip_Timer
 
 	ldh a, [hROMBank]
 	push af
@@ -108,7 +108,7 @@ MobileTimer::
 	ld [$c981], a
 	rst Bankswitch
 
-.skip_timer
+.skip_Timer
 	ldh a, [rTMA]
 	ldh [rTIMA], a
 
@@ -122,7 +122,7 @@ MobileTimer::
 	pop af
 	reti
 
-Function3ed7:: ; unreferenced
+Unreferenced_Function3ed7::
 	ld [$dc02], a
 	ldh a, [hROMBank]
 	push af
@@ -152,7 +152,7 @@ Function3eea::
 	call MobileHome_PlaceBox
 	ret
 
-Function3efd:: ; unreferenced
+Unreferenced_Function3efd::
 	push hl
 	hlcoord 0, 12
 	ld b, 4

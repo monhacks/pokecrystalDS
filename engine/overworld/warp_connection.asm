@@ -316,7 +316,7 @@ RefreshMapSprites:
 	farcall InitMapNameSign
 	call GetMovementPermissions
 	farcall RefreshPlayerSprite
-	farcall CheckUpdatePlayerSprite
+	farcall CheckReplaceKrisSprite
 	ld hl, wPlayerSpriteSetupFlags
 	bit PLAYERSPRITESETUP_SKIP_RELOAD_GFX_F, [hl]
 	jr nz, .skip

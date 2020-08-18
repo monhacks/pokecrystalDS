@@ -237,7 +237,7 @@ CheckObjectTime::
 	ld a, [hl]
 	cp -1
 	jr z, .timeofday_always
-	ld hl, .TimesOfDay
+	ld hl, .TimeOfDayValues_191e
 	ld a, [wTimeOfDay]
 	add l
 	ld l, a
@@ -257,7 +257,7 @@ CheckObjectTime::
 	and a
 	ret
 
-.TimesOfDay:
+.TimeOfDayValues_191e:
 ; entries correspond to TimeOfDay values
 	db MORN
 	db DAY
@@ -300,13 +300,13 @@ CheckObjectTime::
 	scf
 	ret
 
-CopyMapObjectStruct:: ; unreferenced
+; unused
 	ldh [hMapObjectIndexBuffer], a
 	call GetMapObject
 	call CopyObjectStruct
 	ret
 
-UnmaskCopyMapObjectStruct::
+_CopyObjectStruct::
 	ldh [hMapObjectIndexBuffer], a
 	call UnmaskObject
 	ldh a, [hMapObjectIndexBuffer]
@@ -362,7 +362,7 @@ CopyPlayerObjectTemplate::
 	call CopyBytes
 	ret
 
-DeleteFollowerMapObject: ; unreferenced
+Unreferenced_Function19b8:
 	call GetMapObject
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
@@ -376,7 +376,7 @@ DeleteFollowerMapObject: ; unreferenced
 	pop af
 	cp -1
 	ret z
-	cp NUM_OBJECT_STRUCTS
+	cp $d
 	ret nc
 	ld b, a
 	ld a, [wObjectFollow_Leader]
@@ -574,12 +574,12 @@ _GetMovementByte::
 	ld a, h
 	ret
 
-SetVramState_Bit0:: ; unreferenced
+UnreferencedSetVramState_Bit0::
 	ld hl, wVramState
 	set 0, [hl]
 	ret
 
-ResetVramState_Bit0:: ; unreferenced
+UnreferencedResetVramState_Bit0::
 	ld hl, wVramState
 	res 0, [hl]
 	ret

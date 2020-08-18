@@ -128,8 +128,8 @@ SpeechTextbox::
 	ld c, TEXTBOX_INNERW
 	jp Textbox
 
-GameFreakText:: ; unreferenced
-	text "ゲームフりーク！" ; "GAMEFREAK!"
+UnreferencedTestText::
+	text "ゲームフりーク！"
 	done
 
 RadioTerminator::
@@ -181,13 +181,13 @@ NextChar::
 
 CheckDict::
 dict: MACRO
-if \1 == 0
+if \1 == "<NULL>"
 	and a
 else
 	cp \1
 endc
 
-if ISCONST(\2)
+if STRSUB("\2", 1, 1) == "\""
 ; Replace a character with another one
 	jr nz, ._\@
 	ld a, \2
@@ -603,7 +603,7 @@ FarString::
 	rst Bankswitch
 	ret
 
-PokeFluteTerminator::
+PokeFluteTerminatorCharacter::
 	ld hl, .stop
 	ret
 
@@ -649,32 +649,35 @@ DoTextUntilTerminator::
 
 TextCommands::
 ; entries correspond to TX_* constants (see macros/scripts/text.asm)
-	dw TextCommand_START         ; TX_START
-	dw TextCommand_RAM           ; TX_RAM
-	dw TextCommand_BCD           ; TX_BCD
-	dw TextCommand_MOVE          ; TX_MOVE
-	dw TextCommand_BOX           ; TX_BOX
-	dw TextCommand_LOW           ; TX_LOW
-	dw TextCommand_PROMPT_BUTTON ; TX_PROMPT_BUTTON
-	dw TextCommand_SCROLL        ; TX_SCROLL
-	dw TextCommand_START_ASM     ; TX_START_ASM
-	dw TextCommand_NUM           ; TX_NUM
-	dw TextCommand_PAUSE         ; TX_PAUSE
-	dw TextCommand_SOUND         ; TX_SOUND_DEX_FANFARE_50_79
-	dw TextCommand_DOTS          ; TX_DOTS
-	dw TextCommand_WAIT_BUTTON   ; TX_WAIT_BUTTON
-	dw TextCommand_SOUND         ; TX_SOUND_DEX_FANFARE_20_49
-	dw TextCommand_SOUND         ; TX_SOUND_ITEM
-	dw TextCommand_SOUND         ; TX_SOUND_CAUGHT_MON
-	dw TextCommand_SOUND         ; TX_SOUND_DEX_FANFARE_80_109
-	dw TextCommand_SOUND         ; TX_SOUND_FANFARE
-	dw TextCommand_SOUND         ; TX_SOUND_SLOT_MACHINE_START
-	dw TextCommand_STRINGBUFFER  ; TX_STRINGBUFFER
-	dw TextCommand_DAY           ; TX_DAY
-	dw TextCommand_FAR           ; TX_FAR
+	dw TextCommand_START              ; TX_START
+	dw TextCommand_RAM                ; TX_RAM
+	dw TextCommand_BCD                ; TX_BCD
+	dw TextCommand_MOVE               ; TX_MOVE
+	dw TextCommand_BOX                ; TX_BOX
+	dw TextCommand_LOW                ; TX_LOW
+	dw TextCommand_PROMPT_BUTTON      ; TX_PROMPT_BUTTON
+	dw TextCommand_SCROLL             ; TX_SCROLL
+	dw TextCommand_START_ASM          ; TX_START_ASM
+	dw TextCommand_NUM                ; TX_NUM
+	dw TextCommand_PAUSE              ; TX_PAUSE
+	dw TextCommand_SOUND              ; TX_SOUND_DEX_FANFARE_50_79
+	dw TextCommand_DOTS               ; TX_DOTS
+	dw TextCommand_LINK_PROMPT_BUTTON ; TX_LINK_PROMPT_BUTTON
+	dw TextCommand_SOUND              ; TX_SOUND_DEX_FANFARE_20_49
+	dw TextCommand_SOUND              ; TX_SOUND_ITEM
+	dw TextCommand_SOUND              ; TX_SOUND_CAUGHT_MON
+	dw TextCommand_SOUND              ; TX_SOUND_DEX_FANFARE_80_109
+	dw TextCommand_SOUND              ; TX_SOUND_FANFARE
+	dw TextCommand_SOUND              ; TX_SOUND_SLOT_MACHINE_START
+	dw TextCommand_STRINGBUFFER       ; TX_STRINGBUFFER
+	dw TextCommand_DAY                ; TX_DAY
+	dw TextCommand_FAR                ; TX_FAR
 
 TextCommand_START::
+; text_start
 ; write text until "@"
+; [$00]["...@"]
+
 	ld d, h
 	ld e, l
 	ld h, b
@@ -686,7 +689,11 @@ TextCommand_START::
 	ret
 
 TextCommand_RAM::
-; write text from a ram address (little endian)
+; text_ram
+; write text from a ram address
+; little endian
+; [$01][addr]
+
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -699,7 +706,11 @@ TextCommand_RAM::
 	ret
 
 TextCommand_FAR::
-; write text from a different bank (little endian)
+; text_far
+; write text from a different bank
+; little endian
+; [$16][addr][bank]
+
 	ldh a, [hROMBank]
 	push af
 
@@ -724,7 +735,11 @@ TextCommand_FAR::
 	ret
 
 TextCommand_BCD::
+; text_bcd
 ; write bcd from address, typically ram
+; [$02][addr][flags]
+; flags: see PrintBCDNumber
+
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -741,7 +756,10 @@ TextCommand_BCD::
 	ret
 
 TextCommand_MOVE::
+; text_move
 ; move to a new tile
+; [$03][addr]
+
 	ld a, [hli]
 	ld [wMenuScrollPosition + 2], a
 	ld c, a
@@ -751,7 +769,11 @@ TextCommand_MOVE::
 	ret
 
 TextCommand_BOX::
-; draw a box (height, width)
+; text_box
+; draw a box
+; little endian
+; [$04][addr][height][width]
+
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -768,17 +790,24 @@ TextCommand_BOX::
 	ret
 
 TextCommand_LOW::
+; text_low
 ; write text at (1,16)
+; [$05]
+
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	ret
 
 TextCommand_PROMPT_BUTTON::
-; wait for button press; show arrow
+; text_promptbutton
+; wait for button press
+; show arrow
+; [06]
+
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jp z, TextCommand_WAIT_BUTTON
+	jp z, TextCommand_LINK_PROMPT_BUTTON
 	cp LINK_MOBILE
-	jp z, TextCommand_WAIT_BUTTON
+	jp z, TextCommand_LINK_PROMPT_BUTTON
 
 	push hl
 	call LoadBlinkingCursor
@@ -790,6 +819,7 @@ TextCommand_PROMPT_BUTTON::
 	ret
 
 TextCommand_SCROLL::
+; text_scroll
 ; pushes text up two lines and sets the BC cursor to the border tile
 ; below the first character column of the text box.
 	push hl
@@ -801,7 +831,8 @@ TextCommand_SCROLL::
 	ret
 
 TextCommand_START_ASM::
-; run assembly code
+; text_asm
+
 	bit 7, h
 	jr nz, .not_rom
 	jp hl
@@ -812,7 +843,8 @@ TextCommand_START_ASM::
 	ret
 
 TextCommand_NUM::
-; print a number
+; text_decimal
+; [$09][addr][hi:bytes lo:digits]
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -836,7 +868,7 @@ TextCommand_NUM::
 	ret
 
 TextCommand_PAUSE::
-; wait for button press or 30 frames
+; text_pause
 	push hl
 	push bc
 	call GetJoypad
@@ -851,7 +883,10 @@ TextCommand_PAUSE::
 	ret
 
 TextCommand_SOUND::
-; play a sound effect from TextSFX
+; chars:
+;   $0b, $0e, $0f, $10, $11, $12, $13
+; see TextSFX
+
 	push bc
 	dec hl
 	ld a, [hli]
@@ -882,8 +917,8 @@ TextCommand_SOUND::
 	pop bc
 	ret
 
-TextCommand_CRY:: ; unreferenced
-; play a pokemon cry
+Unreferenced_Function1522::
+; sound_cry
 	push de
 	ld e, [hl]
 	inc hl
@@ -905,7 +940,8 @@ TextSFX::
 	db -1
 
 TextCommand_DOTS::
-; wait for button press or 30 frames while printing "…"s
+; text_dots
+; [$0C][num]
 	ld a, [hli]
 	ld d, a
 	push hl
@@ -932,8 +968,10 @@ TextCommand_DOTS::
 	pop hl
 	ret
 
-TextCommand_WAIT_BUTTON::
-; wait for button press; don't show arrow
+TextCommand_LINK_PROMPT_BUTTON::
+; text_linkpromptbutton
+; wait for key down
+; display arrow
 	push hl
 	push bc
 	call PromptButton
@@ -942,6 +980,7 @@ TextCommand_WAIT_BUTTON::
 	ret
 
 TextCommand_STRINGBUFFER::
+; text_buffer
 ; Print a string from one of the following:
 ; 0: wStringBuffer3
 ; 1: wStringBuffer4
@@ -950,6 +989,8 @@ TextCommand_STRINGBUFFER::
 ; 4: wStringBuffer1
 ; 5: wEnemyMonNick
 ; 6: wBattleMonNick
+; [$14][id]
+
 	ld a, [hli]
 	push hl
 	ld e, a
@@ -968,7 +1009,8 @@ TextCommand_STRINGBUFFER::
 	ret
 
 TextCommand_DAY::
-; print the day of the week
+; text_today
+
 	call GetWeekday
 	push hl
 	push bc

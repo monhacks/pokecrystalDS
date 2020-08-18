@@ -1510,10 +1510,10 @@ Tackle_BGEffect25_2d_two:
 
 Functionc88a5:
 	push af
-	ld a, [wFXAnimID + 1]
+	ld a, [wFXAnimID + 1] ; FXAnimID + 1
 	or a
 	jr nz, .not_rollout
-	ld a, [wFXAnimID]
+	ld a, [wFXAnimID] ; FXAnimID
 	cp ROLLOUT
 	jr z, .rollout
 .not_rollout
@@ -2839,8 +2839,7 @@ BGEffect_FillLYOverridesBackup:
 	ret
 
 BGEffect_DisplaceLYOverridesBackup:
-	; e = a
-	; d = [hLYOverrideEnd] - [hLYOverrideStart] - a
+	; e = a; d = [hLYOverrideEnd] - [hLYOverrideStart] - a
 	push af
 	ld e, a
 	ldh a, [hLYOverrideStart]

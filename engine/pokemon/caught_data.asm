@@ -1,5 +1,5 @@
 CheckPartyFullAfterContest:
-	ld a, [wContestMonSpecies]
+	ld a, [wContestMon]
 	and a
 	jp z, .DidntCatchAnything
 	ld [wCurPartySpecies], a
@@ -14,7 +14,7 @@ CheckPartyFullAfterContest:
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld a, [wContestMonSpecies]
+	ld a, [wContestMon]
 	ld [hli], a
 	ld [wCurSpecies], a
 	ld a, -1
@@ -80,14 +80,14 @@ CheckPartyFullAfterContest:
 	or b
 	ld [hl], a
 	xor a
-	ld [wContestMonSpecies], a
+	ld [wContestMon], a
 	and a ; BUGCONTEST_CAUGHT_MON
 	ld [wScriptVar], a
 	ret
 
 .TryAddToBox:
 	ld a, BANK(sBoxCount)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sBoxCount
 	ld a, [hl]
 	cp MONS_PER_BOX
@@ -118,7 +118,7 @@ CheckPartyFullAfterContest:
 
 .Box_SkipNickname:
 	ld a, BANK(sBoxMonNicknames)
-	call OpenSRAM
+	call GetSRAMBank
 	ld de, sBoxMonNicknames
 	ld bc, MON_NAME_LENGTH
 	call CopyBytes
@@ -126,13 +126,13 @@ CheckPartyFullAfterContest:
 
 .BoxFull:
 	ld a, BANK(sBoxMon1Level)
-	call OpenSRAM
+	call GetSRAMBank
 	ld a, [sBoxMon1Level]
 	ld [wCurPartyLevel], a
 	call CloseSRAM
 	call SetBoxMonCaughtData
 	ld a, BANK(sBoxMon1CaughtLocation)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sBoxMon1CaughtLocation
 	ld a, [hl]
 	and CAUGHT_GENDER_MASK
@@ -200,7 +200,7 @@ SetBoxmonOrEggmonCaughtData:
 
 SetBoxMonCaughtData:
 	ld a, BANK(sBoxMon1CaughtLevel)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sBoxMon1CaughtLevel
 	call SetBoxmonOrEggmonCaughtData
 	call CloseSRAM
@@ -209,7 +209,7 @@ SetBoxMonCaughtData:
 SetGiftBoxMonCaughtData:
 	push bc
 	ld a, BANK(sBoxMon1CaughtLevel)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sBoxMon1CaughtLevel
 	pop bc
 	call SetGiftMonCaughtData

@@ -15,7 +15,7 @@ ReadAnyMail:
 	pop de
 	push de
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	farcall IsMailEuropean
 	call CloseSRAM
 	ld a, c
@@ -69,7 +69,7 @@ ReadAnyMail:
 	ld l, e
 	push hl
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	ld de, sPartyMon1MailAuthorID - sPartyMon1Mail
 	add hl, de
 	ld a, [hli]
@@ -680,7 +680,7 @@ MailGFX_PlaceMessage:
 	ld bc, MAIL_STRUCT_LENGTH
 	ld de, wTempMail
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	call CopyBytes
 	call CloseSRAM
 	ld hl, wTempMailAuthor
@@ -709,7 +709,7 @@ MailGFX_PlaceMessage:
 .place_author
 	jp PlaceString
 
-Functionb984e: ; unreferenced
+Unreferenced_Functionb984e:
 .loop
 	ld a, [hl]
 	xor $ff

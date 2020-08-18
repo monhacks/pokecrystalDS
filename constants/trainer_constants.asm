@@ -1,8 +1,5 @@
-__trainer_class__ = 0
-
 trainerclass: MACRO
-\1 EQU __trainer_class__
-__trainer_class__ = __trainer_class__ + 1
+	enum \1
 const_value = 1
 ENDM
 
@@ -18,7 +15,8 @@ ENDM
 ; - BTTrainerClassSprites (see data/trainers/sprites.asm)
 ; - BTTrainerClassGenders (see data/trainers/genders.asm)
 ; trainer constants are Trainers indexes, for the sub-tables of TrainerGroups (see data/trainers/parties.asm)
-CHRIS EQU __trainer_class__
+	enum_start
+CHRIS EQU __enum__
 	trainerclass TRAINER_NONE ; 0
 	const PHONECONTACT_MOM
 	const PHONECONTACT_BIKESHOP
@@ -26,7 +24,7 @@ CHRIS EQU __trainer_class__
 	const PHONECONTACT_ELM
 	const PHONECONTACT_BUENA
 
-KRIS EQU __trainer_class__
+KRIS EQU __enum__
 	trainerclass FALKNER ; 1
 	const FALKNER1
 
@@ -702,4 +700,4 @@ KRIS EQU __trainer_class__
 	trainerclass MYSTICALMAN ; 43
 	const EUSINE
 
-NUM_TRAINER_CLASSES EQU __trainer_class__
+NUM_TRAINER_CLASSES EQU __enum__

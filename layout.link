@@ -294,7 +294,6 @@ ROMX $77
 	"Tileset Data 7"
 	"bank77_2"
 ROMX $78
-	"Debug Room"
 	"Tileset Data 8"
 ROMX $7b
 	"Battle Tower Text"
@@ -306,7 +305,7 @@ ROMX $7e
 	"Crystal Events"
 ROMX $7f
 	org $7de0
-	"Stadium 2 Checksums"
+	"Mobile Stadium 2"
 WRAM0
 	"Stack"
 	"Audio RAM"
@@ -366,8 +365,5 @@ SRAM $05
 	"SRAM Mobile 2"
 SRAM $06
 	"SRAM Mobile 3"
-SRAM $07
-	"SRAM Mobile 4"
 HRAM
-	"OAM DMA"
 	"HRAM"

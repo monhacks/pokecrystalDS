@@ -262,7 +262,9 @@ Buena_PrizeMenu:
 	dba .prizeitem
 	dba .prizepoints
 
-.indices:
+NUM_BUENA_PRIZES EQU 9 ; ((BuenaPrizeItems.End - BuenaPrizeItems) / 2)
+
+.indices
 	db NUM_BUENA_PRIZES
 x = 1
 rept NUM_BUENA_PRIZES
@@ -271,7 +273,7 @@ x = x + 1
 endr
 	db -1
 
-.prizeitem:
+.prizeitem
 	ld a, [wMenuSelection]
 	call Buena_getprize
 	ld a, [hl]
@@ -282,7 +284,7 @@ endr
 	call PlaceString
 	ret
 
-.prizepoints:
+.prizepoints
 	ld a, [wMenuSelection]
 	call Buena_getprize
 	inc hl

@@ -1,13 +1,13 @@
-	object_const_def
+	object_const_def ; object_event constants
 	const RUINSOFALPHKABUTOCHAMBER_RECEPTIONIST
 	const RUINSOFALPHKABUTOCHAMBER_SCIENTIST
 
 RuinsOfAlphKabutoChamber_MapScripts:
-	def_scene_scripts
+	db 2 ; scene scripts
 	scene_script .CheckWall ; SCENE_DEFAULT
 	scene_script .DummyScene ; SCENE_FINISHED
 
-	def_callbacks
+	db 1 ; callbacks
 	callback MAPCALLBACK_TILES, .HiddenDoors
 
 .CheckWall:
@@ -29,12 +29,12 @@ RuinsOfAlphKabutoChamber_MapScripts:
 .WallOpen:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse .FloorClosed
-	endcallback
+	return
 
 .FloorClosed:
 	changeblock 2, 2, $01 ; left floor
 	changeblock 4, 2, $02 ; right floor
-	endcallback
+	return
 
 .WallOpenScript:
 	pause 30
@@ -256,16 +256,16 @@ RuinsOfAlphKabutoChamberDescriptionText:
 RuinsOfAlphKabutoChamber_MapEvents:
 	db 0, 0 ; filler
 
-	def_warp_events
+	db 5 ; warp events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 2
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 2
 	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 4
 	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 5
 	warp_event  4,  0, RUINS_OF_ALPH_KABUTO_ITEM_ROOM, 1
 
-	def_coord_events
+	db 0 ; coord events
 
-	def_bg_events
+	db 6 ; bg events
 	bg_event  2,  3, BGEVENT_READ, RuinsOfAlphKabutoChamberAncientReplica
 	bg_event  5,  3, BGEVENT_READ, RuinsOfAlphKabutoChamberAncientReplica
 	bg_event  3,  2, BGEVENT_UP, RuinsOfAlphKabutoChamberPuzzle
@@ -273,6 +273,6 @@ RuinsOfAlphKabutoChamber_MapEvents:
 	bg_event  3,  0, BGEVENT_UP, RuinsOfAlphKabutoChamberWallPatternLeft
 	bg_event  4,  0, BGEVENT_UP, RuinsOfAlphKabutoChamberWallPatternRight
 
-	def_object_events
+	db 2 ; object events
 	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphKabutoChamberReceptionistScript, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
 	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphKabutoChamberScientistScript, -1

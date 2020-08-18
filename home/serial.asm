@@ -388,7 +388,7 @@ LinkDataReceived::
 	ldh [rSC], a
 	ret
 
-Function919:: ; unreferenced
+Unreferenced_Function919::
 	ld a, [wLinkMode]
 	and a
 	ret nz

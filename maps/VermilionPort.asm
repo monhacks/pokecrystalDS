@@ -1,14 +1,14 @@
-	object_const_def
+	object_const_def ; object_event constants
 	const VERMILIONPORT_SAILOR1
 	const VERMILIONPORT_SAILOR2
 	const VERMILIONPORT_SUPER_NERD
 
 VermilionPort_MapScripts:
-	def_scene_scripts
+	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .LeaveFastShip ; SCENE_VERMILIONPORT_LEAVE_SHIP
 
-	def_callbacks
+	db 1 ; callbacks
 	callback MAPCALLBACK_NEWMAP, .FlyPoint
 
 .DummyScene0:
@@ -20,7 +20,7 @@ VermilionPort_MapScripts:
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_VERMILION
-	endcallback
+	return
 
 .LeaveFastShipScript:
 	applymovement PLAYER, MovementData_0x74ef3
@@ -299,17 +299,17 @@ VermilionPortSuperNerdText:
 VermilionPort_MapEvents:
 	db 0, 0 ; filler
 
-	def_warp_events
+	db 2 ; warp events
 	warp_event  9,  5, VERMILION_PORT_PASSAGE, 5
 	warp_event  7, 17, FAST_SHIP_1F, 1
 
-	def_coord_events
+	db 1 ; coord events
 	coord_event  7, 11, SCENE_DEFAULT, VermilionPortWalkUpToShipScript
 
-	def_bg_events
+	db 1 ; bg events
 	bg_event 16, 13, BGEVENT_ITEM, VermilionPortHiddenIron
 
-	def_object_events
+	db 3 ; object events
 	object_event  7, 17, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorAtGangwayScript, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	object_event  6, 11, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorScript, -1
 	object_event 11, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSuperNerdScript, -1

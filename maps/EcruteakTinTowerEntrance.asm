@@ -1,15 +1,15 @@
-	object_const_def
+	object_const_def ; object_event constants
 	const ECRUTEAKTINTOWERENTRANCE_SAGE1
 	const ECRUTEAKTINTOWERENTRANCE_SAGE2
 	const ECRUTEAKTINTOWERENTRANCE_SAGE3
 	const ECRUTEAKTINTOWERENTRANCE_GRAMPS
 
 EcruteakTinTowerEntrance_MapScripts:
-	def_scene_scripts
+	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
-	def_callbacks
+	db 1 ; callbacks
 	callback MAPCALLBACK_OBJECTS, .InitializeSages
 
 .DummyScene0:
@@ -25,7 +25,7 @@ EcruteakTinTowerEntrance_MapScripts:
 	iftrue .DontBlockTower
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .BlockTower
-	endcallback
+	return
 
 .BlockTower:
 	clearevent EVENT_RANG_CLEAR_BELL_1
@@ -35,11 +35,11 @@ EcruteakTinTowerEntrance_MapScripts:
 	iftrue .NoClearBell
 	setscene SCENE_DEFAULT
 .NoClearBell:
-	endcallback
+	return
 
 .DontBlockTower:
 	clearevent EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_WANDERING_SAGE
-	endcallback
+	return
 
 EcruteakTinTowerEntrance_CoordEvent1:
 	checkevent EVENT_RANG_CLEAR_BELL_2
@@ -278,20 +278,20 @@ EcruteakTinTowerEntranceGrampsText:
 EcruteakTinTowerEntrance_MapEvents:
 	db 0, 0 ; filler
 
-	def_warp_events
+	db 5 ; warp events
 	warp_event  4, 17, ECRUTEAK_CITY, 3
 	warp_event  5, 17, ECRUTEAK_CITY, 3
 	warp_event  5,  3, ECRUTEAK_TIN_TOWER_ENTRANCE, 4
 	warp_event 17, 15, ECRUTEAK_TIN_TOWER_ENTRANCE, 3
 	warp_event 17,  3, WISE_TRIOS_ROOM, 3
 
-	def_coord_events
+	db 2 ; coord events
 	coord_event  4,  7, SCENE_DEFAULT, EcruteakTinTowerEntrance_CoordEvent1
 	coord_event  5,  7, SCENE_DEFAULT, EcruteakTinTowerEntrance_CoordEvent2
 
-	def_bg_events
+	db 0 ; bg events
 
-	def_object_events
+	db 4 ; object events
 	object_event  4,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_RANG_CLEAR_BELL_1
 	object_event  5,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_RANG_CLEAR_BELL_2
 	object_event  6,  9, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceWanderingSageScript, EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_WANDERING_SAGE

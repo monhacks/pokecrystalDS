@@ -20,7 +20,7 @@ Function11766b:
 	ldh [rSVBK], a
 	call Function1176ee
 	ld a, $5
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, $b1f3
 	ld de, wcd49
 	ld bc, $8
@@ -35,7 +35,7 @@ Function11766b:
 
 Function117699:
 	ld a, $5
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, wcd49
 	ld de, $b1f3
 	ld bc, $8
@@ -81,7 +81,16 @@ Function1176ee:
 	ret
 
 Function117719:
-	jumptable Jumptable_117728, wcd49
+	ld a, [wcd49]
+	ld e, a
+	ld d, 0
+	ld hl, Jumptable_117728
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp hl
 
 Jumptable_117728:
 	dw Function117738
@@ -399,7 +408,7 @@ Function117942:
 	ld a, $1e
 	ld [wcd4e], a
 	ld a, BANK(sMobileLoginPassword)
-	call OpenSRAM
+	call GetSRAMBank
 	ld a, [wcd4f]
 	ld [sMobileLoginPassword], a
 	ld hl, $c708
@@ -544,7 +553,16 @@ Function117acd:
 	ret
 
 Function117ae9:
-	jumptable .Jumptable, wJumptableIndex
+	ld a, [wJumptableIndex]
+	ld e, a
+	ld d, $0
+	ld hl, .Jumptable
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp hl
 
 .Jumptable:
 	dw Function117b06
@@ -711,7 +729,7 @@ Function117bb6:
 	ld a, $3
 	ldh [rSVBK], a
 	ld a, $7
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, w3_d002
 	ld de, $b000
 	ld bc, $1000
@@ -755,7 +773,7 @@ Function117c4a:
 
 Function117c89:
 	ld a, $7
-	call OpenSRAM
+	call GetSRAMBank
 	ld l, $0
 	ld h, l
 	ld de, $b000

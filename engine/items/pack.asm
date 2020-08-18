@@ -499,7 +499,7 @@ TossMenu:
 .finish
 	ret
 
-ResetPocketCursorPositions: ; unreferenced
+Unreferenced_ResetPocketCursorPositions:
 	ld a, [wCurPocket]
 	and a ; ITEM_POCKET
 	jr z, .items
@@ -1409,9 +1409,23 @@ DrawPocketName:
 	jr nz, .row
 	ret
 
-.tilemap: ; 5x12
-; the 5x3 pieces correspond to *_POCKET constants
-INCBIN "gfx/pack/pack_menu.tilemap"
+.tilemap
+; ITEM_POCKET
+	db $00, $04, $04, $04, $01 ; top border
+	db $06, $07, $08, $09, $0a ; Items
+	db $02, $05, $05, $05, $03 ; bottom border
+; BALL_POCKET
+	db $00, $04, $04, $04, $01 ; top border
+	db $15, $16, $17, $18, $19 ; Balls
+	db $02, $05, $05, $05, $03 ; bottom border
+; KEY_ITEM_POCKET
+	db $00, $04, $04, $04, $01 ; top border
+	db $0b, $0c, $0d, $0e, $0f ; Key Items
+	db $02, $05, $05, $05, $03 ; bottom border
+; TM_HM_POCKET
+	db $00, $04, $04, $04, $01 ; top border
+	db $10, $11, $12, $13, $14 ; TM/HM
+	db $02, $05, $05, $05, $03 ; bottom border
 
 Pack_GetItemName:
 	ld a, [wCurItem]
@@ -1420,7 +1434,7 @@ Pack_GetItemName:
 	call CopyName1
 	ret
 
-Pack_ClearTilemap: ; unreferenced
+Unreferenced_Pack_ClearTilemap:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "

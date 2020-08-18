@@ -97,7 +97,7 @@ _GrewToLevelText::
 	text_promptbutton
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _CameToItsSensesText::
 	text_ram wStringBuffer1
@@ -215,54 +215,54 @@ _OakTimeIsItText::
 
 ; Mobile Adapter
 
-UnknownText_0x1bc384:: ; unreferenced
+UnknownText_0x1bc384::
 	text "There is nothing"
 	line "connected."
 	done
 
-UnknownText_0x1bc3a1:: ; unreferenced
+UnknownText_0x1bc3a1::
 	text "Check cell phone"
 	line "adapter."
 	done
 
-UnknownText_0x1bc3bc:: ; unreferenced
+UnknownText_0x1bc3bc::
 	text "Check CDMA"
 	line "adapter."
 	done
 
-UnknownText_0x1bc3d1:: ; unreferenced
+UnknownText_0x1bc3d1::
 	text "Check DOCOMO PHS"
 	line "adapter."
 	done
 
-UnknownText_0x1bc3ec:: ; unreferenced
+UnknownText_0x1bc3ec::
 	text "Check DDI PHS"
 	line "adapter."
 	done
 
-UnknownText_0x1bc404:: ; unreferenced
+UnknownText_0x1bc404::
 	text "Check unlimited"
 	line "battle mobile"
 	cont "adapter."
 	done
 
-; Mobile Adapter End
-
-_ThePasswordIsText:: ; unreferenced
+UnknownText_0x1bc42c::
 	text "The password is:"
 	line ""
 	done
 
-_IsThisOKText:: ; unreferenced
+UnknownText_0x1bc43f::
 	text "Is this OK?"
 	done
 
-_EnterTheIDNoText:: ; unreferenced
+UnknownText_0x1bc44c::
 	text "Enter the"
 	line "ID no."
 	done
 
-_EnterTheAmountText:: ; unreferenced
+; Mobile Adapter End
+
+UnknownText_0x1bc45e::
 	text "Enter the"
 	line "amount."
 	done
@@ -434,7 +434,7 @@ _WillTradeText::
 	text_ram wOTTrademonSpeciesName
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _ForYourMonWillTradeText::
 	text "for @"
@@ -452,7 +452,7 @@ _MobilePlayerWillTradeMonText::
 	text_ram wPlayerTrademonSpeciesName
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _MobileForPartnersMonText::
 	text "for @"
@@ -463,7 +463,7 @@ _MobileForPartnersMonText::
 	text "."
 	done
 
-; unreferenced
+; unused
 _MobilePlayersMonTradeText::
 	text_ram wPlayerTrademonSenderName
 	text "'s"
@@ -523,7 +523,7 @@ _OPT_OakText1::
 	text_ram wMonOrItemNameBuffer
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _OPT_OakText2::
 	text_start
@@ -714,7 +714,7 @@ _PokedexShowText::
 	text_ram wStringBuffer1
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 ; Pokémon Music Channel / Pokémusic
 
@@ -865,7 +865,7 @@ _PnP_Text4::
 	text_ram wStringBuffer1
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _PnP_CuteText::
 	text_start
@@ -953,7 +953,7 @@ _PnP_Text5::
 	text_ram wStringBuffer1
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _RocketRadioText1::
 	text_start
@@ -1121,17 +1121,17 @@ _EnemyUsedOnText::
 	text "!"
 	prompt
 
-_ThatCantBeUsedRightNowText:: ; unreferenced
+Text_ThatCantBeUsedRightNow::
 	text "That can't be used"
 	line "right now."
 	prompt
 
-_ThatItemCantBePutInThePackText:: ; unreferenced
+Text_ThatItemCantBePutInThePack::
 	text "That item can't be"
 	line "put in the PACK."
 	done
 
-_TheItemWasPutInThePackText:: ; unreferenced
+Text_TheItemWasPutInThePack::
 	text "The @"
 	text_ram wStringBuffer1
 	text_start
@@ -1139,42 +1139,42 @@ _TheItemWasPutInThePackText:: ; unreferenced
 	cont "PACK."
 	done
 
-_RemainingTimeText:: ; unreferenced
+Text_RemainingTime::
 	text "Remaining Time"
 	done
 
-_YourMonsHPWasHealedText:: ; unreferenced
+Text_YourMonsHPWasHealed::
 	text "Your #MON's HP"
 	line "was healed."
 	prompt
 
-_WarpingText:: ; unreferenced
+Text_Warping::
 	text "Warping…"
 	done
 
-_ChangeWhichNumberText:: ; unreferenced
+UnknownText_0x1bd05e::
 	text "Which number"
 	line "should be changed?"
 	done
 
-_WillYouPlayWithMonText:: ; unreferenced
+UnknownText_0x1bd07f::
 	text "Will you play with"
 	line "@"
 	text_ram wStringBuffer2
 	text "?"
 	done
 
-_YouNeedTwoMonForBreedingText:: ; unreferenced
+UnknownText_0x1bd09a::
 	text "You need two #-"
 	line "MON for breeding."
 	prompt
 
-_BreedingIsNotPossibleText:: ; unreferenced
+Text_BreedingIsNotPossible::
 	text "Breeding is not"
 	line "possible."
 	prompt
 
-_CompatibilityShouldTheyBreedText:: ; unreferenced
+UnknownText_0x1bd0d8::
 	text "The compatibility"
 	line "is @"
 	text_decimal wBreedingCompatibility, 1, 3
@@ -1182,49 +1182,47 @@ _CompatibilityShouldTheyBreedText:: ; unreferenced
 	cont "Should they breed?"
 	done
 
-_ThereIsNoEggText:: ; unreferenced
+UnknownText_0x1bd109::
 	text "There is no EGG."
 	line ""
 	prompt
 
-_ItsGoingToHatchText:: ; unreferenced
+UnknownText_0x1bd11c::
 	text "It's going to"
 	line "hatch!"
 	prompt
 
-_TestEventText:: ; unreferenced
+UnknownText_0x1bd131::
 	text "Test event"
 	line "@"
 	text_decimal wStringBuffer2, 1, 2
 	text "?"
 	done
 
-_StartText:: ; unreferenced
+UnknownText_0x1bd145::
 	text "Start!"
 	done
 
-_EndText:: ; unreferenced
+UnknownText_0x1bd14d::
 	text "End!"
 	done
 
-_ForABoyText:: ; unreferenced
+UnknownText_0x1bd153::
 	text "For a boy!"
 	done
 
-_ForAGirlText:: ; unreferenced
+UnknownText_0x1bd15f::
 	text "For a girl!"
 	done
 
-_DoesntConcernABoyText:: ; unreferenced
+UnknownText_0x1bd16c::
 	text "This doesn't"
 	line "concern a boy!"
 	done
 
-_TheBoxIsFullText:: ; unreferenced
+UnknownText_0x1bd188::
 	text "The BOX is full!"
 	done
-
-; Mobile Adapter
 
 UnknownText_0x1bd19a::
 	text "A new CARD arrived"
@@ -1258,17 +1256,17 @@ UnknownText_0x1bd223::
 	text "Closing link."
 	done
 
-UnknownText_0x1bd232:: ; unreferenced
+UnknownText_0x1bd232::
 	text "Clear the time"
 	line "limit?"
 	done
 
-UnknownText_0x1bd249:: ; unreferenced
+UnknownText_0x1bd249::
 	text "The time limit was"
 	line "cleared."
 	done
 
-UnknownText_0x1bd266:: ; unreferenced
+UnknownText_0x1bd266::
 	text "Pick which packet"
 	line "as an error?"
 	done
@@ -1282,9 +1280,7 @@ UnknownText_0x1bd286::
 	text "…"
 	done
 
-; Mobile Adapter End
-
-_ObtainedTheVoltorbBadgeText:: ; unreferenced
+UnknownText_0x1bd2a0::
 	text "Obtained the"
 	line "VOLTORBBADGE!"
 	done
@@ -1350,7 +1346,7 @@ _ReceiveItemText::
 	text_promptbutton
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _NoCoinsText::
 	text "You have no coins."
@@ -1381,7 +1377,7 @@ _NPCTradeFanfareText::
 	text_pause
 	text_end
 
-	text_end ; unreferenced
+	text_end ; unused
 
 _NPCTradeIntroText1::
 	text "I collect #MON."

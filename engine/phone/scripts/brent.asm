@@ -1,6 +1,6 @@
 BrentPhoneCalleeScript:
 	gettrainername STRING_BUFFER_3, POKEMANIAC, BRENT1
-	checkflag ENGINE_BRENT_READY_FOR_REMATCH
+	checkflag ENGINE_BRENT
 	iftrue .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_BRENT_MONDAY_MORNING
@@ -22,7 +22,7 @@ BrentPhoneCallerScript:
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal 0, BrentBillTrivia
-	checkflag ENGINE_BRENT_READY_FOR_REMATCH
+	checkflag ENGINE_BRENT
 	iftrue .Generic
 	checkflag ENGINE_BRENT_MONDAY_MORNING
 	iftrue .Generic
@@ -37,7 +37,7 @@ BrentMondayMorning:
 
 BrentWantsBattle:
 	getlandmarkname STRING_BUFFER_5, LANDMARK_ROUTE_43
-	setflag ENGINE_BRENT_READY_FOR_REMATCH
+	setflag ENGINE_BRENT
 	farsjump PhoneScript_WantsToBattle_Male
 
 BrentBillTrivia:

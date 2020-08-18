@@ -2,7 +2,7 @@ Script_BattleWhiteout::
 	callasm BattleBGMap
 	sjump Script_Whiteout
 
-OverworldWhiteoutScript::
+Script_OverworldWhiteout::
 	refreshscreen
 	callasm OverworldBGMap
 
@@ -22,7 +22,7 @@ Script_Whiteout:
 	endall
 
 .bug_contest
-	jumpstd BugContestResultsWarpScript
+	jumpstd bugcontestresultswarp
 
 .WhitedOutText:
 	text_far _WhitedOutText

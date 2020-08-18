@@ -48,10 +48,14 @@ AnimateMon_HOF:
 
 pokeanim: MACRO
 rept _NARG
-	db (PokeAnim_\1_SetupCommand - PokeAnim_SetupCommands) / 2
+; Workaround for a bug where macro args can't come after the start of a symbol
+if !DEF(\1_POKEANIM)
+\1_POKEANIM EQUS "PokeAnim_\1_"
+endc
+	db (\1_POKEANIM - PokeAnim_SetupCommands) / 2
 	shift
 endr
-	db (PokeAnim_Finish_SetupCommand - PokeAnim_SetupCommands) / 2
+	db (PokeAnim_Finish_ - PokeAnim_SetupCommands) / 2
 ENDM
 
 PokeAnims:
@@ -128,24 +132,22 @@ SetUpPokeAnim:
 	scf
 	ret
 
-add_setup_command: MACRO
-\1_SetupCommand:
-	dw \1
-ENDM
-
 PokeAnim_SetupCommands:
-	add_setup_command PokeAnim_Finish
-	add_setup_command PokeAnim_BasePic
-	add_setup_command PokeAnim_SetWait
-	add_setup_command PokeAnim_Wait
-	add_setup_command PokeAnim_Setup
-	add_setup_command PokeAnim_Setup2
-	add_setup_command PokeAnim_Idle
-	add_setup_command PokeAnim_Play
-	add_setup_command PokeAnim_Play2
-	add_setup_command PokeAnim_Cry
-	add_setup_command PokeAnim_CryNoWait
-	add_setup_command PokeAnim_StereoCry
+setup_command: MACRO
+\1_: dw \1
+ENDM
+	setup_command PokeAnim_Finish
+	setup_command PokeAnim_BasePic
+	setup_command PokeAnim_SetWait
+	setup_command PokeAnim_Wait
+	setup_command PokeAnim_Setup
+	setup_command PokeAnim_Setup2
+	setup_command PokeAnim_Idle
+	setup_command PokeAnim_Play
+	setup_command PokeAnim_Play2
+	setup_command PokeAnim_Cry
+	setup_command PokeAnim_CryNoWait
+	setup_command PokeAnim_StereoCry
 
 PokeAnim_SetWait:
 	ld a, 18

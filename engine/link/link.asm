@@ -632,7 +632,7 @@ FixDataForLinkTransfer:
 Link_PrepPartyData_Gen1:
 	ld de, wLinkData
 	ld a, SERIAL_PREAMBLE_BYTE
-	ld b, SERIAL_PREAMBLE_LENGTH
+	ld b, PARTY_LENGTH
 .loop1
 	ld [de], a
 	inc de
@@ -798,7 +798,7 @@ Link_PrepPartyData_Gen1:
 Link_PrepPartyData_Gen2:
 	ld de, wLinkData
 	ld a, SERIAL_PREAMBLE_BYTE
-	ld b, SERIAL_PREAMBLE_LENGTH
+	ld b, PARTY_LENGTH
 .loop1
 	ld [de], a
 	inc de
@@ -835,7 +835,7 @@ Link_PrepPartyData_Gen2:
 
 ; Copy all the mail messages to wc9f9
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sPartyMail
 	ld b, PARTY_LENGTH
 .loop2
@@ -1561,7 +1561,7 @@ Function28b22:
 	ldh [rSC], a
 	ret
 
-Function28b42: ; unreferenced
+Unreferenced_Function28b42:
 	hlcoord 0, 16
 	ld a, "┘"
 	ld bc, 2 * SCREEN_WIDTH
@@ -1571,10 +1571,10 @@ Function28b42: ; unreferenced
 	ld bc, SCREEN_WIDTH - 2
 	call ByteFill
 	hlcoord 2, 16
-	ld de, .CancelString
+	ld de, .Cancel
 	jp PlaceString
 
-.CancelString:
+.Cancel:
 	db "CANCEL@"
 
 Function28b68:
@@ -1706,7 +1706,7 @@ LinkTrade:
 	ld bc, MAIL_STRUCT_LENGTH
 	call AddNTimes
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	ld d, h
 	ld e, l
 	ld bc, MAIL_STRUCT_LENGTH
@@ -1971,7 +1971,7 @@ SetTradeRoomBGPals:
 	call SetPalettes
 	ret
 
-Function28f09: ; unreferenced
+Unreferenced_Function28f09:
 	hlcoord 0, 0
 	ld b, 6
 	ld c, 18
@@ -2503,12 +2503,12 @@ CableClubCheckWhichChris:
 	ld [wScriptVar], a
 	ret
 
-GSLinkCommsBorderGFX: ; unreferenced
-INCBIN "gfx/trade/unused_gs_border_tiles.2bpp"
+Unreferenced_Gen1LinkCommsBorderGFX:
+INCBIN "gfx/trade/unused_gen_1_border_tiles.2bpp"
 
-Function29fe4: ; unreferenced
+Unreferenced_Function29fe4:
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	ld d, FALSE
 	ld b, CHECK_FLAG
 	predef SmallFarFlagAction

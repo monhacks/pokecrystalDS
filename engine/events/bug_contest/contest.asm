@@ -30,7 +30,7 @@ BugCatchingContestOutOfBallsScript:
 
 BugCatchingContestReturnToGateScript:
 	closetext
-	jumpstd BugContestResultsWarpScript
+	jumpstd bugcontestresultswarp
 
 BugCatchingContestTimeUpText:
 	text_far _BugCatchingContestTimeUpText

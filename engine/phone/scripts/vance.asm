@@ -1,6 +1,6 @@
 VancePhoneCalleeScript:
 	gettrainername STRING_BUFFER_3, BIRD_KEEPER, VANCE1
-	checkflag ENGINE_VANCE_READY_FOR_REMATCH
+	checkflag ENGINE_VANCE
 	iftrue .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_VANCE_WEDNESDAY_NIGHT
@@ -20,7 +20,7 @@ VancePhoneCalleeScript:
 VancePhoneCallerScript:
 	gettrainername STRING_BUFFER_3, BIRD_KEEPER, VANCE1
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_VANCE_READY_FOR_REMATCH
+	checkflag ENGINE_VANCE
 	iftrue .WantsBattle
 	checkflag ENGINE_VANCE_WEDNESDAY_NIGHT
 	iftrue .WantsBattle
@@ -36,5 +36,5 @@ VanceWednesdayNight:
 
 VanceWantsRematch:
 	getlandmarkname STRING_BUFFER_5, LANDMARK_ROUTE_44
-	setflag ENGINE_VANCE_READY_FOR_REMATCH
+	setflag ENGINE_VANCE
 	farsjump PhoneScript_WantsToBattle_Male

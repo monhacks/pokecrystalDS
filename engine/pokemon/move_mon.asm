@@ -485,7 +485,7 @@ SendGetMonIntoFromBox:
 ; wPokemonWithdrawDepositParameter == 3: put mon into DayCare
 
 	ld a, BANK(sBoxCount)
-	call OpenSRAM
+	call GetSRAMBank
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	jr z, .check_IfPartyIsFull
@@ -942,7 +942,7 @@ SendMonIntoBox:
 ; Sends the mon into one of Bills Boxes
 ; the data comes mainly from 'wEnemyMon:'
 	ld a, BANK(sBoxCount)
-	call OpenSRAM
+	call GetSRAMBank
 	ld de, sBoxCount
 	ld a, [de]
 	cp MONS_PER_BOX
@@ -1226,7 +1226,7 @@ RemoveMonFromPartyOrBox:
 	jr z, .okay
 
 	ld a, BANK(sBoxCount)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sBoxCount
 
 .okay
@@ -1336,7 +1336,7 @@ RemoveMonFromPartyOrBox:
 	ret nz
 	; Shift mail
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	; If this is the last mon in our party, no need to shift mail.
 	ld hl, wPartyCount
 	ld a, [wCurPartyMon]
@@ -1735,7 +1735,7 @@ GivePoke::
 
 .send_to_box
 	ld a, BANK(sBoxMonOT)
-	call OpenSRAM
+	call GetSRAMBank
 	ld de, sBoxMonOT
 .loop
 	ld a, [wScriptBank]
@@ -1785,7 +1785,7 @@ GivePoke::
 	ld hl, WasSentToBillsPCText
 	call PrintText
 	ld a, BANK(sBoxMonNicknames)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, wMonOrItemNameBuffer
 	ld de, sBoxMonNicknames
 	ld bc, MON_NAME_LENGTH

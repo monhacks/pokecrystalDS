@@ -272,11 +272,12 @@ MobileMenuJoypad:
 	ld c, a
 	ret
 
-Function241d5: ; unreferenced
+Unreferenced_Function241d5:
 	call Place2DMenuCursor
 .loop
 	call Move2DMenuCursor
 	call HDMATransferTilemapToWRAMBank3 ; BUG: This function is in another bank.
+	                    ; Pointer in current bank (9) is bogus.
 	call .loop2
 	jr nc, .done
 	call _2DMenuInterpretJoypad
@@ -299,6 +300,7 @@ Function241d5: ; unreferenced
 	ld c, 1
 	ld b, 3
 	call AdvanceMobileInactivityTimerAndCheckExpired ; BUG: This function is in another bank.
+	                    ; Pointer in current bank (9) is bogus.
 	ret c
 	farcall Function100337
 	ret c
@@ -564,8 +566,8 @@ _PushWindow::
 	ld d, [hl]
 	push de
 
-	ld b, wMenuHeaderEnd - wMenuHeader
-	ld hl, wMenuHeader
+	ld b, $10
+	ld hl, wMenuFlags
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -690,12 +692,12 @@ _ExitMenu::
 	dec [hl]
 	ret
 
-Function24423: ; unreferenced
+Unreferenced_Function24423:
 	ld a, [wVramState]
 	bit 0, a
 	ret z
 	xor a ; sScratch
-	call OpenSRAM
+	call GetSRAMBank
 	hlcoord 0, 0
 	ld de, sScratch
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -703,7 +705,7 @@ Function24423: ; unreferenced
 	call CloseSRAM
 	call OverworldTextModeSwitch
 	xor a ; sScratch
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sScratch
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT

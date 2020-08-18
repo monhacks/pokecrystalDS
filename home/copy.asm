@@ -117,7 +117,7 @@ GetFarWRAMByte::
 	ldh a, [hFarByte]
 	ret
 
-GetFarWRAMWord:: ; unreferenced
+GetFarWRAMWord::
 	ldh [hTempBank], a
 	ldh a, [rSVBK]
 	push af

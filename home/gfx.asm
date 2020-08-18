@@ -1,5 +1,4 @@
-TILES_PER_CYCLE EQU 8
-MOBILE_TILES_PER_CYCLE EQU 6
+; Functions to copy data from ROM.
 
 Get2bppViaHDMA::
 	ldh a, [rLCDC]
@@ -32,7 +31,7 @@ FarCopyBytesDouble_DoubleBankSwitch::
 	rst Bankswitch
 	ret
 
-SafeHDMATransfer: ; unreferenced
+UnreferencedOldDMATransfer:
 	dec c
 	ldh a, [hBGMapMode]
 	push af
@@ -56,12 +55,12 @@ SafeHDMATransfer: ; unreferenced
 	ld a, l
 	and $f0
 	ldh [rHDMA4], a ; target LSB
-; stop when c < TILES_PER_CYCLE
+; stop when c < 8
 	ld a, c
-	cp TILES_PER_CYCLE
+	cp $8
 	jr c, .done
-; decrease c by TILES_PER_CYCLE
-	sub TILES_PER_CYCLE
+; decrease c by 8
+	sub $8
 	ld c, a
 ; DMA transfer state
 	ld a, $f
@@ -94,8 +93,8 @@ SafeHDMATransfer: ; unreferenced
 	ldh [hBGMapMode], a
 	ret
 
-UpdatePlayerSprite::
-	farcall _UpdatePlayerSprite
+ReplaceKrisSprite::
+	farcall _ReplaceKrisSprite
 	ret
 
 LoadStandardFont::
@@ -118,7 +117,7 @@ LoadFontsExtra2:
 DecompressRequest2bpp::
 	push de
 	ld a, BANK(sScratch)
-	call OpenSRAM
+	call GetSRAMBank
 	push bc
 
 	ld de, sScratch
@@ -199,7 +198,7 @@ Request2bpp::
 
 	ldh a, [hTilesPerCycle]
 	push af
-	ld a, TILES_PER_CYCLE
+	ld a, $8
 	ldh [hTilesPerCycle], a
 
 	ld a, [wLinkMode]
@@ -208,7 +207,7 @@ Request2bpp::
 	ldh a, [hMobile]
 	and a
 	jr nz, .NotMobile
-	ld a, MOBILE_TILES_PER_CYCLE
+	ld a, $6
 	ldh [hTilesPerCycle], a
 
 .NotMobile:
@@ -224,7 +223,7 @@ Request2bpp::
 	ld a, c
 	ld hl, hTilesPerCycle
 	cp [hl]
-	jr nc, .cycle
+	jr nc, .iterate
 
 	ld [wRequested2bpp], a
 .wait
@@ -243,7 +242,7 @@ Request2bpp::
 	ldh [hBGMapMode], a
 	ret
 
-.cycle
+.iterate
 	ldh a, [hTilesPerCycle]
 	ld [wRequested2bpp], a
 
@@ -273,7 +272,7 @@ Request1bpp::
 
 	ldh a, [hTilesPerCycle]
 	push af
-	ld a, TILES_PER_CYCLE
+	ld a, $8
 	ldh [hTilesPerCycle], a
 
 	ld a, [wLinkMode]
@@ -282,7 +281,7 @@ Request1bpp::
 	ldh a, [hMobile]
 	and a
 	jr nz, .NotMobile
-	ld a, MOBILE_TILES_PER_CYCLE
+	ld a, $6
 	ldh [hTilesPerCycle], a
 
 .NotMobile:
@@ -298,7 +297,7 @@ Request1bpp::
 	ld a, c
 	ld hl, hTilesPerCycle
 	cp [hl]
-	jr nc, .cycle
+	jr nc, .iterate
 
 	ld [wRequested1bpp], a
 .wait
@@ -317,7 +316,7 @@ Request1bpp::
 	ldh [hBGMapMode], a
 	ret
 
-.cycle
+.iterate
 	ldh a, [hTilesPerCycle]
 	ld [wRequested1bpp], a
 
@@ -334,13 +333,13 @@ Request1bpp::
 	jr .loop
 
 Get2bpp::
-; copy c 2bpp tiles from b:de to hl
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
 	jp nz, Request2bpp
-	; fallthrough
 
 Copy2bpp:
+; copy c 2bpp tiles from b:de to hl
+
 	push hl
 	ld h, d
 	ld l, e
@@ -349,7 +348,7 @@ Copy2bpp:
 ; bank
 	ld a, b
 
-; bc = c * LEN_2BPP_TILE
+; bc = c * $10
 	push af
 	swap c
 	ld a, $f
@@ -363,13 +362,13 @@ Copy2bpp:
 	jp FarCopyBytes
 
 Get1bpp::
-; copy c 1bpp tiles from b:de to hl
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
 	jp nz, Request1bpp
-	; fallthrough
 
 Copy1bpp::
+; copy c 1bpp tiles from b:de to hl
+
 	push de
 	ld d, h
 	ld e, l
@@ -377,7 +376,7 @@ Copy1bpp::
 ; bank
 	ld a, b
 
-; bc = c * LEN_1BPP_TILE
+; bc = c * $10 / 2
 	push af
 	ld h, 0
 	ld l, c

@@ -1,4 +1,4 @@
-	object_const_def
+	object_const_def ; object_event constants
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_CAPTAIN
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1
@@ -12,11 +12,11 @@
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_SUPER_NERD2
 
 FastShipCabins_SE_SSE_CaptainsCabin_MapScripts:
-	def_scene_scripts
+	db 0 ; scene scripts
 
-	def_callbacks
+	db 0 ; callbacks
 
-.DummyScene: ; unreferenced
+.UnreferencedDummyScene:
 	end
 
 SSAquaCaptain:
@@ -216,7 +216,7 @@ TrainerSupernerdShawn:
 	end
 
 FastShipCaptainsCabinTrashcan:
-	jumpstd TrashCanScript
+	jumpstd trashcan
 
 MovementData_0x76004:
 	big_step RIGHT
@@ -463,7 +463,7 @@ SSAquaHasArrivedVermilionText:
 FastShipCabins_SE_SSE_CaptainsCabin_MapEvents:
 	db 0, 0 ; filler
 
-	def_warp_events
+	db 6 ; warp events
 	warp_event  2,  7, FAST_SHIP_1F, 8
 	warp_event  3,  7, FAST_SHIP_1F, 8
 	warp_event  2, 19, FAST_SHIP_1F, 9
@@ -471,12 +471,12 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapEvents:
 	warp_event  2, 33, FAST_SHIP_1F, 10
 	warp_event  3, 33, FAST_SHIP_1F, 10
 
-	def_coord_events
+	db 0 ; coord events
 
-	def_bg_events
+	db 1 ; bg events
 	bg_event  4, 25, BGEVENT_READ, FastShipCaptainsCabinTrashcan
 
-	def_object_events
+	db 11 ; object events
 	object_event  3, 25, SPRITE_CAPTAIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SSAquaCaptain, -1
 	object_event  2, 17, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SSAquaGrandpa, EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	object_event  3, 17, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SSAquaGranddaughterAfter, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1

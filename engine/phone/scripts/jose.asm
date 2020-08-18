@@ -1,6 +1,6 @@
 JosePhoneCalleeScript:
 	gettrainername STRING_BUFFER_3, BIRD_KEEPER, JOSE2
-	checkflag ENGINE_JOSE_READY_FOR_REMATCH
+	checkflag ENGINE_JOSE
 	iftrue .WantsBattle
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JOSE_SATURDAY_NIGHT
@@ -26,7 +26,7 @@ JosePhoneCalleeScript:
 JosePhoneCallerScript:
 	gettrainername STRING_BUFFER_3, BIRD_KEEPER, JOSE2
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_JOSE_READY_FOR_REMATCH
+	checkflag ENGINE_JOSE
 	iftrue .Generic
 	checkflag ENGINE_JOSE_SATURDAY_NIGHT
 	iftrue .Generic
@@ -47,7 +47,7 @@ JoseSaturdayNight:
 
 JoseWantsBattle:
 	getlandmarkname STRING_BUFFER_5, LANDMARK_ROUTE_27
-	setflag ENGINE_JOSE_READY_FOR_REMATCH
+	setflag ENGINE_JOSE
 	farsjump PhoneScript_WantsToBattle_Male
 
 JoseFoundRare:

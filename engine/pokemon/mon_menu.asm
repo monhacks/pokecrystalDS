@@ -466,7 +466,7 @@ ComposeMailMessage:
 	ld hl, wTempMail
 	ld bc, MAIL_STRUCT_LENGTH
 	ld a, BANK(sPartyMail)
-	call OpenSRAM
+	call GetSRAMBank
 	call CopyBytes
 	call CloseSRAM
 	ret
@@ -626,7 +626,7 @@ MonMenu_Fly:
 	ld a, $0
 	ret
 
-.NoReload: ; unreferenced
+.Unreferenced:
 	ld a, $1
 	ret
 
@@ -1214,7 +1214,7 @@ PlaceMoveData:
 
 .description
 	hlcoord 1, 14
-	predef PrintMoveDescription
+	predef PrintMoveDesc
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret

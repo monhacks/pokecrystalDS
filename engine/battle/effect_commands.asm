@@ -1108,7 +1108,7 @@ CheckMimicUsed:
 	call GetBattleVar
 	cp MIMIC
 	jr z, .mimic
-
+;
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
@@ -1543,7 +1543,7 @@ BattleCommand_DamageVariation:
 	call Multiply
 
 ; ...divide by 100%...
-	ld a, 100 percent
+	ld a, $ff ; 100%
 	ldh [hDivisor], a
 	ld b, $4
 	call Divide
@@ -2520,7 +2520,7 @@ EndMoveEffect:
 	ld l, a
 	ld a, [wBattleScriptBufferAddress + 1]
 	ld h, a
-	ld a, endmove_command
+	ld a, $ff
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
@@ -3066,73 +3066,72 @@ BattleCommand_DamageCalc:
 ; Critical hits
 	call .CriticalMultiplier
 
-; Update wCurDamage. 
-; Capped at MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE: 999 - 2 = 997.
+; Update wCurDamage (capped at 997).
 	ld hl, wCurDamage
 	ld b, [hl]
-	ldh a, [hQuotient + 3]
+	ldh a, [hProduct + 3]
 	add b
-	ldh [hQuotient + 3], a
+	ldh [hProduct + 3], a
 	jr nc, .dont_cap_1
 
-	ldh a, [hQuotient + 2]
+	ldh a, [hProduct + 2]
 	inc a
-	ldh [hQuotient + 2], a
+	ldh [hProduct + 2], a
 	and a
 	jr z, .Cap
 
 .dont_cap_1
-	ldh a, [hQuotient]
+	ldh a, [hProduct]
 	ld b, a
-	ldh a, [hQuotient + 1]
+	ldh a, [hProduct + 1]
 	or a
 	jr nz, .Cap
 
-	ldh a, [hQuotient + 2]
-	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
+	ldh a, [hProduct + 2]
+	cp HIGH(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE + 1)
 	jr c, .dont_cap_2
 
-	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1) + 1
+	cp HIGH(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE + 1) + 1
 	jr nc, .Cap
 
-	ldh a, [hQuotient + 3]
-	cp LOW(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
+	ldh a, [hProduct + 3]
+	cp LOW(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE + 1)
 	jr nc, .Cap
 
 .dont_cap_2
 	inc hl
 
-	ldh a, [hQuotient + 3]
+	ldh a, [hProduct + 3]
 	ld b, [hl]
 	add b
 	ld [hld], a
 
-	ldh a, [hQuotient + 2]
+	ldh a, [hProduct + 2]
 	ld b, [hl]
 	adc b
 	ld [hl], a
 	jr c, .Cap
 
 	ld a, [hl]
-	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
+	cp HIGH(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE + 1)
 	jr c, .dont_cap_3
 
-	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1) + 1
+	cp HIGH(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE + 1) + 1
 	jr nc, .Cap
 
 	inc hl
 	ld a, [hld]
-	cp LOW(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
+	cp LOW(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE + 1)
 	jr c, .dont_cap_3
 
 .Cap:
-	ld a, HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE)
+	ld a, HIGH(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE)
 	ld [hli], a
-	ld a, LOW(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE)
+	ld a, LOW(MAX_STAT_VALUE - MIN_NEUTRAL_DAMAGE)
 	ld [hld], a
 
 .dont_cap_3
-; Add back MIN_NEUTRAL_DAMAGE (capping at 999).
+; Minimum neutral damage is 2 (bringing the cap to 999).
 	inc hl
 	ld a, [hl]
 	add MIN_NEUTRAL_DAMAGE
@@ -3141,7 +3140,6 @@ BattleCommand_DamageCalc:
 	inc [hl]
 .dont_floor
 
-; Returns nz and nc.
 	ld a, 1
 	and a
 	ret
@@ -3154,18 +3152,18 @@ BattleCommand_DamageCalc:
 ; x2
 	ldh a, [hQuotient + 3]
 	add a
-	ldh [hQuotient + 3], a
+	ldh [hProduct + 3], a
 
 	ldh a, [hQuotient + 2]
 	rl a
-	ldh [hQuotient + 2], a
+	ldh [hProduct + 2], a
 
 ; Cap at $ffff.
 	ret nc
 
 	ld a, $ff
-	ldh [hQuotient + 2], a
-	ldh [hQuotient + 3], a
+	ldh [hProduct + 2], a
+	ldh [hProduct + 3], a
 
 	ret
 
@@ -3432,24 +3430,7 @@ DoEnemyDamage:
 	ld [wBuffer4], a
 	sbc b
 	ld [wEnemyMonHP], a
-if DEF(_DEBUG)
-	push af
-	ld a, BANK(sSkipBattle)
-	call OpenSRAM
-	ld a, [sSkipBattle]
-	call CloseSRAM
-	or a
-	; If [sSkipBattle] is nonzero, skip the "jr nc, .no_underflow" check,
-	; so any attack deals maximum damage to the enemy.
-	jr nz, .debug_skip
-	pop af
 	jr nc, .no_underflow
-	push af
-.debug_skip
-	pop af
-else
-	jr nc, .no_underflow
-endc
 
 	ld a, [wBuffer4]
 	ld [hli], a
@@ -5098,7 +5079,7 @@ BattleCommand_ForceSwitch:
 	call UpdateBattleMonInParty
 	xor a
 	ld [wNumHits], a
-	inc a ; TRUE
+	inc a
 	ld [wForcedSwitch], a
 	call SetBattleDraw
 	ld a, [wPlayerMoveStructAnimation]
@@ -5191,7 +5172,7 @@ BattleCommand_ForceSwitch:
 	call UpdateBattleMonInParty
 	xor a
 	ld [wNumHits], a
-	inc a ; TRUE
+	inc a
 	ld [wForcedSwitch], a
 	call SetBattleDraw
 	ld a, [wEnemyMoveStructAnimation]

@@ -2,9 +2,9 @@
 
 	dab Doll1Script ; related to "My Room" in Stadium 2?
 
-Function1f4003: ; unreferenced
+Unreferenced_Function1f4003:
 	ld a, BANK(s6_a000)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, .news_data
 	ld de, s6_a000
 	ld bc, $1000
@@ -15,9 +15,9 @@ Function1f4003: ; unreferenced
 .news_data
 INCBIN "mobile/news/news_1.bin"
 
-Function1f4dbe: ; unreferenced
+Unreferenced_Function1f4dbe:
 	ld a, BANK(s6_a000)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, .news_data
 	ld de, s6_a000
 	ld bc, $1000
@@ -30,7 +30,7 @@ INCBIN "mobile/news/news_2.bin"
 
 Function1f5d9f:
 	ld a, BANK(s6_a000)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, .news_data
 	ld de, s6_a000
 	ld bc, $1000

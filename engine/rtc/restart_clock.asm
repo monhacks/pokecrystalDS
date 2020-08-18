@@ -206,7 +206,8 @@ RestartClock:
 	ld [wBuffer2], a
 	ret
 
-.UnusedPlaceCharsFragment: ; unreferenced
+.unreferenced
+; unused
 	ld a, [wBuffer3]
 	ld b, a
 	call Coord2Tile
@@ -226,8 +227,10 @@ RestartClock:
 	ld [hl], e
 	ret
 
-JPHourString: ; unreferenced
+UnreferencedString_HourJP:
+; unused
 	db "じ@" ; HR
 
-JPMinuteString: ; unreferenced
+UnreferencedString_MinuteJP:
+; unused
 	db "ふん@" ; MIN

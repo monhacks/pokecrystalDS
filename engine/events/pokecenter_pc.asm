@@ -1,17 +1,3 @@
-	; PokemonCenterPC.WhichPC indexes
-	const_def
-	const PCPC_BEFORE_POKEDEX ; 0
-	const PCPC_BEFORE_HOF     ; 1
-	const PCPC_POSTGAME       ; 2
-
-	; PokemonCenterPC.JumpTable indexes
-	const_def
-	const PCPCITEM_PLAYERS_PC   ; 0
-	const PCPCITEM_BILLS_PC     ; 1
-	const PCPCITEM_OAKS_PC      ; 2
-	const PCPCITEM_HALL_OF_FAME ; 3
-	const PCPCITEM_TURN_OFF     ; 4
-
 PokemonCenterPC:
 	call PC_CheckPartyForPokemon
 	ret c
@@ -53,8 +39,14 @@ PokemonCenterPC:
 	dw PlaceNthMenuStrings
 	dw .JumpTable
 
+PCPC_PLAYERS_PC   EQU 0
+PCPC_BILLS_PC     EQU 1
+PCPC_OAKS_PC      EQU 2
+PCPC_HALL_OF_FAME EQU 3
+PCPC_TURN_OFF     EQU 4
+
 .JumpTable:
-; entries correspond to PCPCITEM_* constants
+; entries correspond to PCPC_* constants
 	dw PlayersPC,    .String_PlayersPC
 	dw BillsPC,      .String_BillsPC
 	dw OaksPC,       .String_OaksPC
@@ -68,44 +60,42 @@ PokemonCenterPC:
 .String_TurnOff:    db "TURN OFF@"
 
 .WhichPC:
-; entries correspond to PCPC_* constants
-
-	; PCPC_BEFORE_POKEDEX
+	; before Pokédex
 	db 3
-	db PCPCITEM_BILLS_PC
-	db PCPCITEM_PLAYERS_PC
-	db PCPCITEM_TURN_OFF
+	db PCPC_BILLS_PC
+	db PCPC_PLAYERS_PC
+	db PCPC_TURN_OFF
 	db -1 ; end
 
-	; PCPC_BEFORE_HOF
+	; before Hall Of Fame
 	db 4
-	db PCPCITEM_BILLS_PC
-	db PCPCITEM_PLAYERS_PC
-	db PCPCITEM_OAKS_PC
-	db PCPCITEM_TURN_OFF
+	db PCPC_BILLS_PC
+	db PCPC_PLAYERS_PC
+	db PCPC_OAKS_PC
+	db PCPC_TURN_OFF
 	db -1 ; end
 
-	; PCPC_POSTGAME
+	; postgame
 	db 5
-	db PCPCITEM_BILLS_PC
-	db PCPCITEM_PLAYERS_PC
-	db PCPCITEM_OAKS_PC
-	db PCPCITEM_HALL_OF_FAME
-	db PCPCITEM_TURN_OFF
+	db PCPC_BILLS_PC
+	db PCPC_PLAYERS_PC
+	db PCPC_OAKS_PC
+	db PCPC_HALL_OF_FAME
+	db PCPC_TURN_OFF
 	db -1 ; end
 
 .ChooseWhichPCListToUse:
 	call CheckReceivedDex
 	jr nz, .got_dex
-	ld a, PCPC_BEFORE_POKEDEX
+	ld a, 0 ; before Pokédex
 	ret
 
 .got_dex
 	ld a, [wHallOfFameCount]
 	and a
-	ld a, PCPC_BEFORE_HOF
+	ld a, 1 ; before Hall Of Fame
 	ret z
-	ld a, PCPC_POSTGAME
+	ld a, 2 ; postgame
 	ret
 
 PC_CheckPartyForPokemon:
@@ -123,22 +113,6 @@ PC_CheckPartyForPokemon:
 	text_far _PokecenterPCCantUseText
 	text_end
 
-
-	; PlayersPCMenuData.WhichPC indexes
-	const_def
-	const PLAYERSPC_NORMAL ; 0
-	const PLAYERSPC_HOUSE  ; 1
-
-	; PlayersPCMenuData.PlayersPCMenuPointers indexes
-	const_def
-	const PLAYERSPCITEM_WITHDRAW_ITEM ; 0
-	const PLAYERSPCITEM_DEPOSIT_ITEM  ; 1
-	const PLAYERSPCITEM_TOSS_ITEM     ; 2
-	const PLAYERSPCITEM_MAIL_BOX      ; 3
-	const PLAYERSPCITEM_DECORATION    ; 4
-	const PLAYERSPCITEM_TURN_OFF      ; 5
-	const PLAYERSPCITEM_LOG_OFF       ; 6
-
 BillsPC:
 	call PC_PlayChoosePCSound
 	ld hl, PokecenterBillsPCText
@@ -151,7 +125,7 @@ PlayersPC:
 	call PC_PlayChoosePCSound
 	ld hl, PokecenterPlayersPCText
 	call PC_DisplayText
-	ld b, PLAYERSPC_NORMAL
+	ld b, $0
 	call _PlayersPC
 	and a
 	ret
@@ -208,7 +182,7 @@ _PlayersHousePC:
 	call PC_PlayBootSound
 	ld hl, PlayersPCTurnOnText
 	call PC_DisplayText
-	ld b, PLAYERSPC_HOUSE
+	ld b, $1
 	call _PlayersPC
 	and a
 	jr nz, .asm_156f9
@@ -216,12 +190,12 @@ _PlayersHousePC:
 	call ApplyTilemap
 	call UpdateSprites
 	call PC_PlayShutdownSound
-	ld c, FALSE
+	ld c, $0
 	ret
 
 .asm_156f9
 	call ClearBGPalettes
-	ld c, TRUE
+	ld c, $1
 	ret
 
 PlayersPCTurnOnText:
@@ -267,12 +241,20 @@ PlayersPCMenuData:
 .PlayersPCMenuData:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 0 ; # items?
-	dw .WhichPC
+	dw .PlayersPCMenuList1
 	dw PlaceNthMenuStrings
 	dw .PlayersPCMenuPointers
 
+PLAYERSPC_WITHDRAW_ITEM EQU 0
+PLAYERSPC_DEPOSIT_ITEM  EQU 1
+PLAYERSPC_TOSS_ITEM     EQU 2
+PLAYERSPC_MAIL_BOX      EQU 3
+PLAYERSPC_DECORATION    EQU 4
+PLAYERSPC_TURN_OFF      EQU 5
+PLAYERSPC_LOG_OFF       EQU 6
+
 .PlayersPCMenuPointers:
-; entries correspond to PLAYERSPCITEM_* constants
+; entries correspond to PLAYERSPC_* constants
 	dw PlayerWithdrawItemMenu, .WithdrawItem
 	dw PlayerDepositItemMenu,  .DepositItem
 	dw PlayerTossItemMenu,     .TossItem
@@ -289,26 +271,23 @@ PlayersPCMenuData:
 .TurnOff:      db "TURN OFF@"
 .LogOff:       db "LOG OFF@"
 
-.WhichPC:
-; entries correspond to PLAYERSPC_* constants
-
-	; PLAYERSPC_NORMAL
+.PlayersPCMenuList1:
 	db 5
-	db PLAYERSPCITEM_WITHDRAW_ITEM
-	db PLAYERSPCITEM_DEPOSIT_ITEM
-	db PLAYERSPCITEM_TOSS_ITEM
-	db PLAYERSPCITEM_MAIL_BOX
-	db PLAYERSPCITEM_TURN_OFF
+	db PLAYERSPC_WITHDRAW_ITEM
+	db PLAYERSPC_DEPOSIT_ITEM
+	db PLAYERSPC_TOSS_ITEM
+	db PLAYERSPC_MAIL_BOX
+	db PLAYERSPC_TURN_OFF
 	db -1 ; end
 
-	; PLAYERSPC_HOUSE
+.PlayersPCMenuList2:
 	db 6
-	db PLAYERSPCITEM_WITHDRAW_ITEM
-	db PLAYERSPCITEM_DEPOSIT_ITEM
-	db PLAYERSPCITEM_TOSS_ITEM
-	db PLAYERSPCITEM_MAIL_BOX
-	db PLAYERSPCITEM_DECORATION
-	db PLAYERSPCITEM_LOG_OFF
+	db PLAYERSPC_WITHDRAW_ITEM
+	db PLAYERSPC_DEPOSIT_ITEM
+	db PLAYERSPC_TOSS_ITEM
+	db PLAYERSPC_MAIL_BOX
+	db PLAYERSPC_DECORATION
+	db PLAYERSPC_LOG_OFF
 	db -1 ; end
 
 PC_DisplayTextWaitMenu:
@@ -466,7 +445,7 @@ PlayerDepositItemMenu:
 .TryDepositItem:
 	ld a, [wSpriteUpdatesEnabled]
 	push af
-	ld a, FALSE
+	ld a, $0
 	ld [wSpriteUpdatesEnabled], a
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
@@ -506,7 +485,7 @@ PlayerDepositItemMenu:
 	ld a, [wItemAttributeParamBuffer]
 	and a
 	jr z, .AskQuantity
-	ld a, 1
+	ld a, $1
 	ld [wItemQuantityChangeBuffer], a
 	jr .ContinueDeposit
 
@@ -571,7 +550,7 @@ PCItemsJoypad:
 .loop
 	ld a, [wSpriteUpdatesEnabled]
 	push af
-	ld a, FALSE
+	ld a, $0
 	ld [wSpriteUpdatesEnabled], a
 	ld hl, .PCItemsMenuData
 	call CopyMenuHeader

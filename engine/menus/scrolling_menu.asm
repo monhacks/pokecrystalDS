@@ -78,7 +78,7 @@ ScrollingMenuJoyAction:
 	jp nz, .d_down
 	jr .loop
 
-.no_zero_no_carry ; unreferenced
+.unreferenced ; unused
 	ld a, -1
 	and a
 	ret
@@ -401,11 +401,11 @@ ScrollingMenu_UpdateDisplay:
 	ld a, [wMenuDataFlags]
 	bit 0, a ; call function on cancel
 	jr nz, .call_function
-	ld de, .CancelString
+	ld de, .string_2485f
 	call PlaceString
 	ret
 
-.CancelString
+.string_2485f
 	db "CANCEL@"
 
 .call_function

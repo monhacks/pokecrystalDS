@@ -151,7 +151,7 @@ StartMenu::
 	call DrawVariableLengthMenuBox
 	call .DrawBugContestStatus
 	call UpdateSprites
-	call GSReloadPalettes
+	call ret_d90
 	call FinishExitMenu
 	ret
 
@@ -433,11 +433,10 @@ StartMenu_Save:
 
 	call BufferScreen
 	farcall SaveMenu
-	jr nc, .saved
+	jr nc, .asm_12919
 	ld a, 0
 	ret
-
-.saved
+.asm_12919
 	ld a, 1
 	ret
 
@@ -445,7 +444,7 @@ StartMenu_Option:
 ; Game options.
 
 	call FadeToMenu
-	farcall Option
+	farcall OptionsMenu
 	ld a, 6
 	ret
 
@@ -461,13 +460,13 @@ StartMenu_Status:
 StartMenu_Pokedex:
 	ld a, [wPartyCount]
 	and a
-	jr z, .empty
+	jr z, .asm_12949
 
 	call FadeToMenu
 	farcall Pokedex
 	call CloseSubmenu
 
-.empty
+.asm_12949
 	ld a, 0
 	ret
 

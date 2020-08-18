@@ -74,7 +74,7 @@ ReadTrainerParty:
 
 .cal2
 	ld a, BANK(sMysteryGiftTrainer)
-	call OpenSRAM
+	call GetSRAMBank
 	ld de, sMysteryGiftTrainer
 	call TrainerType2
 	call CloseSRAM
@@ -338,14 +338,14 @@ GetTrainerName::
 	jr nz, .not_cal2
 
 	ld a, BANK(sMysteryGiftTrainerHouseFlag)
-	call OpenSRAM
+	call GetSRAMBank
 	ld a, [sMysteryGiftTrainerHouseFlag]
 	and a
 	call CloseSRAM
 	jr z, .not_cal2
 
 	ld a, BANK(sMysteryGiftPartnerName)
-	call OpenSRAM
+	call GetSRAMBank
 	ld hl, sMysteryGiftPartnerName
 	call CopyTrainerName
 	jp CloseSRAM
@@ -380,7 +380,8 @@ CopyTrainerName:
 	pop de
 	ret
 
-Function39990: ; unreferenced
+Function39990:
+; This function is useless.
 	ld de, wStringBuffer1
 	push de
 	ld bc, NAME_LENGTH

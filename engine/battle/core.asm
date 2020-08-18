@@ -230,9 +230,9 @@ BattleTurn:
 
 Stubbed_Function3c1bf:
 	ret
-	ld a, BANK(s5_a89b) ; MBC30 bank used by JP Crystal; inaccessible by MBC3
-	call OpenSRAM
-	ld hl, s5_a89b ; address of MBC30 bank
+	ld a, 5 ; MBC30 bank used by JP Crystal; inaccessible by MBC3
+	call GetSRAMBank
+	ld hl, $a89b ; address of MBC30 bank
 	inc [hl]
 	jr nz, .finish
 	dec hl
@@ -1899,7 +1899,7 @@ GetMaxHP:
 	ld c, a
 	ret
 
-GetHalfHP: ; unreferenced
+Unreferenced_GetHalfHP:
 	ld hl, wBattleMonHP
 	ldh a, [hBattleTurn]
 	and a
@@ -1963,14 +1963,14 @@ RestoreHP:
 	ld b, a
 	ld a, [hl]
 	sbc b
-	jr c, .overflow
+	jr c, .asm_3cd2d
 	ld a, b
 	ld [hli], a
 	ld [wBuffer6], a
 	ld a, c
 	ld [hl], a
 	ld [wBuffer5], a
-.overflow
+.asm_3cd2d
 
 	call SwitchTurnCore
 	call UpdateHPBarBattleHuds
@@ -5415,7 +5415,7 @@ MoveSelectionScreen:
 	dec a
 	jr nz, .interpret_joypad
 	hlcoord 11, 14
-	ld de, .empty_string
+	ld de, .string_3e61c
 	call PlaceString
 	jr .interpret_joypad
 
@@ -5511,7 +5511,7 @@ MoveSelectionScreen:
 	call SafeLoadTempTilemapToTilemap
 	jp MoveSelectionScreen
 
-.empty_string
+.string_3e61c
 	db "@"
 
 .pressed_up
@@ -5958,7 +5958,7 @@ LoadEnemyMon:
 	jp nz, InitEnemyMon
 
 ; and also not in a BattleTower-Battle
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInBattleTowerBattle] ; ????
 	bit 0, a
 	jp nz, InitEnemyMon
 
@@ -6403,7 +6403,7 @@ LoadEnemyMon:
 
 	ld hl, wEnemyMonStats
 	ld de, wEnemyStats
-	ld bc, NUM_EXP_STATS * 2
+	ld bc, wEnemyMonStatsEnd - wEnemyMonStats
 	call CopyBytes
 
 	ret
@@ -6488,7 +6488,7 @@ CheckUnownLetter:
 
 INCLUDE "data/wild/unlocked_unowns.asm"
 
-SwapBattlerLevels: ; unreferenced
+Unreferenced_SwapBattlerLevels:
 	push bc
 	ld a, [wBattleMonLevel]
 	ld b, a
@@ -6852,7 +6852,7 @@ _LoadHPBar:
 	callfar LoadHPBar
 	ret
 
-LoadHPExpBarGFX: ; unreferenced
+Unreferenced_LoadHPExpBarGFX:
 	ld de, EnemyHPBarBorderGFX
 	ld hl, vTiles2 tile $6c
 	lb bc, BANK(EnemyHPBarBorderGFX), 4
@@ -7763,7 +7763,8 @@ GoodComeBackText:
 	text_far _GoodComeBackText
 	text_end
 
-TextJump_ComeBack: ; unreferenced
+Unreferenced_TextJump_ComeBack:
+; this function doesn't seem to be used
 	ld hl, ComeBackText
 	ret
 
@@ -7771,7 +7772,7 @@ ComeBackText:
 	text_far _ComeBackText
 	text_end
 
-HandleSafariAngerEatingStatus: ; unreferenced
+Unreferenced_HandleSafariAngerEatingStatus:
 	ld hl, wSafariMonEating
 	ld a, [hl]
 	and a
@@ -8028,7 +8029,7 @@ StartBattle:
 	scf
 	ret
 
-CallDoBattle: ; unreferenced
+Unreferenced_DoBattle:
 	call DoBattle
 	ret
 
@@ -8050,11 +8051,11 @@ BattleIntro:
 	ld b, SCGB_BATTLE_GRAYSCALE
 	call GetSGBLayout
 	ld hl, rLCDC
-	res rLCDC_WINDOW_TILEMAP, [hl] ; select vBGMap0/vBGMap2
+	res rLCDC_WINDOW_TILEMAP, [hl] ; select 9800-9BFF
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld hl, rLCDC
-	set rLCDC_WINDOW_TILEMAP, [hl] ; select vBGMap1/vBGMap3
+	set rLCDC_WINDOW_TILEMAP, [hl] ; select 9C00-9FFF
 	xor a
 	ldh [hBGMapMode], a
 	call EmptyBattleTextbox
@@ -8126,8 +8127,8 @@ InitEnemyTrainer:
 	jr nz, .ok
 	xor a
 	ld [wOTPartyMon1Item], a
-
 .ok
+
 	ld de, vTiles2
 	callfar GetTrainerPic
 	xor a
@@ -8201,7 +8202,7 @@ InitEnemyWildmon:
 	predef PlaceGraphic
 	ret
 
-Function3f662: ; unreferenced
+Unreferenced_Function3f662:
 	ld hl, wEnemyMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld b, NUM_MOVES
@@ -8373,21 +8374,21 @@ DisplayLinkBattleResult:
 	ld a, [wBattleResult]
 	and $f
 	cp LOSE
-	jr c, .win ; WIN
-	jr z, .lose ; LOSE
+	jr c, .victory ; WIN
+	jr z, .loss ; LOSE
 	; DRAW
 	farcall StubbedTrainerRankings_ColosseumDraws
 	ld de, .Draw
 	jr .store_result
 
-.win
+.victory
 	farcall StubbedTrainerRankings_ColosseumWins
-	ld de, .YouWin
+	ld de, .Win
 	jr .store_result
 
-.lose
+.loss
 	farcall StubbedTrainerRankings_ColosseumLosses
-	ld de, .YouLose
+	ld de, .Lose
 	jr .store_result
 
 .store_result
@@ -8398,7 +8399,7 @@ DisplayLinkBattleResult:
 	call DelayFrames
 
 	ld a, BANK(sLinkBattleStats)
-	call OpenSRAM
+	call GetSRAMBank
 
 	call AddLastLinkBattleToLinkRecord
 	call ReadAndPrintLinkBattleRecord
@@ -8417,23 +8418,23 @@ DisplayLinkBattleResult:
 	call ClearTilemap
 	ret
 
-.YouWin:
+.Win:
 	db "YOU WIN@"
-.YouLose:
+.Lose:
 	db "YOU LOSE@"
 .Draw:
 	db "  DRAW@"
 
 .Mobile_InvalidBattle:
 	hlcoord 6, 8
-	ld de, .InvalidBattle
+	ld de, .Invalid
 	call PlaceString
 	ld c, 200
 	call DelayFrames
 	call ClearTilemap
 	ret
 
-.InvalidBattle:
+.Invalid:
 	db "INVALID BATTLE@"
 
 IsMobileBattle2:
@@ -8446,7 +8447,7 @@ NUM_LINK_BATTLE_RECORDS EQUS "((sLinkBattleStatsEnd - sLinkBattleRecord) / LINK_
 
 _DisplayLinkRecord:
 	ld a, BANK(sLinkBattleStats)
-	call OpenSRAM
+	call GetSRAMBank
 
 	call ReadAndPrintLinkBattleRecord
 
@@ -9012,7 +9013,7 @@ CopyBackpic:
 	ld de, vTiles2 tile $31
 	ldh a, [hROMBank]
 	ld b, a
-	ld c, 7 * 7
+	ld c, $31
 	call Get2bpp
 	pop af
 	ldh [rSVBK], a

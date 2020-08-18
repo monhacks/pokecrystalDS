@@ -50,7 +50,7 @@ AIChooseMove:
 .CheckMovePP:
 	inc b
 	ld a, b
-	cp NUM_MOVES + 1
+	cp wEnemyMonMovesEnd - wEnemyMonMoves + 1
 	jr z, .ApplyLayers
 	inc hl
 	ld a, [de]
@@ -119,7 +119,7 @@ AIChooseMove:
 .DecrementScores:
 	ld hl, wBuffer1
 	ld de, wEnemyMonMoves
-	ld c, NUM_MOVES
+	ld c, wEnemyMonMovesEnd - wEnemyMonMoves
 
 .DecrementNextScore:
 	; If the enemy has no moves, this will infinite.

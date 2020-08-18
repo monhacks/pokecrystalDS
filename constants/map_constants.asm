@@ -1,6 +1,6 @@
 newgroup: MACRO
 const_value = const_value + 1
-__map_value__ = 1
+	enum_start 1
 ENDM
 
 map_const: MACRO
@@ -8,8 +8,7 @@ map_const: MACRO
 ;\2: width: in blocks
 ;\3: height: in blocks
 GROUP_\1 EQU const_value
-MAP_\1 EQU __map_value__
-__map_value__ = __map_value__ + 1
+	enum MAP_\1
 \1_WIDTH EQU \2
 \1_HEIGHT EQU \3
 ENDM
@@ -492,5 +491,3 @@ ENDM
 	map_const ROUTE_30_BERRY_HOUSE,                         4,  4 ;  9
 	map_const MR_POKEMONS_HOUSE,                            4,  4 ; 10
 	map_const ROUTE_31_VIOLET_GATE,                         5,  4 ; 11
-
-NUM_MAP_GROUPS EQU const_value ; 26
