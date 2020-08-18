@@ -1,6 +1,6 @@
 	object_const_def ; object_event constants
 	const OLIVINECITY_SAILOR1
-	const OLIVINECITY_STANDING_YOUNGSTER
+	const OLIVINECITY_YOUNGSTER
 	const OLIVINECITY_SAILOR2
 	const OLIVINECITY_OLIVINE_RIVAL
 
@@ -41,9 +41,7 @@ OlivineCityRivalSceneTop:
 	applymovement OLIVINECITY_OLIVINE_RIVAL, MovementData_0x1a88db
 	setscene SCENE_FINISHED
 	disappear OLIVINECITY_OLIVINE_RIVAL
-	special RestartMapMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SWIMMER_GUY
-	special LoadUsedSpritesGFX
+	special RestartMapMusic	
 	end
 
 OlivineCityRivalSceneBottom:
@@ -66,8 +64,8 @@ OlivineCityRivalSceneBottom:
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	setscene SCENE_FINISHED
 	special RestartMapMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SWIMMER_GUY
-	special LoadUsedSpritesGFX
+	;variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SWIMMER_GUY
+	;special LoadUsedSpritesGFX
 	end
 
 OlivineCitySailor1Script:
@@ -317,6 +315,6 @@ OlivineCity_MapEvents:
 
 	db 4 ; object events
 	object_event 26, 27, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCitySailor1Script, -1
-	object_event 20, 13, SPRITE_STANDING_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineCityStandingYoungsterScript, -1
+	object_event 20, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineCityStandingYoungsterScript, -1
 	object_event 17, 21, SPRITE_SAILOR, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCitySailor2Script, -1
-	object_event 10, 11, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
+	object_event 10, 11, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY

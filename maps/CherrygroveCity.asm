@@ -240,6 +240,8 @@ GuideGentMovement1:
 	step LEFT
 	step UP
 	step LEFT
+	step LEFT
+	step LEFT
 	turn_head UP
 	step_end
 
@@ -258,9 +260,7 @@ GuideGentMovement3:
 	step LEFT
 	step LEFT
 	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
+	step LEFT	
 	turn_head UP
 	step_end
 
@@ -548,8 +548,8 @@ CherrygroveCity_MapEvents:
 	db 0, 0 ; filler
 
 	db 5 ; warp events
-	warp_event 23,  3, CHERRYGROVE_MART, 2
-	warp_event 29,  3, CHERRYGROVE_POKECENTER_1F, 1
+	warp_event 21,  3, GOLDENROD_POKECENTER_1F, 2;CHERRYGROVE_MART, 2
+	warp_event 27,  3, CHERRYGROVE_POKECENTER_1F, 1
 	warp_event 17,  7, CHERRYGROVE_GYM_SPEECH_HOUSE, 1
 	warp_event 25,  9, GUIDE_GENTS_HOUSE, 1
 	warp_event 31, 11, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE, 1
@@ -561,8 +561,8 @@ CherrygroveCity_MapEvents:
 	db 4 ; bg events
 	bg_event 30,  8, BGEVENT_READ, CherrygroveCitySign
 	bg_event 23,  9, BGEVENT_READ, GuideGentsHouseSign
-	bg_event 24,  3, BGEVENT_READ, CherrygroveCityMartSign
-	bg_event 30,  3, BGEVENT_READ, CherrygroveCityPokecenterSign
+	bg_event 22,  3, BGEVENT_READ, CherrygroveCityMartSign
+	bg_event 28,  3, BGEVENT_READ, CherrygroveCityPokecenterSign
 
 	db 5 ; object events
 	object_event 32,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE

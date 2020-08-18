@@ -32,6 +32,7 @@ MAP_NONE   EQU 0
 	const PALETTE_NITE
 	const PALETTE_MORN
 	const PALETTE_DARK
+NUM_MAP_PALETTES EQU const_value
 
 ; FishGroups indexes (see data/wild/fish.asm)
 	const_def
@@ -129,4 +130,4 @@ KANTO_FLYPOINT EQU const_value
 	const FLY_CINNABAR
 	const FLY_INDIGO
 
-MAX_OUTDOOR_SPRITES EQU 23 ; see engine/overworld/overworld.asm
+;MAX_OUTDOOR_SPRITES EQU 23 ; see engine/overworld/overworld.asm

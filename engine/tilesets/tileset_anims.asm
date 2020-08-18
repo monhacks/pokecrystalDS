@@ -34,8 +34,9 @@ _AnimateTileset::
 	jp hl
 
 Tileset0Anim:
-TilesetJohtoModernAnim:
+;TilesetJohtoModernAnim:
 TilesetKantoAnim:
+;TilesetBattleTowerOutsideAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -76,6 +77,8 @@ TilesetForestAnim:
 	dw NULL,  DoneTileAnimation
 
 TilesetJohtoAnim:
+TilesetJohtoModernAnim:;added for whirpool
+TilesetSnowyAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -259,7 +262,7 @@ TilesetChampionsRoomAnim:
 TilesetLighthouseAnim:
 TilesetPlayersRoomAnim:
 TilesetPokeComCenterAnim:
-TilesetBattleTowerInsideAnim:
+TilesetBattleTowerAnim:
 TilesetRuinsOfAlphAnim:
 TilesetRadioTowerAnim:
 TilesetUndergroundAnim:
@@ -927,7 +930,7 @@ FlickeringCaveEntrancePalette:
 	ret nz
 ; We only want to be here if we're in a dark cave.
 	ld a, [wTimeOfDayPalset]
-	cp %11111111 ; 3,3,3,3
+	cp DARKNESS_PALSET
 	ret nz
 
 	ldh a, [rSVBK]

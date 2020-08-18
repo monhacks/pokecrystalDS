@@ -660,8 +660,8 @@ StatsScreen_LoadGFX:
 	ret
 
 .Status_Type:
-	db   "STATUS/"
-	next "TYPE/@"
+	db   "STATUS:"
+	next "TYPE:@"
 
 .OK_str:
 	db "OK @"
@@ -721,7 +721,7 @@ StatsScreen_LoadGFX:
 	db "---@"
 
 .Move:
-	db "MOVE@"
+	db "MOVES@"
 
 .BluePage:
 	call .PlaceOTInfo
@@ -781,7 +781,7 @@ IDNoString:
 	db "<ID>№.@"
 
 OTString:
-	db "OT/@"
+	db "OT:@"
 
 StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonDVs

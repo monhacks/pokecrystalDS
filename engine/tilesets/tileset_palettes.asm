@@ -72,7 +72,7 @@ LoadBattleTowerInsidePalette:
 	ret
 
 BattleTowerInsidePalette:
-INCLUDE "gfx/tilesets/battle_tower_inside.pal"
+INCLUDE "gfx/tilesets/battle_tower.pal"
 
 LoadIcePathPalette:
 	ld a, BANK(wBGPals1)

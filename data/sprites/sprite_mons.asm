@@ -35,3 +35,5 @@ SpriteMons:
 	db GYARADOS
 	db LUGIA
 	db HO_OH
+	db MILTANK
+	db PIDGEY
