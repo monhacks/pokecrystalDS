@@ -4,7 +4,13 @@ Customized version of the Pokémon Crystal decompilation project [Link](https://
 
 **WIP**
 
-We aim to improve the original game by using various patches from many sources
+the goal is:
+* improve the original game taking elements from HG/SS.
+* Use more gbc unique features and potential.
+* Redesign every Town and Route making them more unique but keeping the original style and feel.
+* All 251 pkms catchable.
+* Some new path and dungeon will be open make johto more diverse and wild.
+* Quality of life improvements and bug fixes
 
 [TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/TODO.md/)
 
