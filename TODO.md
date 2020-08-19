@@ -25,7 +25,7 @@ Take some elements from hg/ss while maintaining the original look and feel. Make
 * Add Violet city encounters
 * Make Mareep, Remoraid, Vulpix, Mankey and Girafarig catchable
 * Add Sage trainer battle
-* Improve pokégear and battle system
+* Improve pokégear and re-battle system
 * Add Magikarp fishing tournament that resembles the national park bug catching system
 * Add an improved safari zone to Fucsia city that changes when a day passes in-game
 * Restore Pewter museum and experts that can revive fossils
