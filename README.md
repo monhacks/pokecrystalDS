@@ -1,6 +1,10 @@
 # Pokémon Crystal DS
 
 Customized version of Pokémon Crystal.
+WIP
+aim: improve original game and graphic , take some elements from hg/ss, keeping the original art style and experience.
+make all 251 pkms catchable adding new locations and challanges.
+Unique details for every town and route.
 
 # This forked repository includes the following changes:
 
