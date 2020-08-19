@@ -1,19 +1,20 @@
-# Pokémon Crystal
+# Pokémon Crystal DS
 
-This is a disassembly of Pokémon Crystal.
+Customized version of Pokémon Crystal.
 
 # This forked repository includes the following changes:
 
 **Tiles**
-* Added battle tower outside
-* Added snow (currently unused)
-* Edited modern Johto
-* Edited <!-- original?? -->Johto
+* Added tileset "battle tower outside"
+* Added tileset "snowy "(currently unused)
+* Edited modern Johto tileset
+* Edited Johto tileset
 * Expanded tiles to 255
-* Added color to icons in the party menu [Wiki](https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species/)
 * Added tiles attributes X-Y flip and priority [Wiki](https://github.com/pret/pokecrystal/wiki/Allow-tiles-to-have-different-attributes-in-different-blocks-(including-X-and-Y-flip)/)
 
-**Maps**
+# Maps Changes:
+
+**General**
 * Pokémon center and market now have a unique colored roof
 
 **Town**
