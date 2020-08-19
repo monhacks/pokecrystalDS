@@ -27,9 +27,11 @@ Customized version of Pokémon Crystal.
 **Routes**
 * Edited route 30
 
-**Graphics**
-* Added Pokémon icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
-* Added roof Azalea
+#Graphics:
+
+**General**
+* Added Pokémon party menu icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
+* Added roof for Azalea
 * Edited roof Olivine (more jap traditional)
 * Changed text_pal color to blue 
 * Added colors to icons in the party menu [Wiki](https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species/)
@@ -40,7 +42,8 @@ Customized version of Pokémon Crystal.
 * Added Pidgey and Rattata back for route 30
 * Added bug catcher sprite (old one now is called "kid")
 
-**Misc**
+#Misc:
+
 * Fixed blockset
 * Improved outdoor system [Wiki](https://github.com/pret/pokecrystal/wiki/Improve-the-outdoor-sprite-system/)
 * Added unique colors for each pokeball [Wiki](https://github.com/pret/pokecrystal/wiki/Use-unique-colors-for-each-thrown-Poké-Ball/)
@@ -50,43 +53,22 @@ Customized version of Pokémon Crystal.
 * Removed "/" from the stat screen and player card
 
 
-**It builds the following ROM:**
 
-- Pokemon - Crystal Version (UE) (V1.0) [C][!].gbc `sha1: ?`
-<!--
-- Pokemon - Crystal Version (UE) (V1.1) [C][!].gbc `sha1: f2f52230b536214ef7c9924f483392993e226cfb`
-- Pokemon - Crystal Version (A) [C][!].gbc `sha1: a0fc810f1d4e124434f7be2c989ab5b5892ddf36`
--->
+
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
 ## See also
 
+- [**pret/pokecrystal]
 - [**FAQ**](FAQ.md)
 - [**Documentation**][docs]
 - [**Wiki**][wiki] (includes [tutorials][tutorials])
 - **Discord:** [pret][discord]
 - **IRC:** [freenode#pret][irc]
 
-Other disassembly projects:
 
-- [**Pokémon Red/Blue**][pokered]
-- [**Pokémon Yellow**][pokeyellow]
-- [**Pokémon Gold**][pokegold]
-- [**Pokémon Pinball**][pokepinball]
-- [**Pokémon TCG**][poketcg]
-- [**Pokémon Ruby**][pokeruby]
-- [**Pokémon Fire Red**][pokefirered]
-- [**Pokémon Emerald**][pokeemerald]
-
-[pokered]: https://github.com/pret/pokered
-[pokeyellow]: https://github.com/pret/pokeyellow
-[pokegold]: https://github.com/pret/pokegold
-[pokepinball]: https://github.com/pret/pokepinball
-[poketcg]: https://github.com/pret/poketcg
-[pokeruby]: https://github.com/pret/pokeruby
-[pokefirered]: https://github.com/pret/pokefirered
-[pokeemerald]: https://github.com/pret/pokeemerald
+[pret/pokecrystal]: https://github.com/pret/pokecrystal
 [docs]: https://pret.github.io/pokecrystal/
 [wiki]: https://github.com/pret/pokecrystal/wiki
 [tutorials]: https://github.com/pret/pokecrystal/wiki/Tutorials
