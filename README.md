@@ -27,7 +27,7 @@ Customized version of Pokémon Crystal.
 **Routes**
 * Edited route 30
 
-#Graphics:
+# Graphics:
 
 **General**
 * Added Pokémon party menu icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
