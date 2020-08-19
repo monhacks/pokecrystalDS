@@ -36,6 +36,8 @@ Take some elements from hg/ss while maintaining the original look and feel. Make
 * Add mt silver dungeon (outside snowy path) that ends to the silver peak with the last and ultimate battle against Red
 * Oak gives your first kanto starter when kanto is reached, the next time after beating all 16 gyms and finally after beating Red on mt silver
 * Johto starter can be obtained from safari zone
+* Prism's TMs System for gain extra item space.
+
 <!-- phy/spe split
 evs
 tm hm prism's system and infinitely reusable tms
