@@ -46,7 +46,11 @@ Routes
 TO DO:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;NOW;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+make water pal static and add water animation (johto, modern and kanto)	text pal can become another color
 Check fountain anim
+add evening pal 
+
 edit mahogany roof pal to Red/brown
 edit olivine roof pal to olive green (mahogany)
 https://github.com/pret/pokecrystal/wiki/Sideways-stairs-with-diagonal-movement
@@ -54,7 +58,7 @@ change olivine map group to modern
 check where the game use text pal and change to gray pal
 fly point cherrygroove (fix)
 sea path from cherrygroove
-add evening
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;WIP or IDEAS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 add kanto badges on player trainer card
