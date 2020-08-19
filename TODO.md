@@ -34,7 +34,7 @@ Take some elements from hg/ss while maintaining the original look and feel. Make
 * Change how text scrolls
 * Add face pictures and name on text boxes of important NPCs
 * Add mt silver dungeon (outside snowy path) that ends to the silver peak with the last and ultimate battle against Red
-* Oak gives you kanto starter when reach Kanto is reached, the next time after beating all 16 gyms and finally after beating Red on mt silver
+* Oak gives your first kanto starter when kanto is reached, the next time after beating all 16 gyms and finally after beating Red on mt silver
 * Johto starter can be obtained from safari zone
 <!-- phy/spe split
 evs
