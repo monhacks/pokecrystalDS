@@ -60,7 +60,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 
 ## See also
 
-- [**pret/pokecrystal**] [pret/pokecrystal]
+- [**pret/pokecrystal**][pret/pokecrystal]
 - [**FAQ**](FAQ.md)
 - [**Documentation**][docs]
 - [**Wiki**][wiki] (includes [tutorials][tutorials])
