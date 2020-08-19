@@ -19,9 +19,9 @@ Customized version of Pokémon Crystal.
 
 **Town**
 * Edited Cherrygrove (beach, flowers and events)
-* Edited Violet      (bridge and lantern got polished)
-* Edited Ecruteak    (particles and roof have colored trees)
-* Edited Azalea      (roof, wood got polished)
+* Edited Violet      (bridge and lanterns* )
+* Edited Ecruteak    (water source and roof pal colored trees)
+* Edited Azalea      (roof, wood stack*)
 
 **Routes**
 * Edited route 30
@@ -30,12 +30,14 @@ Customized version of Pokémon Crystal.
 * Added Pokémon icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
 * Added roof Azalea
 * Edited roof Olivine (more jap traditional)
-* Changed text color to blue in static palette
-
+* Changed text_pal color to blue 
+* Added colors to icons in the party menu [Wiki](https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species/)
+																
+																* i'm not the author of these graphics
 **Sprites**
 * Added Miltank sprite icon for route 39
 * Added Pidgey and Rattata back for route 30
-* Added bug catcher sprite
+* Added bug catcher sprite (old one now is called "kid")
 
 **Misc**
 * Fixed blockset
