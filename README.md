@@ -72,7 +72,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 - [**Wiki**](https://github.com/pret/pokecrystal/wiki/) 
 
 # Original links
-- Pokémon Crystal decompilation project [Link](https://github.com/pret/pokecrystal/)
+- [Pokémon Crystal decompilation project](https://github.com/pret/pokecrystal/)
 - [docs](https://pret.github.io/pokecrystal/)
 - [wiki](https://github.com/pret/pokecrystal/wiki/)
 - [tutorials](https://github.com/pret/pokecrystal/wiki/Tutorials/)
