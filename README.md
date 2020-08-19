@@ -4,15 +4,16 @@ Customized version of Pokémon Crystal.
 
 # This forked repository includes the following changes:
 
-**Tiles**
+
+# Maps Changes:
+
+**Tilesets**
 * Added tileset "battle tower outside"
 * Added tileset "snowy "(currently unused)
 * Edited modern Johto tileset
 * Edited Johto tileset
 * Expanded tiles to 255
 * Added tiles attributes X-Y flip and priority [Wiki](https://github.com/pret/pokecrystal/wiki/Allow-tiles-to-have-different-attributes-in-different-blocks-(including-X-and-Y-flip)/)
-
-# Maps Changes:
 
 **General**
 * Pokémon center and market now have a unique colored roof
