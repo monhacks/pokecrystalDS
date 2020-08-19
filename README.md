@@ -27,6 +27,7 @@ Customized version of Pokémon Crystal.
 **Routes**
 * Edited route 30
 
+																	* i'm not the author of these graphics
 # Graphics:
 
 **General**
@@ -35,14 +36,13 @@ Customized version of Pokémon Crystal.
 * Edited roof Olivine (more jap traditional)
 * Changed text_pal color to blue 
 * Added colors to icons in the party menu [Wiki](https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species/)
-																
-																* i'm not the author of these graphics
+
 **Sprites**
 * Added Miltank sprite icon for route 39
 * Added Pidgey and Rattata back for route 30
 * Added bug catcher sprite (old one now is called "kid")
 
-#Misc:
+# Misc:
 
 * Fixed blockset
 * Improved outdoor system [Wiki](https://github.com/pret/pokecrystal/wiki/Improve-the-outdoor-sprite-system/)
@@ -60,7 +60,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 
 ## See also
 
-- [**pret/pokecrystal]
+- [**pret/pokecrystal**]
 - [**FAQ**](FAQ.md)
 - [**Documentation**][docs]
 - [**Wiki**][wiki] (includes [tutorials][tutorials])
