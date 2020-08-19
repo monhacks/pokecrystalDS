@@ -1,15 +1,18 @@
 # Pokémon Crystal DS
 
-Customized version of Pokémon Crystal.
-WIP
-aim: improve original game and graphic , take some elements from hg/ss, keeping the original art style and experience.
-make all 251 pkms catchable adding new locations and challanges.
-Unique details for every town and route.
+Customized version of the Pokémon Crystal decompilation project [Link](https://github.com/pret/pokecrystal/)
+
+**WIP**
+
+We aim to improve the original game by using various patches from many sources
+
+[TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/TODO.md/)
+
+[Credits](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CREDITS.md/)
 
 # This forked repository includes the following changes:
 
-
-# Maps Changes:
+# Map
 
 **Tilesets**
 * Added tileset "battle tower outside"
@@ -31,8 +34,7 @@ Unique details for every town and route.
 **Routes**
 * Edited route 30
 
-																	* i'm not the author of these graphics
-# Graphics:
+# Graphics
 
 **General**
 * Added Pokémon party menu icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
@@ -46,7 +48,7 @@ Unique details for every town and route.
 * Added Pidgey and Rattata back for route 30
 * Added bug catcher sprite (old one now is called "kid")
 
-# Misc:
+# Misc
 
 * Fixed blockset
 * Improved outdoor system [Wiki](https://github.com/pret/pokecrystal/wiki/Improve-the-outdoor-sprite-system/)
@@ -56,23 +58,16 @@ Unique details for every town and route.
 * Removed the redundant move grammar table [Wiki](https://github.com/pret/pokecrystal/wiki/Remove-the-redundant-move-grammar-table/)
 * Removed "/" from the stat screen and player card
 
-
-
-
-
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
 ## See also
 
-- [**pret/pokecrystal**][pret/pokecrystal]
 - [**FAQ**](FAQ.md)
 - [**Documentation**][docs]
 - [**Wiki**][wiki] (includes [tutorials][tutorials])
 - **Discord:** [pret][discord]
 - **IRC:** [freenode#pret][irc]
 
-
-[pret/pokecrystal]: https://github.com/pret/pokecrystal
 [docs]: https://pret.github.io/pokecrystal/
 [wiki]: https://github.com/pret/pokecrystal/wiki
 [tutorials]: https://github.com/pret/pokecrystal/wiki/Tutorials
@@ -80,8 +75,3 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 [irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
 [travis]: https://travis-ci.org/pret/pokecrystal
 [travis-badge]: https://travis-ci.org/pret/pokecrystal.svg?branch=master
-
-
-# Whats next?
-
-**TO DO COMING**
