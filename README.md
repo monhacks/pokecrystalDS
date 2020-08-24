@@ -5,11 +5,11 @@ Customized version of the Pokémon Crystal decompilation project [Link](https://
 **WIP**
 
 the goal is:
-* improve the original game taking elements from HG/SS.
-* Use more gbc unique features and potential.
+* Improve the original game by taking elements from HG/SS.
+* Use more Gameboy color unique features.
 * Redesign every Town and Route making them more unique but keeping the original style and feel.
-* All 251 pkms catchable.
-* Some new path and dungeon will be open make johto more diverse and wild.
+* All 251 pokémons catchable.
+* Some new path and dungeon will be open make Johto more diverse and wild.
 * Quality of life improvements and bug fixes
 
 [TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/TODO.md/)
@@ -22,7 +22,7 @@ the goal is:
 
 **Tilesets**
 * Added tileset "battle tower outside"
-* Added tileset "snowy "(currently unused)
+* Added tileset "snowy" (currently unused)
 * Edited modern Johto tileset
 * Edited Johto tileset
 * Expanded tiles to 255
@@ -31,7 +31,7 @@ the goal is:
 **General**
 * Pokémon center and market now have a unique colored roof
 
-**Town**
+**Towns**
 * Edited Cherrygrove (beach, flowers and events)
 * Edited Violet      (bridge and lanterns* )
 * Edited Ecruteak    (water source and roof pal colored trees)
@@ -66,18 +66,20 @@ the goal is:
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
-## See also
 
-- [**FAQ**](FAQ.md)
-- [**Documentation**][docs]
-- [**Wiki**][wiki] (includes [tutorials][tutorials])
-- **Discord:** [pret][discord]
-- **IRC:** [freenode#pret][irc]
+![Cherry](cherry.gif)
 
-[docs]: https://pret.github.io/pokecrystal/
-[wiki]: https://github.com/pret/pokecrystal/wiki
-[tutorials]: https://github.com/pret/pokecrystal/wiki/Tutorials
-[discord]: https://discord.gg/d5dubZ3
-[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
-[travis]: https://travis-ci.org/pret/pokecrystal
-[travis-badge]: https://travis-ci.org/pret/pokecrystal.svg?branch=master
+# See also
+
+- [**FAQ**](https://github.com/DuckSalmon/pokecrystalDS/blob/master/FAQ.md/)
+- [**Wiki**](https://github.com/pret/pokecrystal/wiki/) 
+
+# Original links
+- [Pokémon Crystal decompilation project](https://github.com/pret/pokecrystal/)
+- [docs](https://pret.github.io/pokecrystal/)
+- [wiki](https://github.com/pret/pokecrystal/wiki/)
+- [tutorials](https://github.com/pret/pokecrystal/wiki/Tutorials/)
+- [discord](https://discord.gg/d5dubZ3)
+- [irc](https://kiwiirc.com/client/irc.freenode.net/?#pret)
+- [travis](https://travis-ci.org/pret/pokecrystal)
+- [travis-badge](https://travis-ci.org/pret/pokecrystal.svg?branch=master)
