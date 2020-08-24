@@ -67,7 +67,7 @@ the goal is:
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
 
-![Cherry](cherry.gif)
+![Cherry](cherry.png)
 
 # See also
 
