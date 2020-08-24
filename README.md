@@ -69,6 +69,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 # Screens
 
 ![Cherry](cherry.png)
+Cherrygrove City
 
 # See also
 
