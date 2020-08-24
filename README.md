@@ -66,6 +66,7 @@ the goal is:
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
+**Screens:
 
 ![Cherry](cherry.png)
 
