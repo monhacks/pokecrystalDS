@@ -66,6 +66,9 @@ the goal is:
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
+
+![Cherry](cherry.gif)
+
 # See also
 
 - [**FAQ**](https://github.com/DuckSalmon/pokecrystalDS/blob/master/FAQ.md/)
