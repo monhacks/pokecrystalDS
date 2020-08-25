@@ -4,6 +4,7 @@ Take some elements from hg/ss while maintaining the original look and feel. Make
 
 # NOW
 
+* add a blue bg palette
 * Check fountain animation
 * Edit Mahogany roof palette to red or brown
 * Edit Olivine roof palette to olive green (Mahogany)
