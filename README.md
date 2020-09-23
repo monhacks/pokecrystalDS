@@ -29,7 +29,6 @@ the goal is:
 * Added tiles attributes X-Y flip and priority [Wiki](https://github.com/pret/pokecrystal/wiki/Allow-tiles-to-have-different-attributes-in-different-blocks-(including-X-and-Y-flip)/)
 
 **General**
-* Pokémon center and market now have a unique colored roof
 
 **Towns**
 * Edited Cherrygrove (beach, flowers and events)
