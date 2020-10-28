@@ -548,7 +548,7 @@ CherrygroveCity_MapEvents:
 	db 0, 0 ; filler
 
 	db 5 ; warp events
-	warp_event 21,  3, GOLDENROD_POKECENTER_1F, 2;CHERRYGROVE_MART, 2
+	warp_event 21,  3, ECRUTEAK_POKECENTER_1F, 2;CHERRYGROVE_MART, 2
 	warp_event 27,  3, CHERRYGROVE_POKECENTER_1F, 1
 	warp_event 17,  7, CHERRYGROVE_GYM_SPEECH_HOUSE, 1
 	warp_event 25,  9, GUIDE_GENTS_HOUSE, 1

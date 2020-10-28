@@ -1,13 +1,13 @@
 ; MapGroupRoofs values; Roofs indexes
 	const_def
 	const ROOF_NEW_BARK  ; 0
-	const ROOF_CIANW   ; 1	UNUSED
+	;const ROOF_CIANW   ; 1	UNUSED
 	const ROOF_TRAD    ; 2
 	const ROOF_OLIVINE   ; 3 
 	const ROOF_GOLDENROD ; 4
 	const ROOF_VIOLET    ;5  NOW MORE JAPANASE
 	const ROOF_AZALEA   ; 6
-	const ROOF_SNOW    ;7 UNUSED
+	;const ROOF_SNOW    ;7 UNUSED
 	
 MapGroupRoofs:
 ; entries correspond to map groups

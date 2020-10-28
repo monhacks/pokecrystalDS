@@ -224,7 +224,7 @@ ENDM
 
 	newgroup                                                      ; 10
 
-	map_const ROUTE_32,                                    10, 45 ;  1
+	map_const ROUTE_32,                                    11, 45 ;  1
 	map_const ROUTE_35,                                    10, 18 ;  2
 	map_const ROUTE_36,                                    30,  9 ;  3
 	map_const ROUTE_37,                                    10,  9 ;  4
@@ -408,7 +408,7 @@ ENDM
 	map_const ROUTE_16_GATE,                                5,  4 ; 24
 	map_const ROUTE_7_SAFFRON_GATE,                         5,  4 ; 25
 	map_const ROUTE_17_ROUTE_18_GATE,                       5,  4 ; 26
-
+	
 	newgroup                                                      ; 22
 
 	map_const ROUTE_40,                                    10, 18 ;  1
@@ -481,7 +481,7 @@ ENDM
 	newgroup                                                      ; 26
 
 	map_const ROUTE_30,                                    12, 27 ;  1
-	map_const ROUTE_31,                                    20,  9 ;  2
+	map_const ROUTE_31,                                    21,  9 ;  2
 	map_const CHERRYGROVE_CITY,                            20,  10 ;  3
 	map_const CHERRYGROVE_MART,                             6,  4 ;  4
 	map_const CHERRYGROVE_POKECENTER_1F,                    5,  4 ;  5

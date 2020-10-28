@@ -29,15 +29,6 @@ Tileset0Coll::
 TilesetJohtoColl::
 INCLUDE "data/tilesets/johto_collision.asm"
 
-TilesetIcePathGFX::
-INCBIN "gfx/tilesets/ice_path.2bpp.lz"
-
-TilesetIcePathMeta::
-INCBIN "data/tilesets/ice_path_metatiles.bin"
-
-TilesetIcePathColl::
-INCLUDE "data/tilesets/ice_path_collision.asm"
-
 TilesetPlayersRoomGFX::
 INCBIN "gfx/tilesets/players_room.2bpp.lz"
 
@@ -469,3 +460,14 @@ INCBIN "data/tilesets/aerodactyl_word_room_attributes.bin"
 
 TilesetSnowyAttr::
 INCBIN "data/tilesets/snowy_attributes.bin"
+
+SECTION "Tileset Data 12", ROMX
+
+TilesetIcePathGFX::
+INCBIN "gfx/tilesets/ice_path.2bpp.lz"
+
+TilesetIcePathMeta::
+INCBIN "data/tilesets/ice_path_metatiles.bin"
+
+TilesetIcePathColl::
+INCLUDE "data/tilesets/ice_path_collision.asm"

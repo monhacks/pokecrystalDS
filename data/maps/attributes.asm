@@ -160,17 +160,18 @@ ENDM
 	connection east, NewBarkTown, NEW_BARK_TOWN, 0
 
 	map_attributes Route30, ROUTE_30, $05, NORTH | SOUTH
-	connection north, Route31, ROUTE_31, -10
+	connection north, Route31, ROUTE_31, -9
 	connection south, CherrygroveCity, CHERRYGROVE_CITY, -6
 
 	map_attributes Route31, ROUTE_31, $05, SOUTH | WEST
-	connection south, Route30, ROUTE_30, 10
+	connection south, Route30, ROUTE_30, 9
 	connection west, VioletCity, VIOLET_CITY, -9
 
-	map_attributes Route32, ROUTE_32, $05, NORTH | SOUTH
+	map_attributes Route32, ROUTE_32, $05, NORTH | SOUTH; | WEST
 	connection north, VioletCity, VIOLET_CITY, 0
 	connection south, Route33, ROUTE_33, 0
-
+	;connection west, RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, -9
+		
 	map_attributes Route33, ROUTE_33, $05, NORTH | WEST
 	connection north, Route32, ROUTE_32, 0
 	connection west, AzaleaTown, AZALEA_TOWN, 0

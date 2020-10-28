@@ -2263,10 +2263,11 @@ wCurBaseDataEnd::
 
 wCurDamage:: dw ; d256
 
-	ds 2
+	ds 1
 
 wMornEncounterRate::  db ; d25a
 wDayEncounterRate::   db ; d25b
+wEveEncounterRate::   db
 wNiteEncounterRate::  db ; d25c
 wWaterEncounterRate:: db ; d25d
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES

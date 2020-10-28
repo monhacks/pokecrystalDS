@@ -178,7 +178,7 @@ InitMapSignAttrmap:
 	inc b
 	inc c
 	inc c
-	ld a, PAL_BG_GRAY | PRIORITY
+	ld a, PAL_BG_TEXT | PRIORITY
 .loop
 	push bc
 	push hl
