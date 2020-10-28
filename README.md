@@ -71,7 +71,6 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 
 ![Cherry](cherry.png) ![Goldenrod](Goldenrod.png) 
 
-Cherrygrove City        Goldenrod City
 
 # See also
 
