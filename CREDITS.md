@@ -1,5 +1,8 @@
 # Credits
 
-* Rangi for her wonderful Tools and works on Polished Crystal.
-* JaceDeane for a couple of tiles used in Johto.
+GFX
+* Rangi for using some tiles and graphics from her game "Polished Crystal"
+
+Other
+* Rangi for her wonderful Tools
 * MGislv help me using github and other dumb linux things.

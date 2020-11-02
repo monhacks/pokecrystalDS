@@ -4,26 +4,25 @@ Take some elements from hg/ss while maintaining the original look and feel. Make
 
 # NOW
 
-* add a blue bg palette
 * Check fountain animation
+* Add Kanto badges on the trainer card
 * Edit Mahogany roof palette to red or brown
 * Edit Olivine roof palette to olive green (Mahogany)
 * Implement sideways stairs diagonal movement [Wiki](https://github.com/pret/pokecrystal/wiki/Sideways-stairs-with-diagonal-movement/)
 * Change Olivine map group
-* Change text palette to gray
 * Fix fly point in Cherrygroove
-* Change sea path in Cherrygroove
-* Add evening
+* add sea path in Cherrygroove
+* add a map group for ruins of alpha for fix the night palette problem
 
 # IDEAS
 
-* Add Kanto badges on the trainer card
-* Remove sign that covers half of the screen while loading
+* Add blue bg palette? water 
+* Redesign map location signs
 * Change how text box are loaded by adding the left and right frame tiles
 * Restore GS Celebi event
 * Restore the Pokémon Communication Center and use it later in the game
 * Check Headbutt tree pokémon encounters
-* Add Violet city encounters
+* edit/add Violet city encounters
 * Make Mareep, Remoraid, Vulpix, Mankey and Girafarig catchable
 * Add Sage trainer battle
 * Improve pokégear and re-battle system

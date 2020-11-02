@@ -6,7 +6,7 @@ Customized version of the Pokémon Crystal decompilation project [Link](https://
 
 the goal is:
 * Improve the original game by taking elements from HG/SS.
-* Use more Gameboy color unique features.
+* Use more Gameboy color HW unique features.
 * Redesign every Town and Route making them more unique but keeping the original style and feel.
 * All 251 pokémons catchable.
 * Some new path and dungeon will be open make Johto more diverse and wild.
@@ -21,7 +21,7 @@ the goal is:
 # Map
 
 **Tilesets**
-* Added tileset "battle tower outside"
+* Added tileset "battle tower outside" making free space in Johto Modern tileset
 * Added tileset "snowy" (currently unused)
 * Edited modern Johto tileset
 * Edited Johto tileset
@@ -35,9 +35,11 @@ the goal is:
 * Edited Violet      (bridge and lanterns* )
 * Edited Ecruteak    (water source and roof pal colored trees)
 * Edited Azalea      (roof, wood stack*)
+* Edited Goldenrod   (HG/SS style)
 
 **Routes**
 * Edited route 30
+* Edited Routee 32
 
 # Graphics
 
@@ -45,7 +47,7 @@ the goal is:
 * Added Pokémon party menu icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
 * Added roof for Azalea
 * Edited roof Olivine (more jap traditional)
-* Changed text_pal color to blue 
+* Added Evening time of the day
 * Added colors to icons in the party menu [Wiki](https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species/)
 
 **Sprites**
@@ -67,9 +69,8 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 
 # Screens
 
-![Cherry](cherry.png)
+![Cherry](cherry.png) ![Goldenrod](Goldenrod.png) 
 
-Cherrygrove City
 
 # See also
 
