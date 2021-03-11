@@ -19,7 +19,7 @@ the goal is:
 
 # Map
 **Tilesets**
-* Make some free spaces in Johto and Modern-Johto tiles
+* Make some free spaces in Johto and Modern-Johto tilesets
 * Added some tiles for add unique details 
 * Expanded tiles to 255
 * Added tiles attributes X-Y flip and priority [Wiki](https://github.com/pret/pokecrystal/wiki/Allow-tiles-to-have-different-attributes-in-different-blocks-(including-X-and-Y-flip)/)
