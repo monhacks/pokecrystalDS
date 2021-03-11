@@ -1,88 +1,46 @@
-# Pokémon Crystal DS
+# Pokémon Crystal [![Build Status][travis-badge]][travis]
 
-Customized version of the Pokémon Crystal decompilation project [Link](https://github.com/pret/pokecrystal/)
+This is a disassembly of Pokémon Crystal.
 
-**WIP**
+It builds the following ROMs:
 
-the goal is:
-* Improve the original game by taking elements from HG/SS.
-* Use more Gameboy color HW unique features.
-* Redesign every Town and Route making them more unique but keeping the original style and feel.
-* All 251 pokémons catchable.
-* Some new path and dungeon will be open make Johto more diverse and wild.
-* Quality of life improvements and bug fixes
-
-[TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/TODO.md/)
-
-[Credits](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CREDITS.md/)
-
-# This forked repository includes the following changes:
-
-# Map
-
-**Tilesets**
-* Added tileset "battle tower outside" making free space in Johto Modern tileset
-* Added tileset "snowy" (currently unused)
-* Edited modern Johto tileset
-* Edited Johto tileset
-* Expanded tiles to 255
-* Added tiles attributes X-Y flip and priority [Wiki](https://github.com/pret/pokecrystal/wiki/Allow-tiles-to-have-different-attributes-in-different-blocks-(including-X-and-Y-flip)/)
-
-**General**
-
-**Towns**
-* Edited Cherrygrove (beach, flowers and events)
-* Edited Violet      (bridge and lanterns* )
-* Edited Ecruteak    (water source and roof pal colored trees)
-* Edited Azalea      (roof, wood stack*)
-* Edited Goldenrod   (HG/SS style)
-
-**Routes**
-* Edited route 30
-* Edited Routee 32
-
-# Graphics
-
-**General**
-* Added Pokémon party menu icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
-* Added roof for Azalea
-* Edited roof Olivine (more jap traditional)
-* Added Evening time of the day
-* Added colors to icons in the party menu [Wiki](https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species/)
-
-**Sprites**
-* Added Miltank sprite icon for route 39
-* Added Pidgey and Rattata back for route 30
-* Added bug catcher sprite (old one now is called "kid")
-
-# Misc
-
-* Fixed blockset
-* Improved outdoor system [Wiki](https://github.com/pret/pokecrystal/wiki/Improve-the-outdoor-sprite-system/)
-* Added unique colors for each pokeball [Wiki](https://github.com/pret/pokecrystal/wiki/Use-unique-colors-for-each-thrown-Poké-Ball/)
-* Removed redundant sprites [Wiki](https://github.com/pret/pokecrystal/wiki/Improve-the-outdoor-sprite-system#5-remove-the-now-redundant-variable-sprites/)
-* Now you can see leaders' heads on the trainer card [Wiki](https://github.com/pret/pokecrystal/wiki/Show-the-tops-of-leaders-heads-on-the-trainer-card/)
-* Removed the redundant move grammar table [Wiki](https://github.com/pret/pokecrystal/wiki/Remove-the-redundant-move-grammar-table/)
-* Removed "/" from the stat screen and player card
+- Pokemon - Crystal Version (UE) (V1.0) [C][!].gbc `sha1: f4cd194bdee0d04ca4eac29e09b8e4e9d818c133`
+- Pokemon - Crystal Version (UE) (V1.1) [C][!].gbc `sha1: f2f52230b536214ef7c9924f483392993e226cfb`
+- Pokemon - Crystal Version (A) [C][!].gbc `sha1: a0fc810f1d4e124434f7be2c989ab5b5892ddf36`
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
-# Screens
+## See also
 
-![Cherry](cherry.png) ![Goldenrod](Goldenrod.png) 
+- [**FAQ**](FAQ.md)
+- [**Documentation**][docs]
+- [**Wiki**][wiki] (includes [tutorials][tutorials])
+- **Discord:** [pret][discord]
+- **IRC:** [freenode#pret][irc]
 
+Other disassembly projects:
 
-# See also
+- [**Pokémon Red/Blue**][pokered]
+- [**Pokémon Yellow**][pokeyellow]
+- [**Pokémon Gold**][pokegold]
+- [**Pokémon Pinball**][pokepinball]
+- [**Pokémon TCG**][poketcg]
+- [**Pokémon Ruby**][pokeruby]
+- [**Pokémon Fire Red**][pokefirered]
+- [**Pokémon Emerald**][pokeemerald]
 
-- [**FAQ**](https://github.com/DuckSalmon/pokecrystalDS/blob/master/FAQ.md/)
-- [**Wiki**](https://github.com/pret/pokecrystal/wiki/) 
-
-# Original links
-- [Pokémon Crystal decompilation project](https://github.com/pret/pokecrystal/)
-- [docs](https://pret.github.io/pokecrystal/)
-- [wiki](https://github.com/pret/pokecrystal/wiki/)
-- [tutorials](https://github.com/pret/pokecrystal/wiki/Tutorials/)
-- [discord](https://discord.gg/d5dubZ3)
-- [irc](https://kiwiirc.com/client/irc.freenode.net/?#pret)
-- [travis](https://travis-ci.org/pret/pokecrystal)
-- [travis-badge](https://travis-ci.org/pret/pokecrystal.svg?branch=master)
+[pokered]: https://github.com/pret/pokered
+[pokeyellow]: https://github.com/pret/pokeyellow
+[pokegold]: https://github.com/pret/pokegold
+[pokepinball]: https://github.com/pret/pokepinball
+[poketcg]: https://github.com/pret/poketcg
+[pokeruby]: https://github.com/pret/pokeruby
+[pokefirered]: https://github.com/pret/pokefirered
+[pokeemerald]: https://github.com/pret/pokeemerald
+[docs]: https://pret.github.io/pokecrystal/
+[wiki]: https://github.com/pret/pokecrystal/wiki
+[tutorials]: https://github.com/pret/pokecrystal/wiki/Tutorials
+[discord]: https://discord.gg/d5dubZ3
+[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
+[travis]: https://travis-ci.org/pret/pokecrystal
+[travis-badge]: https://travis-ci.org/pret/pokecrystal.svg?branch=master

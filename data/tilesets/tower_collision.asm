@@ -39,7 +39,7 @@
 	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WARP_CARPET_DOWN ; 26
 	tilecoll WARP_CARPET_UP, WARP_CARPET_UP, FLOOR, FLOOR ; 27
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 28
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 29
+	tilecoll WALL, WALL, WALL, WALL ; 29
 	tilecoll WALL, WALL, WALL, WALL ; 2a
 	tilecoll WALL, HOP_LEFT, WALL, WALL ; 2b
 	tilecoll HOP_RIGHT, WALL, WALL, WALL ; 2c
@@ -62,3 +62,7 @@
 	tilecoll WALL, HOP_DOWN, WALL, WALL ; 3d
 	tilecoll HOP_DOWN, WALL, WALL, WALL ; 3e
 	tilecoll HOP_DOWN_RIGHT, WALL, WALL, WALL ; 3f
+	tilecoll WALL, WALL, WALL, WALL ; 40
+	tilecoll WALL, WALL, WALL, WALL ; 41
+	tilecoll WALL, WALL, WALL, WALL ; 42
+	tilecoll WALL, WALL, WALL, WALL ; 43

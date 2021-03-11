@@ -104,11 +104,12 @@ ENDM
 	connection north, Route30, ROUTE_30, 6
 	connection east, Route29, ROUTE_29, 0
 
-	map_attributes VioletCity, VIOLET_CITY, $05, SOUTH | WEST | EAST
+	map_attributes VioletCity, VIOLET_CITY, $05, NORTH | SOUTH | WEST | EAST
+	connection north, VioletGarden, VIOLET_GARDEN, 1
 	connection south, Route32, ROUTE_32, 0
-	connection west, Route36, ROUTE_36, 0
+	connection west, Route36, ROUTE_36, 1
 	connection east, Route31, ROUTE_31, 9
-
+	
 	map_attributes AzaleaTown, AZALEA_TOWN, $05, WEST | EAST
 	connection west, Route34, ROUTE_34, -18
 	connection east, Route33, ROUTE_33, 0
@@ -187,7 +188,7 @@ ENDM
 	map_attributes Route36, ROUTE_36, $05, NORTH | SOUTH | EAST
 	connection north, Route37, ROUTE_37, 10
 	connection south, Route35, ROUTE_35, 0
-	connection east, VioletCity, VIOLET_CITY, 0
+	connection east, VioletCity, VIOLET_CITY, -1
 
 	map_attributes Route37, ROUTE_37, $05, NORTH | SOUTH
 	connection north, EcruteakCity, ECRUTEAK_CITY, -5
@@ -228,7 +229,10 @@ ENDM
 	map_attributes Route46, ROUTE_46, $05, SOUTH | EAST
 	connection south, Route29, ROUTE_29, -10
 	connection east, Route45, ROUTE_45, -36
-
+	
+	map_attributes VioletGarden, VIOLET_GARDEN, $05, SOUTH
+	connection south, VioletCity, VIOLET_CITY, -1	
+	
 	map_attributes PewterCity, PEWTER_CITY, $0f, SOUTH | EAST
 	connection south, Route2, ROUTE_2, 5
 	connection east, Route3, ROUTE_3, 5

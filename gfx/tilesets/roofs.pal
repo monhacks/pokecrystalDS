@@ -4,9 +4,9 @@
 	RGB 18,16,16, 09,08,08 ; eve
 	
 ; group 1 (Olivine)
-	RGB 14,17,31, 07,11,15 ; morn/day
-	RGB 09,09,17, 05,07,13 ; nite
-	RGB 12,13,23, 06,08,11 ; eve
+	RGB 12,19,00, 06,10,00 ; morn/day
+	RGB 06,09,07, 04,05,06 ; nite
+	RGB 10,14,00, 05,08,00 ; eve
 
 ; group 2 (Mahogany)
 	RGB 12,19,00, 06,10,00 ; morn/day

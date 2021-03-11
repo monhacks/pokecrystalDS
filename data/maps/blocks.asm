@@ -902,3 +902,6 @@ BattleTowerOutside_Blocks:
 
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.ablk"
+
+VioletGarden_Blocks:
+	INCBIN "maps/VioletGarden.ablk"

@@ -471,3 +471,4 @@ INCBIN "data/tilesets/ice_path_metatiles.bin"
 
 TilesetIcePathColl::
 INCLUDE "data/tilesets/ice_path_collision.asm"
+
