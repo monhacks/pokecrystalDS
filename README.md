@@ -16,37 +16,22 @@ the goal is:
 [Credits](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CREDITS.md/)
 
 # This forked repository includes the following changes:
-here a more a more detailed [changelog](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CHANGES.asm/)
 
 # Map
-
 **Tilesets**
-* Added tileset "battle tower outside" making free space in Johto Modern tileset
-* Added tileset "snowy" (currently unused)
-* Edited modern Johto tileset
-* Edited Johto tileset
+* Make some free spaces in Johto and Modern-Johto tiles
+* Added some tiles for add unique details 
 * Expanded tiles to 255
 * Added tiles attributes X-Y flip and priority [Wiki](https://github.com/pret/pokecrystal/wiki/Allow-tiles-to-have-different-attributes-in-different-blocks-(including-X-and-Y-flip)/)
 
-**General**
+edited also many Routes 
 
-**Towns**
-* Edited Cherrygrove (beach, flowers and events)
-* Edited Violet      (bridge and lanterns* )
-* Edited Ecruteak    (water source and roof pal colored trees)
-* Edited Azalea      (roof, wood stack*)
-* Edited Goldenrod   (HG/SS style)
-* Edited Olivine     (HG/SS, new lighthouse)
-* Edited Cianwood    (HG/SS)
-
-Many routes edited, here a complete [Johto Preview](https://github.com/DuckSalmon/pokecrystalDS/blob/master/map_preview/Worldmap.png/)
+Here a complete [Preview of Johto](https://github.com/DuckSalmon/pokecrystalDS/blob/master/map_preview/Worldmap.png/)
 
 # Graphics
 
 **General**
 * Added Pokémon party menu icons [Wiki](https://github.com/pret/pokecrystal/wiki/Add-a-new-party-menu-icon/)
-* Added roof for Azalea
-* Edited roof Olivine (more jap traditional)
 * Added Evening time of the day
 * Added colors to icons in the party menu [Wiki](https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species/)
 
@@ -67,6 +52,9 @@ Many routes edited, here a complete [Johto Preview](https://github.com/DuckSalmo
 - Pokemon - Crystal Version (UE) (V1.0) [C][!].gbc `sha1: f4cd194bdee0d04ca4eac29e09b8e4e9d818c133`
 - Pokemon - Crystal Version (UE) (V1.1) [C][!].gbc `sha1: f2f52230b536214ef7c9924f483392993e226cfb`
 - Pokemon - Crystal Version (A) [C][!].gbc `sha1: a0fc810f1d4e124434f7be2c989ab5b5892ddf36`
+
+
+here a more a more detailed [changelog and TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CHANGES.asm/)
 
 ## See also
 
