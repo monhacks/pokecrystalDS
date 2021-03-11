@@ -54,7 +54,7 @@ Here a complete [Preview of Johto](https://github.com/DuckSalmon/pokecrystalDS/b
 - Pokemon - Crystal Version (A) [C][!].gbc `sha1: a0fc810f1d4e124434f7be2c989ab5b5892ddf36`
 
 
-#here a more a more detailed [changelog and TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CHANGES.asm/)
+# here a more a more detailed [changelog and TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CHANGES.asm/)
 
 ## See also
 
