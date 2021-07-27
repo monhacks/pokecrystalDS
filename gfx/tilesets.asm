@@ -136,10 +136,6 @@ INCBIN "data/tilesets/train_station_metatiles.bin"
 TilesetTrainStationColl::
 INCLUDE "data/tilesets/train_station_collision.asm"
 
-TilesetForestMeta::
-INCBIN "data/tilesets/forest_metatiles.bin"
-
-
 SECTION "Tileset Data 4", ROMX
 
 TilesetEliteFourRoomGFX::
@@ -190,6 +186,8 @@ INCBIN "gfx/tilesets/dark_cave.2bpp.lz"
 TilesetBattleTowerOutsideGFX::
 INCBIN "gfx/tilesets/battle_tower_outside.2bpp.lz"
 
+TilesetForestMeta::
+INCBIN "data/tilesets/forest_metatiles.bin"
 
 SECTION "Tileset Data 5", ROMX
 
@@ -290,10 +288,10 @@ INCBIN "data/tilesets/battle_tower_outside_metatiles.bin"
 TilesetBattleTowerOutsideColl::
 INCLUDE "data/tilesets/battle_tower_outside_collision.asm"
 
-TilesetBetaWordRoomMeta::
-INCBIN "data/tilesets/beta_word_room_metatiles.bin"
+;TilesetBetaWordRoomMeta::
+;INCBIN "data/tilesets/beta_word_room_metatiles.bin"
 
-TilesetBetaWordRoomColl::
+;TilesetBetaWordRoomColl::
 TilesetHoOhWordRoomColl::
 TilesetKabutoWordRoomColl::
 TilesetOmanyteWordRoomColl::
@@ -304,7 +302,7 @@ INCLUDE "data/tilesets/beta_word_room_collision.asm"
 SECTION "Tileset Data 7", ROMX
 
 TilesetRuinsOfAlphGFX::
-TilesetBetaWordRoomGFX::
+;TilesetBetaWordRoomGFX::
 TilesetHoOhWordRoomGFX::
 TilesetKabutoWordRoomGFX::
 TilesetOmanyteWordRoomGFX::
@@ -443,8 +441,8 @@ INCBIN "data/tilesets/ice_path_attributes.bin"
 TilesetForestAttr::
 INCBIN "data/tilesets/forest_attributes.bin"
 
-TilesetBetaWordRoomAttr::
-INCBIN "data/tilesets/beta_word_room_attributes.bin"
+;TilesetBetaWordRoomAttr::
+;INCBIN "data/tilesets/beta_word_room_attributes.bin"
 
 TilesetHoOhWordRoomAttr::
 INCBIN "data/tilesets/ho_oh_word_room_attributes.bin"
@@ -471,4 +469,3 @@ INCBIN "data/tilesets/ice_path_metatiles.bin"
 
 TilesetIcePathColl::
 INCLUDE "data/tilesets/ice_path_collision.asm"
-

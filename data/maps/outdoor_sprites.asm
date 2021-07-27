@@ -40,6 +40,19 @@ ViridianGroupSprites:
 ; Route2, Route22, ViridianCity
 PewterGroupSprites:
 ; Route3, PewterCity
+	db SPRITE_TEACHER
+	db SPRITE_FISHER
+	db SPRITE_YOUNGSTER
+	db SPRITE_BLUE
+	db SPRITE_GRAMPS
+	db SPRITE_KID
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_BUG_CATCHER
+	db SPRITE_SWIMMER_GUY
+	; max 9 of 9 walking sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_FRUIT_TREE
+	db 0 ; end
 CinnabarGroupSprites:
 ; Route19, Route20, Route21, CinnabarIsland
 	db SPRITE_TEACHER

@@ -288,7 +288,7 @@ ENDM
 
 	newgroup                                                      ; 13
 
-	map_const ROUTE_1,                                     10, 18 ;  1
+	map_const ROUTE_1,                                      9, 18 ;  1
 	map_const PALLET_TOWN,                                 10,  9 ;  2
 	map_const REDS_HOUSE_1F,                                4,  4 ;  3
 	map_const REDS_HOUSE_2F,                                4,  4 ;  4
@@ -319,7 +319,7 @@ ENDM
 	map_const VERMILION_PORT_PASSAGE,                      10,  9 ;  9
 	map_const MOUNT_MOON_SQUARE,                           15,  9 ; 10
 	map_const MOUNT_MOON_GIFT_SHOP,                         4,  4 ; 11
-	map_const TIN_TOWER_ROOF,                              9,  8 ; 12
+	map_const TIN_TOWER_ROOF,                              7,  7 ; 12
 
 	newgroup                                                      ; 16
 
@@ -431,7 +431,7 @@ ENDM
 
 	newgroup                                                      ; 23
 
-	map_const ROUTE_2,                                     10, 27 ;  1
+	map_const ROUTE_2,                                     10, 28 ;  1
 	map_const ROUTE_22,                                    20,  9 ;  2
 	map_const VIRIDIAN_CITY,                               20, 18 ;  3
 	map_const VIRIDIAN_GYM,                                 5,  9 ;  4

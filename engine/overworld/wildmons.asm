@@ -32,8 +32,8 @@ GetTimeOfDayNotEve:
 	ld a, [wTimeOfDay]
 	cp EVE_F
 	ret nz
-	dec a ; NITE_F
-	ret	
+	ld a, NITE_F ; ld a, DAY_F to make evening use day encounters
+	ret
 
 FindNest:
 ; Parameters:

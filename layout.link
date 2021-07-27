@@ -48,7 +48,7 @@ ROMX $07
 ROMX $08
 	"Clock Reset"
 	"Tileset Data 3"
-	"Egg Moves"
+	"Egg Moves"	
 ROMX $09
 	"bank9"
 ROMX $0a
@@ -300,12 +300,12 @@ ROMX $7b
 ROMX $7c
 	"Battle Tower Trainer Data"
 ROMX $7d
-	"Mobile News Data"
+	"Mobile News Data"	
 ROMX $7e
 	"Crystal Events"
 ROMX $7f
 	org $7de0
-	"Mobile Stadium 2"
+	"Mobile Stadium 2"	
 WRAM0
 	"Stack"
 	"Audio RAM"

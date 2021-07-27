@@ -239,10 +239,10 @@ ENDM
 
 	map_attributes Route2, ROUTE_2, $0f, NORTH | SOUTH
 	connection north, PewterCity, PEWTER_CITY, -5
-	connection south, ViridianCity, VIRIDIAN_CITY, -5
+	connection south, ViridianCity, VIRIDIAN_CITY, -7
 
 	map_attributes ViridianCity, VIRIDIAN_CITY, $0f, NORTH | SOUTH | WEST
-	connection north, Route2, ROUTE_2, 5
+	connection north, Route2, ROUTE_2, 7
 	connection south, Route1, ROUTE_1, 10
 	connection west, Route22, ROUTE_22, 4
 
