@@ -108,7 +108,7 @@ ENDM
 	connection north, VioletGarden, VIOLET_GARDEN, 1
 	connection south, Route32, ROUTE_32, 0
 	connection west, Route36, ROUTE_36, 1
-	connection east, Route31, ROUTE_31, 9
+	connection east, Route31, ROUTE_31, 10
 	
 	map_attributes AzaleaTown, AZALEA_TOWN, $05, WEST | EAST
 	connection west, Route34, ROUTE_34, -18
@@ -699,3 +699,4 @@ ENDM
 	map_attributes Route30BerryHouse, ROUTE_30_BERRY_HOUSE, $00, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $00, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $00, 0
+	map_attributes EcruteakShrine, ECRUTEAK_SHRINE, $05, 0

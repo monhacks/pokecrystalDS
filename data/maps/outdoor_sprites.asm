@@ -170,7 +170,7 @@ EcruteakGroupSprites:
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
 	db SPRITE_COOLTRAINER_M
-	db SPRITE_KID
+	db SPRITE_BUG_CATCHER
 	db SPRITE_SUPER_NERD
 	;
 	; 8 of max 9 walking sprites
@@ -204,11 +204,14 @@ GoldenrodGroupSprites:
 	db SPRITE_POKEFAN_M
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_ROCKET
+	db SPRITE_ROCKET_GIRL
 	db SPRITE_LASS
-	; 7 of max 9 walking sprites
+	db SPRITE_SUPER_NERD
+	; 9 of max 9 walking sprites
 	db SPRITE_DAY_CARE_MON_1
 	db SPRITE_DAY_CARE_MON_2
 	db SPRITE_POKE_BALL
+	db SPRITE_MACHOP
 	db 0 ; end
 
 ; OlivineCity and Route40 are connected

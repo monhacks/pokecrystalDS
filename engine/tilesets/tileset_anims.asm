@@ -78,7 +78,7 @@ TilesetForestAnim:
 
 TilesetJohtoAnim:
 TilesetJohtoModernAnim:;added for whirpool
-TilesetSnowyAnim:
+TilesetMountainAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

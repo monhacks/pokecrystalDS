@@ -315,8 +315,8 @@ INCBIN "data/tilesets/ruins_of_alph_metatiles.bin"
 TilesetRuinsOfAlphColl::
 INCLUDE "data/tilesets/ruins_of_alph_collision.asm"
 
-TilesetSnowyColl::
-INCLUDE "data/tilesets/snowy_collision.asm"
+TilesetMountainColl::
+INCLUDE "data/tilesets/mountain_collision.asm"
 
 SECTION "Tileset Data 8", ROMX
 
@@ -335,11 +335,11 @@ INCBIN "data/tilesets/aerodactyl_word_room_metatiles.bin"
 TilesetTraditionalHouseColl::
 INCLUDE "data/tilesets/traditional_house_collision.asm"
 
-TilesetSnowyMeta::
-INCBIN "data/tilesets/snowy_metatiles.bin"
+TilesetMountainMeta::
+INCBIN "data/tilesets/mountain_metatiles.bin"
 
-TilesetSnowyGFX::
-INCBIN "gfx/tilesets/snowy.2bpp.lz"
+TilesetMountainGFX::
+INCBIN "gfx/tilesets/mountain.2bpp.lz"
 
 SECTION "Tileset Data 9", ROMX
 
@@ -456,8 +456,8 @@ INCBIN "data/tilesets/omanyte_word_room_attributes.bin"
 TilesetAerodactylWordRoomAttr::
 INCBIN "data/tilesets/aerodactyl_word_room_attributes.bin"
 
-TilesetSnowyAttr::
-INCBIN "data/tilesets/snowy_attributes.bin"
+TilesetMountainAttr::
+INCBIN "data/tilesets/mountain_attributes.bin"
 
 SECTION "Tileset Data 12", ROMX
 

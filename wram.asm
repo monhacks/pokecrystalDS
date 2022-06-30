@@ -2267,8 +2267,8 @@ wCurDamage:: dw ; d256
 
 wMornEncounterRate::  db ; d25a
 wDayEncounterRate::   db ; d25b
-wEveEncounterRate::   db
 wNiteEncounterRate::  db ; d25c
+wEveEncounterRate::   db
 wWaterEncounterRate:: db ; d25d
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
@@ -2503,7 +2503,7 @@ wObjectStructsEnd:: ; d6de
 
 wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
 
-	ds 40
+	ds 6
 
 wMapObjects:: ; d71e
 wPlayerObject:: map_object wPlayer
@@ -2522,6 +2522,8 @@ wMap12Object::  map_object wMap12
 wMap13Object::  map_object wMap13
 wMap14Object::  map_object wMap14
 wMap15Object::  map_object wMap15
+wMap16Object::  map_object wMap16
+wMap17Object::  map_object wMap17
 wMapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS ; d81e

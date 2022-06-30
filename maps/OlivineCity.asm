@@ -296,7 +296,7 @@ OlivineCity_MapEvents:
 	warp_event 13, 15, OLIVINE_GOOD_ROD_HOUSE, 1
 	warp_event  7, 21, OLIVINE_CAFE, 1
 	warp_event 23, 21, OLIVINE_MART, 2
-	warp_event 31, 25, OLIVINE_LIGHTHOUSE_1F, 1
+	warp_event 31, 23, OLIVINE_LIGHTHOUSE_1F, 1
 	warp_event 18, 25, OLIVINE_PORT_PASSAGE, 1
 	warp_event 17, 25, OLIVINE_PORT_PASSAGE, 2
 
@@ -308,7 +308,7 @@ OlivineCity_MapEvents:
 	bg_event 17, 11, BGEVENT_READ, OlivineCitySign
 	bg_event 19, 23, BGEVENT_READ, OlivineCityPortSign
 	bg_event  7, 11, BGEVENT_READ, OlivineGymSign
-	bg_event 32, 27, BGEVENT_READ, OlivineLighthouseSign
+	bg_event 32, 25, BGEVENT_READ, OlivineLighthouseSign
 	bg_event  3, 21, BGEVENT_READ, OlivineCityBattleTowerSign
 	bg_event 14, 21, BGEVENT_READ, OlivineCityPokecenterSign
 	bg_event 24, 21, BGEVENT_READ, OlivineCityMartSign

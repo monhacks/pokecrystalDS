@@ -1,7 +1,10 @@
 
 WIP
-check loading Kanto badges 
-fix pokemon encounter (night and evening not working)
+check loading Kanto badges
+Add pokemon event goldenrod that requires a brick for access a zone that links goldenrod to route 32 
+add a path to tin tower from ecruteak shrine
+add events in acruteak shrine
+
 
 ;;;;;;DONE:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -27,7 +30,7 @@ fix pokemon encounter (night and evening not working)
 -improve Show the tops of leaders' heads on the trainer card      https://github.com/pret/pokecrystal/wiki/Show-the-tops-of-leaders-heads-on-the-trainer-card
 -add kanto badges on player trainer card
 -Rearranged Pokegear icons and removed the clock icon (now a sub menu) for an extra space for a Music player cart
--add unuque and color party menu icons https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species
+-add unique and color party menu icons https://github.com/pret/pokecrystal/wiki/Color-party-menu-icons-by-species
 
 ;misc
 -FIX blockset 
@@ -41,6 +44,7 @@ fix pokemon encounter (night and evening not working)
 - add miltank sprite icon for route 39
 - add pidgey and rattata-back for route 30
 - add bug catcher sprite (bug catcher > kid)
+- add farfetch'd sprite for ilex forest
 
 
 

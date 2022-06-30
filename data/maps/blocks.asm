@@ -905,3 +905,8 @@ GoldenrodDeptStoreRoof_Blocks:
 
 VioletGarden_Blocks:
 	INCBIN "maps/VioletGarden.ablk"
+
+SECTION "Map Blocks 4", ROMX
+
+EcruteakShrine_Blocks:
+	INCBIN "maps/EcruteakShrine.ablk"

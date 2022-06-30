@@ -110,4 +110,5 @@ OverworldSprites:
 	;overworld_sprite StandingYoungsterSpriteGFX, 12, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite KidSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite RattataBackSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite FarfetchDSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
 	
