@@ -12,9 +12,7 @@ the goal is:
 * Quality of life improvements and bug fixes
 
 
-[TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/TODO.md/)
-
-[Credits](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CREDITS.md/)
+[TO DO/CHANGELOG/CREDITS](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CHANGES.asm/)
 
 # This forked repository includes the following changes:
 
