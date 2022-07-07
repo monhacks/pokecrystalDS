@@ -11,7 +11,8 @@
 	add map + events viridian forest
 	Change olivine map group to modern
 	Change Ruins of alpha map group to violet
-	
+	Delete event flag inserted for machop event
+	delete silver peak map group
 
 ;;;;;;DONE:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

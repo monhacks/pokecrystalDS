@@ -272,8 +272,8 @@ PokecomCenterOffice_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  1,  7, POKECOM_CENTER, 3
-	warp_event  0,  7, POKECOM_CENTER, 3
+	warp_event  1,  7, GOLDENROD_POKECENTER_1F, 3
+	warp_event  0,  7, GOLDENROD_POKECENTER_1F, 3
 
 	db 0 ; coord events
 

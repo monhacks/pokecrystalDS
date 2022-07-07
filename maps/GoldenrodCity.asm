@@ -659,7 +659,7 @@ GoldenrodCity_MapEvents:
 	warp_event 19,  1, ROUTE_35_GOLDENROD_GATE, 3
 	warp_event 11,  5, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 8
 	warp_event 11, 29, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 5
-	warp_event 14, 27, POKECOM_CENTER, 2
+	warp_event 14, 27, GOLDENROD_POKECENTER_1F, 2
 
 	db 0 ; coord events
 
