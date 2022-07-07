@@ -57,23 +57,3 @@ Here a complete [Preview of Johto](https://github.com/DuckSalmon/pokecrystalDS/b
 
 # here a more a more detailed [changelog and TO DO](https://github.com/DuckSalmon/pokecrystalDS/blob/master/CHANGES.asm/)
 To set up the repository, see [INSTALL.md](INSTALL.md).
-
-## See also
-
-- [**FAQ**](FAQ.md)
-- [**Documentation**][docs]
-- [**Wiki**][wiki] (includes [tutorials][tutorials])
-- **Discord:** [pret][discord]
-- **IRC:** [freenode#pret][irc]
-Other disassembly projects:
-- [**Pokémon Red/Blue**][pokered]
-- [**Pokémon Yellow**][pokeyellow]
-- [**Pokémon Gold**][pokegold]
-- [**Pokémon Pinball**][pokepinball]
-- [**Pokémon TCG**][poketcg]
-- [**Pokémon Ruby**][pokeruby]
-- [**Pokémon Fire Red**][pokefirered]
-- [**Pokémon Emerald**][pokeemerald]
-[pokered]: https://github.com/pret/pokered
-[pokeyellow]: https://github.com/pret/pokeyellow
-[pokegold]: https://github.com/pret/pokegold
