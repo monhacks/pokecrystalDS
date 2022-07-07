@@ -36,4 +36,6 @@ SpriteMons:
 	db LUGIA
 	db HO_OH
 	db MILTANK
-	db PIDGEY	
+	db PIDGEY
+	db CHANSEY
+	db MACHOKE

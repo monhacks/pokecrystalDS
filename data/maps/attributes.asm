@@ -120,6 +120,7 @@ ENDM
 	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH
 	connection north, Route35, ROUTE_35, 5
 	connection south, Route34, ROUTE_34, 5
+	
 
 	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | WEST
 	connection north, Route39, ROUTE_39, 5
@@ -555,7 +556,8 @@ ENDM
 	map_attributes GoldenrodDeptStoreRoof, GOLDENROD_DEPT_STORE_ROOF, $24, 0
 	map_attributes GoldenrodGameCorner, GOLDENROD_GAME_CORNER, $00, 0
 	map_attributes GoldenrodPokecenter1F, GOLDENROD_POKECENTER_1F, $00, 0
-	map_attributes PokecomCenterAdminOfficeMobile, POKECOM_CENTER_ADMIN_OFFICE_MOBILE, $00, 0
+	map_attributes PokecomCenter, POKECOM_CENTER, $00, 0
+	map_attributes PokecomCenterOffice, POKECOM_CENTER_OFFICE, $00, 0
 	map_attributes IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $00, 0
 	map_attributes Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $00, 0
 	map_attributes DayCare, DAY_CARE, $00, 0

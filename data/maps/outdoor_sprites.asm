@@ -29,7 +29,7 @@ OutdoorSprites:
 	dw NewBarkGroupSprites
 	dw SaffronGroupSprites
 	dw CherrygroveGroupSprites
-	;dw SilverHwGroupSprites
+	dw SilverPeakGroupSprites
 
 ; Route1 and ViridianCity are connected
 ; Route2 and PewterCity are connected
@@ -211,7 +211,7 @@ GoldenrodGroupSprites:
 	db SPRITE_DAY_CARE_MON_1
 	db SPRITE_DAY_CARE_MON_2
 	db SPRITE_POKE_BALL
-	db SPRITE_MACHOP
+	db SPRITE_RATTATA_BACK
 	db 0 ; end
 
 ; OlivineCity and Route40 are connected
@@ -322,8 +322,8 @@ CableClubGroupSprites:
 	; 0 of max 9 walking sprites
 	db 0 ; end
 	
-;SilverHwGroupSprites:
-; (no outdoor maps)
+SilverPeakGroupSprites:
+; trainpathwest/ovest
 	; 0 of max 9 walking sprites
 ;	db 0 ; end
 	

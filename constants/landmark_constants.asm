@@ -19,7 +19,7 @@
 	const LANDMARK_ILEX_FOREST       ; 0e
 	const LANDMARK_ROUTE_34          ; 0f
 	const LANDMARK_GOLDENROD_CITY    ; 10
-	const LANDMARK_RADIO_TOWER       ; 11
+	const LANDMARK_RADIO_TOWER       ; 11	
 	const LANDMARK_ROUTE_35          ; 12
 	const LANDMARK_NATIONAL_PARK     ; 13
 	const LANDMARK_ROUTE_36          ; 14

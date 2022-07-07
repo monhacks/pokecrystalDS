@@ -14,7 +14,8 @@
 	const GOLDENRODCITY_ROCKET5
 	const GOLDENRODCITY_ROCKET6
 	const GOLDENRODCITY_MOVETUTOR
-	const GOLDENRODCITY_MACHOP
+	const GOLDENRODCITY_RATTATA
+	const GOLDENRODCITY_YOUNGSTER3
 
 GoldenrodCity_MapScripts:
 	db 0 ; scene scripts
@@ -232,14 +233,52 @@ GoldenrodCityRocket5Script:
 GoldenrodCityRocket6Script:
 	jumptextfaceplayer GoldenrodCityRocket6Text
 	
-GoldenrodCityMachopScript:
+GoldenrodCityRattataScript:	
 	opentext
-	writetext GoldenrodCityMachopText
-	pause 60	
-	cry MACHOP
+	writetext GoldenrodCityRattataText	
+	cry RATTATA
 	waitbutton
 	closetext
 	end	
+
+GoldenrodCityYoungster3Script:
+	opentext
+	writetext GoldenrodCityWowText
+	waitbutton
+	closetext
+	end		
+	; yesorno
+	; iffalse .No
+	; sjump .Yes		
+; .Yes
+	; readvar VAR_PARTYCOUNT
+	; ifequal PARTY_LENGTH, .PartyFull
+	; waitsfx
+	; cry MACHOP
+	; pause 60
+	; playsound SFX_KARATE_CHOP
+	; writetext GoldenrodCityReceivedMachopText
+	; playsound SFX_CAUGHT_MON
+	; waitsfx	
+	; disappear GOLDENRODCITY_MACHOP
+	; givepoke MACHOP, 10
+	; takeitem BRICK_PIECE
+	; closetext	
+	; setevent EVENT_GOLDENROD_CITY_MACHOP
+	; end	
+; .No
+	; writetext MachopNoText
+	; cry MACHOP
+	; waitbutton
+	; closetext
+	; end
+	
+; .PartyFull:
+	; writetext GoldenrodCityPartyFullText
+	; waitbutton
+	; closetext
+	; end	
+
 
 GoldenrodCityTrainSpotterScript:
 	jumptextfaceplayer .Text
@@ -573,10 +612,34 @@ GoldenrodCityMoveTutorMoveText:
 	text_start
 	done
 	
-GoldenrodCityMachopText:	
-	text "Salmone"
-	line "Pannolone"
+GoldenrodCityRattataText:	
+	text "RATTATA:…"	
 	done
+	
+GoldenrodCityWowText:	
+	text "This is the best"	
+	line "#MON center I"
+	cont "ever saw!"
+	done	
+
+; GoldenrodCityPartyFullText:
+	; text "Hm? Your #MON"
+	; line "party is full."
+	; done	
+	
+; GoldenrodCityReceivedMachopText:
+	; text "!?, Machop broke"
+	; line "the brick with a"
+	; cont "single hit!"
+	
+	; para "Now it is so"
+	; line "happy it wants to"
+	; cont "joins the party!"
+	; done	
+	
+; MachopNoText:
+	; text "…"
+	; done
 
 GoldenrodCity_MapEvents:
 	db 0, 0 ; filler
@@ -596,7 +659,7 @@ GoldenrodCity_MapEvents:
 	warp_event 19,  1, ROUTE_35_GOLDENROD_GATE, 3
 	warp_event 11,  5, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 8
 	warp_event 11, 29, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 5
-	warp_event 14, 27, GOLDENROD_POKECENTER_1F, 1
+	warp_event 14, 27, POKECOM_CENTER, 2
 
 	db 0 ; coord events
 
@@ -617,6 +680,7 @@ GoldenrodCity_MapEvents:
 	db 17 ; object events
 	object_event  7, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityPokefanMScript, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 30, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityYoungster1Script, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event 15, 30, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityYoungster3Script, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 12, 16, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodCityCooltrainerF1Script, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 24, 29, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityCooltrainerF2Script, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 19, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodCityYoungster2Script, EVENT_GOLDENROD_CITY_CIVILIANS
@@ -630,5 +694,5 @@ GoldenrodCity_MapEvents:
 	object_event 29,  7, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityRocket5Script, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 31, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodCityRocket6Script, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 12, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MoveTutorScript, EVENT_GOLDENROD_CITY_MOVE_TUTOR
-	object_event 34,  6, SPRITE_MACHOP, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodCityMachopScript,-1
+	object_event 16, 30, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GoldenrodCityRattataScript, EVENT_GOLDENROD_CITY_MACHOP
 	object_event 21, 14, SPRITE_SUPER_NERD,SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT,0, GoldenrodCityTrainSpotterScript, EVENT_GOLDENROD_CITY_CIVILIANS

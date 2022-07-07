@@ -194,9 +194,6 @@ SECTION "Tileset Data 5", ROMX
 TilesetPokeComCenterGFX::
 INCBIN "gfx/tilesets/pokecom_center.2bpp.lz"
 
-TilesetPokeComCenterMeta::
-INCBIN "data/tilesets/pokecom_center_metatiles.bin"
-
 TilesetPokeComCenterColl::
 INCLUDE "data/tilesets/pokecom_center_collision.asm"
 
@@ -469,3 +466,6 @@ INCBIN "data/tilesets/ice_path_metatiles.bin"
 
 TilesetIcePathColl::
 INCLUDE "data/tilesets/ice_path_collision.asm"
+
+TilesetPokeComCenterMeta::
+INCBIN "data/tilesets/pokecom_center_metatiles.bin"

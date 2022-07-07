@@ -150,7 +150,7 @@ Route2_MapEvents:
 	db 3 ; warp events	
 	warp_event 16, 45, ROUTE_2_GATE, 3
 	warp_event 17, 45, ROUTE_2_GATE, 4
-	warp_event  1,  5, ROUTE_2_GATE, 1	
+	warp_event  1,  5, ROUTE_2_GATE, 1
 
 	db 0 ; coord events
 

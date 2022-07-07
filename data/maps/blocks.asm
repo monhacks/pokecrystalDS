@@ -882,8 +882,11 @@ BattleTower1F_Blocks:
 BattleTowerBattleRoom_Blocks:
 	INCBIN "maps/BattleTowerBattleRoom.ablk"
 
-PokecomCenterAdminOfficeMobile_Blocks:
-	INCBIN "maps/PokecomCenterAdminOfficeMobile.ablk"
+PokecomCenter_Blocks:
+	INCBIN "maps/PokecomCenter.ablk"
+	
+PokecomCenterOffice_Blocks:
+	INCBIN "maps/PokecomCenterOffice.ablk"	
 
 MobileTradeRoom_Blocks:
 	INCBIN "maps/MobileTradeRoom.ablk"
@@ -910,3 +913,6 @@ SECTION "Map Blocks 4", ROMX
 
 EcruteakShrine_Blocks:
 	INCBIN "maps/EcruteakShrine.ablk"
+	
+;TrainPath_Blocks:
+;	INCBIN "maps/TrainPath.ablk"

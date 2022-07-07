@@ -131,7 +131,7 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_JYNX ; 91
 	const SPRITE_STARMIE ; 92
 	const SPRITE_BULBASAUR ; 93
-	const SPRITE_JIGGLYPUFF ; 94
+	const SPRITE_JIGGLYPUFF ; 94 (radio tower)
 	const SPRITE_GRIMER ; 95
 	const SPRITE_EKANS ; 96
 	const SPRITE_PARAS ; 97
@@ -140,14 +140,16 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_MACHOP ; 9a
 	const SPRITE_VOLTORB ; 9b
 	const SPRITE_LAPRAS ; 9c
-	const SPRITE_RHYDON ; 9d
+	const SPRITE_RHYDON ; 9d (ecruteak)
 	const SPRITE_MOLTRES ; 9e
 	const SPRITE_SNORLAX ; 9f
 	const SPRITE_GYARADOS ; a0
 	const SPRITE_LUGIA ; a1
 	const SPRITE_HO_OH ; a2
-	const SPRITE_MILTANK ;a3
-	const SPRITE_PIDGEY	
+	const SPRITE_MILTANK ;a3 (route 39)
+	const SPRITE_PIDGEY	;(route 30)
+	const SPRITE_CHANSEY ;(pokecom)
+	const SPRITE_MACHOKE ;(goldenrod dept)
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)
 	const_def $e0
